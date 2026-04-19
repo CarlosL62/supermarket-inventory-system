@@ -1,5 +1,6 @@
 from app.models.branch import Branch
 from app.gui.dialogs.add_product_dialog import AddProductDialog
+from app.gui.dialogs.add_branch_dialog import AddBranchDialog
 from app.gui.helpers.table_loaders import load_branches_table, load_products_table
 from PySide6.QtWidgets import QMessageBox
 
@@ -41,10 +42,17 @@ class InventoryView:
         self.load_products_for_branch(branch)
 
     def add_branch(self):
+        dialog = AddBranchDialog(self.parent)
+        if not dialog.exec():
+            return
+
+        branch = dialog.get_branch()
+        if branch is None:
+            return
+
         new_id = len(self.branch_manager.get_branches()) + 1
-        self.branch_manager.add_branch(
-            Branch(new_id, "Nueva sucursal", "Pendiente", 0, 0, 0)
-        )
+        branch.id = new_id
+        self.branch_manager.add_branch(branch)
         self.refresh_branches_table()
 
         last_row = self.branches_table.rowCount() - 1
