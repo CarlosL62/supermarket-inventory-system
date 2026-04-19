@@ -1,49 +1,85 @@
-from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QPushButton,
-    QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox
-)
+from PySide6.QtWidgets import QMainWindow, QHeaderView
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtCore import QFile
 from app.services.branch_manager import BranchManager
-from app.models.branch import Branch
-from app.models.product import Product
-from app.gui.dialogs.add_product_dialog import AddProductDialog
+from app.utils.demo_data import load_demo_branches
+from app.gui.views.inventory_view import InventoryView
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Supermarket Inventory System")
+        self.setWindowTitle("Sistema de Inventario de Supermercados")
         self.resize(900, 600)
 
         self.branch_manager = BranchManager()
 
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
+        self.load_ui()
+        self.bind_ui_elements()
 
-        layout = QVBoxLayout()
-
-        self.btn_add_branch = QPushButton("Agregar sucursal")
-        self.btn_add_product = QPushButton("Agregar producto a sucursal")
-        self.branches_table = QTableWidget()
-        self.products_table = QTableWidget()
-
-        layout.addWidget(self.btn_add_branch)
-        layout.addWidget(self.btn_add_product)
-        layout.addWidget(self.branches_table)
-        layout.addWidget(self.products_table)
-
-        central_widget.setLayout(layout)
+        self.inventory_view = InventoryView(
+            self.branch_manager,
+            self.branches_table,
+            self.products_table,
+            parent=self
+        )
 
         self.setup_table()
         self.setup_products_table()
-        self.load_demo_data()
-        self.refresh_table()
+        load_demo_branches(self.branch_manager)
+        self.inventory_view.refresh_branches_table()
 
-        self.btn_add_branch.clicked.connect(self.add_branch)
-        self.btn_add_product.clicked.connect(self.add_product_to_selected_branch)
-        self.branches_table.itemSelectionChanged.connect(self.on_branch_selected)
+        self.connect_signals()
         if self.branches_table.rowCount() > 0:
             self.branches_table.selectRow(0)
-            self.on_branch_selected()
+            self.inventory_view.handle_branch_selection()
+
+    def load_ui(self):
+        ui_file = QFile("app/gui/main_window.ui")
+        if not ui_file.open(QFile.ReadOnly):
+            raise FileNotFoundError("No se pudo abrir main_window.ui")
+
+        loader = QUiLoader()
+        self.ui = loader.load(ui_file)
+        ui_file.close()
+
+        if self.ui is None:
+            raise RuntimeError("No se pudo cargar la interfaz main_window.ui")
+
+        # We load the .ui as a temporary QMainWindow and then take ownership of its central widget
+        loaded_size = self.ui.size()
+        loaded_title = self.ui.windowTitle()
+        central_widget = self.ui.takeCentralWidget()
+
+        if central_widget is None:
+            raise RuntimeError("No se pudo obtener el central widget desde main_window.ui")
+
+        self.setCentralWidget(central_widget)
+        self.setWindowTitle(loaded_title)
+        self.resize(loaded_size)
+
+    def bind_ui_elements(self):
+        self.btn_add_branch = self.findChild(object, "btnAddBranch")
+        self.btn_add_product = self.findChild(object, "btnAddProduct")
+        self.branches_table = self.findChild(object, "branchesTable")
+        self.products_table = self.findChild(object, "productsTable")
+        self.pages = self.findChild(object, "pages")
+
+        self.btn_view_inventory = self.findChild(object, "btnViewInventory")
+        self.btn_view_graph = self.findChild(object, "btnViewGraph")
+        self.btn_view_transfers = self.findChild(object, "btnViewTransfers")
+        self.btn_view_queues = self.findChild(object, "btnViewQueues")
+        self.btn_view_visualizations = self.findChild(object, "btnViewVisualizations")
+
+    def connect_signals(self):
+        self.btn_add_branch.clicked.connect(self.inventory_view.add_branch)
+        self.btn_add_product.clicked.connect(self.inventory_view.add_product_to_selected_branch)
+        self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
+        self.btn_view_graph.clicked.connect(lambda: self.pages.setCurrentIndex(1))
+        self.btn_view_transfers.clicked.connect(lambda: self.pages.setCurrentIndex(2))
+        self.btn_view_queues.clicked.connect(lambda: self.pages.setCurrentIndex(3))
+        self.btn_view_visualizations.clicked.connect(lambda: self.pages.setCurrentIndex(4))
+        self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)
 
     def setup_products_table(self):
         self.products_table.setColumnCount(7)
@@ -61,96 +97,4 @@ class MainWindow(QMainWindow):
             "Tiempo ingreso", "Tiempo traspaso", "Intervalo despacho",
             "Cantidad productos"
         ])
-
-    def load_demo_data(self):
-        self.branch_manager.add_branch(Branch(1, "Central", "Zona 1", 5, 3, 10))
-        self.branch_manager.add_branch(Branch(2, "Norte", "Zona 5", 4, 2, 8))
-
-        branch1 = self.branch_manager.get_branches()[0]
-        branch1.inventory.add_product(Product("Leche", "1234567890123", "Lacteos", "2026-01-15", "LaVaquita", 12.50, 20))
-        branch1.inventory.add_product(Product("Pan", "9876543210000", "Panaderia", "2026-01-10", "Bimbo", 8.00, 35))
-
-        branch2 = self.branch_manager.get_branches()[1]
-        branch2.inventory.add_product(Product("Queso", "1112223334445", "Lacteos", "2026-02-01", "Cremoso", 25.75, 10))
-
-    def refresh_table(self):
-        branches = self.branch_manager.get_branches()
-        self.branches_table.setRowCount(len(branches))
-
-        for i, branch in enumerate(branches):
-            self.branches_table.setItem(i, 0, QTableWidgetItem(str(branch.id)))
-            self.branches_table.setItem(i, 1, QTableWidgetItem(branch.name))
-            self.branches_table.setItem(i, 2, QTableWidgetItem(branch.location))
-            self.branches_table.setItem(i, 3, QTableWidgetItem(str(branch.entry_time)))
-            self.branches_table.setItem(i, 4, QTableWidgetItem(str(branch.transfer_time)))
-            self.branches_table.setItem(i, 5, QTableWidgetItem(str(branch.dispatch_interval)))
-            self.branches_table.setItem(i, 6, QTableWidgetItem(str(len(branch.inventory.get_all_products()))))
-
-    def add_branch(self):
-        new_id = len(self.branch_manager.get_branches()) + 1
-        self.branch_manager.add_branch(
-            Branch(new_id, "Nueva sucursal", "Pendiente", 0, 0, 0)
-        )
-        self.refresh_table()
-        last_row = self.branches_table.rowCount() - 1
-        if last_row >= 0:
-            self.branches_table.selectRow(last_row)
-            self.on_branch_selected()
-
-    def get_selected_branch(self):
-        selected_items = self.branches_table.selectedItems()
-        if not selected_items:
-            return None
-
-        row = selected_items[0].row()
-        branches = self.branch_manager.get_branches()
-
-        if row < 0 or row >= len(branches):
-            return None
-
-        return branches[row]
-
-    def add_product_to_selected_branch(self):
-        branch = self.get_selected_branch()
-        if branch is None:
-            QMessageBox.warning(self, "Sin sucursal", "Seleccione una sucursal primero.")
-            return
-
-        dialog = AddProductDialog(self)
-        if not dialog.exec():
-            return
-
-        product = dialog.get_product()
-        if product is None:
-            return
-
-        success = branch.inventory.add_product(product)
-
-        if not success:
-            QMessageBox.warning(self, "Duplicado", "Ya existe un producto con ese código de barras en esta sucursal.")
-            return
-
-        self.refresh_table()
-        self.load_products(branch)
-        QMessageBox.information(self, "Éxito", "Producto agregado correctamente.")
-
-    def on_branch_selected(self):
-        branch = self.get_selected_branch()
-        if branch is None:
-            self.products_table.setRowCount(0)
-            return
-
-        self.load_products(branch)
-
-    def load_products(self, branch):
-        products = branch.inventory.get_all_products()
-        self.products_table.setRowCount(len(products))
-
-        for i, product in enumerate(products):
-            self.products_table.setItem(i, 0, QTableWidgetItem(product.name))
-            self.products_table.setItem(i, 1, QTableWidgetItem(product.barcode))
-            self.products_table.setItem(i, 2, QTableWidgetItem(product.category))
-            self.products_table.setItem(i, 3, QTableWidgetItem(product.expiry_date))
-            self.products_table.setItem(i, 4, QTableWidgetItem(product.brand))
-            self.products_table.setItem(i, 5, QTableWidgetItem(str(product.price)))
-            self.products_table.setItem(i, 6, QTableWidgetItem(str(product.stock)))
+        self.branches_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
