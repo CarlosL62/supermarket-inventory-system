@@ -6,6 +6,8 @@ def load_demo_branches(branch_manager):
     branch_manager.add_branch(Branch(1, "Central", "Zona 1", 5, 3, 10))
     branch_manager.add_branch(Branch(2, "Norte", "Zona 5", 4, 2, 8))
 
+    branch_manager.connect_branches(1, 2, 10)
+
     branches = branch_manager.get_branches()
 
     if len(branches) >= 1:

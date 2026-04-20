@@ -25,3 +25,12 @@ def load_products_table(table, products):
         table.setItem(i, 4, QTableWidgetItem(product.brand))
         table.setItem(i, 5, QTableWidgetItem(str(product.price)))
         table.setItem(i, 6, QTableWidgetItem(str(product.stock)))
+
+
+def load_connections_table(table, connections):
+    table.setRowCount(len(connections))
+
+    for i, (source_id, destination_id, weight) in enumerate(connections):
+        table.setItem(i, 0, QTableWidgetItem(str(source_id)))
+        table.setItem(i, 1, QTableWidgetItem(str(destination_id)))
+        table.setItem(i, 2, QTableWidgetItem(str(weight)))

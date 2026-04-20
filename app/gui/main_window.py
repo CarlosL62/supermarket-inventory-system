@@ -1,9 +1,15 @@
-from PySide6.QtWidgets import QMainWindow, QHeaderView, QAbstractItemView
+from PySide6.QtWidgets import QMainWindow
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 from app.services.branch_manager import BranchManager
 from app.utils.demo_data import load_demo_branches
 from app.gui.views.inventory_view import InventoryView
+from app.gui.views.graph_view import GraphView
+from app.gui.helpers.table_setup import (
+    setup_branches_table,
+    setup_products_table,
+    setup_connections_table,
+)
 
 
 class MainWindow(QMainWindow):
@@ -27,10 +33,22 @@ class MainWindow(QMainWindow):
             parent = self
         )
 
-        self.setup_table()
-        self.setup_products_table()
+        self.graph_view = GraphView(
+            self.branch_manager,
+            self.combo_source_branch,
+            self.combo_destination_branch,
+            self.input_connection_weight,
+            self.connections_table,
+            parent=self
+        )
+
+        setup_branches_table(self.branches_table)
+        setup_products_table(self.products_table)
+        setup_connections_table(self.connections_table)
         load_demo_branches(self.branch_manager)
         self.inventory_view.refresh_branches_table()
+        self.graph_view.load_branch_options()
+        self.graph_view.refresh_connections_table()
 
         self.connect_signals()
         if self.branches_table.rowCount() > 0:
@@ -77,11 +95,22 @@ class MainWindow(QMainWindow):
         self.products_table = self.findChild(object, "productsTable")
         self.pages = self.findChild(object, "pages")
 
+        self.combo_source_branch = self.findChild(object, "comboSourceBranch")
+        self.combo_destination_branch = self.findChild(object, "comboDestinationBranch")
+        self.input_connection_weight = self.findChild(object, "inputConnectionWeight")
+        self.btn_add_connection = self.findChild(object, "btnAddConnection")
+        self.connections_table = self.findChild(object, "connectionsTable")
+
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
         self.btn_view_transfers = self.findChild(object, "btnViewTransfers")
         self.btn_view_queues = self.findChild(object, "btnViewQueues")
         self.btn_view_visualizations = self.findChild(object, "btnViewVisualizations")
+
+    def show_graph_view(self):
+        self.graph_view.load_branch_options()
+        self.graph_view.refresh_connections_table()
+        self.pages.setCurrentIndex(1)
 
     def connect_signals(self):
         self.btn_add_branch.clicked.connect(self.inventory_view.add_branch)
@@ -93,30 +122,10 @@ class MainWindow(QMainWindow):
         self.input_product_search.returnPressed.connect(self.inventory_view.search_products_in_selected_branch)
         self.btn_search_by_date_range.clicked.connect(self.inventory_view.search_products_by_date_range)
         self.btn_clear_date_range.clicked.connect(self.inventory_view.clear_date_range_search)
+        self.btn_add_connection.clicked.connect(self.graph_view.add_connection)
         self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
-        self.btn_view_graph.clicked.connect(lambda: self.pages.setCurrentIndex(1))
+        self.btn_view_graph.clicked.connect(self.show_graph_view)
         self.btn_view_transfers.clicked.connect(lambda: self.pages.setCurrentIndex(2))
         self.btn_view_queues.clicked.connect(lambda: self.pages.setCurrentIndex(3))
         self.btn_view_visualizations.clicked.connect(lambda: self.pages.setCurrentIndex(4))
         self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)
-
-    def setup_products_table(self):
-        self.products_table.setColumnCount(7)
-        self.products_table.setHorizontalHeaderLabels([
-            "Nombre", "Código", "Categoría",
-            "Fecha", "Marca", "Precio", "Stock"
-        ])
-        self.products_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.products_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.products_table.setSelectionBehavior(QAbstractItemView.SelectRows)
-
-    def setup_table(self):
-        self.branches_table.setColumnCount(7)
-        self.branches_table.setHorizontalHeaderLabels([
-            "ID", "Nombre", "Ubicación",
-            "Tiempo ingreso", "Tiempo traspaso", "Intervalo despacho",
-            "Cantidad productos"
-        ])
-        self.branches_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.branches_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.branches_table.setSelectionBehavior(QAbstractItemView.SelectRows)

@@ -28,6 +28,13 @@ class InventoryView:
 
         return barcode_item.text()
 
+    def require_selected_product_barcode(self):
+        barcode = self.get_selected_product_barcode()
+        if barcode is None:
+            QMessageBox.warning(self.parent, "Sin producto", "Seleccione un producto primero")
+            return None
+        return barcode
+
     def refresh_branches_table(self):
         branches = self.branch_manager.get_branches()
         load_branches_table(self.branches_table, branches)
@@ -36,10 +43,25 @@ class InventoryView:
         products = branch.inventory.get_all_products()
         load_products_table(self.products_table, products)
 
+    def reset_text_search(self):
+        if self.search_input is not None:
+            self.search_input.clear()
+
+    def reset_date_range_filter(self):
+        self.date_range_filter_active = False
+
+        if self.start_date_input is not None:
+            self.start_date_input.clear()
+        if self.end_date_input is not None:
+            self.end_date_input.clear()
+
+    def reset_all_filters(self):
+        self.reset_text_search()
+        self.reset_date_range_filter()
+
     def search_products_by_date_range(self):
-        branch = self.get_selected_branch()
+        branch = self.require_selected_branch()
         if branch is None:
-            QMessageBox.warning(self.parent, "Sin sucursal", "Seleccione una sucursal primero")
             return
 
         if self.start_date_input is None or self.end_date_input is None:
@@ -58,12 +80,7 @@ class InventoryView:
         load_products_table(self.products_table, products)
 
     def clear_date_range_search(self):
-        if self.start_date_input is not None:
-            self.start_date_input.clear()
-        if self.end_date_input is not None:
-            self.end_date_input.clear()
-
-        self.date_range_filter_active = False
+        self.reset_date_range_filter()
 
         branch = self.get_selected_branch()
         if branch is None:
@@ -73,9 +90,8 @@ class InventoryView:
         self.load_products_for_branch(branch)
 
     def search_products_in_selected_branch(self):
-        branch = self.get_selected_branch()
+        branch = self.require_selected_branch()
         if branch is None:
-            QMessageBox.warning(self.parent, "Sin sucursal", "Seleccione una sucursal primero")
             return
 
         if self.search_input is None:
@@ -100,10 +116,7 @@ class InventoryView:
         load_products_table(self.products_table, filtered_products)
 
     def clear_product_search(self):
-        if self.search_input is not None:
-            self.search_input.clear()
-
-        self.date_range_filter_active = False
+        self.reset_all_filters()
 
         branch = self.get_selected_branch()
         if branch is None:
@@ -124,6 +137,13 @@ class InventoryView:
             return None
 
         return branches[row]
+
+    def require_selected_branch(self):
+        branch = self.get_selected_branch()
+        if branch is None:
+            QMessageBox.warning(self.parent, "Sin sucursal", "Seleccione una sucursal primero")
+            return None
+        return branch
 
     def handle_branch_selection(self):
         if self.search_input is not None and self.search_input.text().strip():
@@ -150,8 +170,6 @@ class InventoryView:
         if branch is None:
             return
 
-        new_id = len(self.branch_manager.get_branches()) + 1
-        branch.id = new_id
         self.branch_manager.add_branch(branch)
         self.refresh_branches_table()
 
@@ -161,9 +179,8 @@ class InventoryView:
             self.handle_branch_selection()
 
     def delete_selected_branch(self):
-        branch = self.get_selected_branch()
+        branch = self.require_selected_branch()
         if branch is None:
-            QMessageBox.warning(self.parent, "Sin sucursal", "Seleccione una sucursal primero")
             return
 
         confirmation = QMessageBox.question(
@@ -175,24 +192,23 @@ class InventoryView:
         if confirmation != QMessageBox.StandardButton.Yes:
             return
 
-        branches = self.branch_manager.get_branches()
-        branches.remove(branch)
+        success = self.branch_manager.delete_branch(branch.id)
+        if not success:
+            QMessageBox.warning(self.parent, "Error", "No se pudo eliminar la sucursal")
+            return
+
         self.refresh_branches_table()
         self.products_table.setRowCount(0)
 
-        if self.search_input is not None:
-            self.search_input.clear()
-
-        self.date_range_filter_active = False
+        self.reset_all_filters()
 
         if self.branches_table.rowCount() > 0:
             self.branches_table.selectRow(0)
             self.handle_branch_selection()
 
     def add_product_to_selected_branch(self):
-        branch = self.get_selected_branch()
+        branch = self.require_selected_branch()
         if branch is None:
-            QMessageBox.warning(self.parent, "Sin sucursal", "Seleccione una sucursal primero.")
             return
 
         dialog = AddProductDialog(self.parent)
@@ -211,24 +227,19 @@ class InventoryView:
 
         self.refresh_branches_table()
 
-        if self.search_input is not None:
-            self.search_input.clear()
-
-        self.date_range_filter_active = False
+        self.reset_all_filters()
 
         self.load_products_for_branch(branch)
 
         QMessageBox.information(self.parent, "Éxito", "Producto agregado correctamente.")
 
     def delete_selected_product(self):
-        branch = self.get_selected_branch()
+        branch = self.require_selected_branch()
         if branch is None:
-            QMessageBox.warning(self.parent, "Sin sucursal", "Seleccione una sucursal primero")
             return
 
-        barcode = self.get_selected_product_barcode()
+        barcode = self.require_selected_product_barcode()
         if barcode is None:
-            QMessageBox.warning(self.parent, "Sin producto", "Seleccione un producto primero")
             return
 
         confirmation = QMessageBox.question(
@@ -248,10 +259,7 @@ class InventoryView:
 
         self.refresh_branches_table()
 
-        if self.search_input is not None:
-            self.search_input.clear()
-
-        self.date_range_filter_active = False
+        self.reset_all_filters()
 
         self.load_products_for_branch(branch)
         QMessageBox.information(self.parent, "Éxito", "Producto eliminado correctamente")

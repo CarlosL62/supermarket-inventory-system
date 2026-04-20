@@ -76,35 +76,57 @@
         <widget class="QWidget" name="inventoryPage">
          <layout class="QVBoxLayout" name="inventoryLayout">
           <item>
-           <widget class="QPushButton" name="btnAddBranch">
+           <widget class="QLabel" name="labelBranchesSection">
             <property name="text">
-             <string>Agregar sucursal</string>
+             <string>Sucursales</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnDeleteBranch">
-            <property name="text">
-             <string>Eliminar sucursal</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="branchButtonsLayout">
+            <item>
+             <widget class="QPushButton" name="btnAddBranch">
+              <property name="text">
+               <string>Agregar sucursal</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnDeleteBranch">
+              <property name="text">
+               <string>Eliminar sucursal</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QTableWidget" name="branchesTable"/>
           </item>
           <item>
-           <widget class="QPushButton" name="btnAddProduct">
+           <widget class="QLabel" name="labelProductsSection">
             <property name="text">
-             <string>Agregar producto a sucursal</string>
+             <string>Productos</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnDeleteProduct">
-            <property name="text">
-             <string>Eliminar producto</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="productButtonsLayout">
+            <item>
+             <widget class="QPushButton" name="btnAddProduct">
+              <property name="text">
+               <string>Agregar producto a sucursal</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnDeleteProduct">
+              <property name="text">
+               <string>Eliminar producto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <layout class="QHBoxLayout" name="productSearchLayout">
@@ -134,12 +156,26 @@
           <item>
            <layout class="QHBoxLayout" name="dateRangeSearchLayout">
             <item>
+             <widget class="QLabel" name="labelStartDate">
+              <property name="text">
+               <string>Desde</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QDateEdit" name="inputStartDate">
               <property name="displayFormat">
                <string>yyyy-MM-dd</string>
               </property>
               <property name="calendarPopup">
                <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelEndDate">
+              <property name="text">
+               <string>Hasta</string>
               </property>
              </widget>
             </item>
@@ -177,14 +213,65 @@
         <widget class="QWidget" name="graphPage">
          <layout class="QVBoxLayout" name="graphLayout">
           <item>
-           <widget class="QLabel" name="labelGraph">
+           <widget class="QLabel" name="labelConnectionsSection">
             <property name="text">
-             <string>Módulo de red de sucursales en desarrollo</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <string>Conexiones entre sucursales</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="graphControlsLayout">
+            <item>
+             <widget class="QLabel" name="labelSourceBranch">
+              <property name="text">
+               <string>Origen</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboSourceBranch"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelDestinationBranch">
+              <property name="text">
+               <string>Destino</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboDestinationBranch"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelConnectionWeight">
+              <property name="text">
+               <string>Peso</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="inputConnectionWeight">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+              <property name="value">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnAddConnection">
+              <property name="text">
+               <string>Agregar conexión</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="connectionsTable"/>
           </item>
          </layout>
         </widget>
