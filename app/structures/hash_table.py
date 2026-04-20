@@ -2,7 +2,7 @@ from app.models.product import Product
 
 
 class HashTable:
-    def __init__(self, capacity=101):
+    def __init__(self, capacity=1501):
         self.capacity = capacity
         self.table = [[] for _ in range(capacity)]
 
