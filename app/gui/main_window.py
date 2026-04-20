@@ -61,6 +61,8 @@ class MainWindow(QMainWindow):
     def bind_ui_elements(self):
         self.btn_add_branch = self.findChild(object, "btnAddBranch")
         self.btn_add_product = self.findChild(object, "btnAddProduct")
+        self.btn_delete_branch = self.findChild(object, "btnDeleteBranch")
+        self.btn_delete_product = self.findChild(object, "btnDeleteProduct")
         self.branches_table = self.findChild(object, "branchesTable")
         self.products_table = self.findChild(object, "productsTable")
         self.pages = self.findChild(object, "pages")
@@ -74,6 +76,8 @@ class MainWindow(QMainWindow):
     def connect_signals(self):
         self.btn_add_branch.clicked.connect(self.inventory_view.add_branch)
         self.btn_add_product.clicked.connect(self.inventory_view.add_product_to_selected_branch)
+        self.btn_delete_branch.clicked.connect(self.inventory_view.delete_selected_branch)
+        self.btn_delete_product.clicked.connect(self.inventory_view.delete_selected_product)
         self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
         self.btn_view_graph.clicked.connect(lambda: self.pages.setCurrentIndex(1))
         self.btn_view_transfers.clicked.connect(lambda: self.pages.setCurrentIndex(2))

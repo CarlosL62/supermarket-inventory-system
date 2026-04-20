@@ -84,6 +84,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="btnDeleteBranch">
+            <property name="text">
+             <string>Eliminar sucursal</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="branchesTable"/>
+          </item>
+          <item>
            <widget class="QPushButton" name="btnAddProduct">
             <property name="text">
              <string>Agregar producto a sucursal</string>
@@ -91,7 +101,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="branchesTable"/>
+           <widget class="QPushButton" name="btnDeleteProduct">
+            <property name="text">
+             <string>Eliminar producto</string>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QTableWidget" name="productsTable"/>
