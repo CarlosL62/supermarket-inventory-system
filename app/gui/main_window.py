@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QHeaderView
+from PySide6.QtWidgets import QMainWindow, QHeaderView, QAbstractItemView
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 from app.services.branch_manager import BranchManager
@@ -21,7 +21,10 @@ class MainWindow(QMainWindow):
             self.branch_manager,
             self.branches_table,
             self.products_table,
-            parent=self
+            search_input = self.input_product_search,
+            start_date_input = self.input_start_date,
+            end_date_input = self.input_end_date,
+            parent = self
         )
 
         self.setup_table()
@@ -63,6 +66,13 @@ class MainWindow(QMainWindow):
         self.btn_add_product = self.findChild(object, "btnAddProduct")
         self.btn_delete_branch = self.findChild(object, "btnDeleteBranch")
         self.btn_delete_product = self.findChild(object, "btnDeleteProduct")
+        self.input_product_search = self.findChild(object, "inputProductSearch")
+        self.btn_search_product = self.findChild(object, "btnSearchProduct")
+        self.btn_clear_product_search = self.findChild(object, "btnClearProductSearch")
+        self.input_start_date = self.findChild(object, "inputStartDate")
+        self.input_end_date = self.findChild(object, "inputEndDate")
+        self.btn_search_by_date_range = self.findChild(object, "btnSearchByDateRange")
+        self.btn_clear_date_range = self.findChild(object, "btnClearDateRange")
         self.branches_table = self.findChild(object, "branchesTable")
         self.products_table = self.findChild(object, "productsTable")
         self.pages = self.findChild(object, "pages")
@@ -78,6 +88,11 @@ class MainWindow(QMainWindow):
         self.btn_add_product.clicked.connect(self.inventory_view.add_product_to_selected_branch)
         self.btn_delete_branch.clicked.connect(self.inventory_view.delete_selected_branch)
         self.btn_delete_product.clicked.connect(self.inventory_view.delete_selected_product)
+        self.btn_search_product.clicked.connect(self.inventory_view.search_products_in_selected_branch)
+        self.btn_clear_product_search.clicked.connect(self.inventory_view.clear_product_search)
+        self.input_product_search.returnPressed.connect(self.inventory_view.search_products_in_selected_branch)
+        self.btn_search_by_date_range.clicked.connect(self.inventory_view.search_products_by_date_range)
+        self.btn_clear_date_range.clicked.connect(self.inventory_view.clear_date_range_search)
         self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
         self.btn_view_graph.clicked.connect(lambda: self.pages.setCurrentIndex(1))
         self.btn_view_transfers.clicked.connect(lambda: self.pages.setCurrentIndex(2))
@@ -92,7 +107,8 @@ class MainWindow(QMainWindow):
             "Fecha", "Marca", "Precio", "Stock"
         ])
         self.products_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-
+        self.products_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.products_table.setSelectionBehavior(QAbstractItemView.SelectRows)
 
     def setup_table(self):
         self.branches_table.setColumnCount(7)
@@ -102,3 +118,5 @@ class MainWindow(QMainWindow):
             "Cantidad productos"
         ])
         self.branches_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.branches_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.branches_table.setSelectionBehavior(QAbstractItemView.SelectRows)
