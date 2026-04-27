@@ -271,6 +271,24 @@
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="shortestPathLayout">
+            <item>
+             <widget class="QPushButton" name="btnCalculateShortestPath">
+              <property name="text">
+               <string>Calcular ruta más corta</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelShortestPathResult">
+              <property name="text">
+               <string>Ruta: pendiente</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
            <widget class="QTableWidget" name="connectionsTable"/>
           </item>
          </layout>

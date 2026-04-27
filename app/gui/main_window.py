@@ -39,6 +39,7 @@ class MainWindow(QMainWindow):
             self.combo_destination_branch,
             self.input_connection_weight,
             self.connections_table,
+            result_label=self.label_shortest_path_result,
             parent=self
         )
 
@@ -100,6 +101,8 @@ class MainWindow(QMainWindow):
         self.input_connection_weight = self.findChild(object, "inputConnectionWeight")
         self.btn_add_connection = self.findChild(object, "btnAddConnection")
         self.connections_table = self.findChild(object, "connectionsTable")
+        self.btn_calculate_shortest_path = self.findChild(object, "btnCalculateShortestPath")
+        self.label_shortest_path_result = self.findChild(object, "labelShortestPathResult")
 
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
@@ -123,6 +126,8 @@ class MainWindow(QMainWindow):
         self.btn_search_by_date_range.clicked.connect(self.inventory_view.search_products_by_date_range)
         self.btn_clear_date_range.clicked.connect(self.inventory_view.clear_date_range_search)
         self.btn_add_connection.clicked.connect(self.graph_view.add_connection)
+        if self.btn_calculate_shortest_path is not None:
+            self.btn_calculate_shortest_path.clicked.connect(self.graph_view.calculate_shortest_path)
         self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
         self.btn_view_graph.clicked.connect(self.show_graph_view)
         self.btn_view_transfers.clicked.connect(lambda: self.pages.setCurrentIndex(2))
