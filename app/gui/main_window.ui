@@ -296,12 +296,81 @@
         <widget class="QWidget" name="transfersPage">
          <layout class="QVBoxLayout" name="transfersLayout">
           <item>
-           <widget class="QLabel" name="labelTransfers">
+           <widget class="QLabel" name="labelTransfersSection">
             <property name="text">
-             <string>Módulo de transferencias en desarrollo</string>
+             <string>Transferencias entre sucursales</string>
             </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="transferBranchLayout">
+            <item>
+             <widget class="QLabel" name="labelTransferSource">
+              <property name="text">
+               <string>Origen</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboTransferSourceBranch"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelTransferDestination">
+              <property name="text">
+               <string>Destino</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboTransferDestinationBranch"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="transferProductLayout">
+            <item>
+             <widget class="QLabel" name="labelTransferProduct">
+              <property name="text">
+               <string>Producto</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboTransferProduct"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelTransferQuantity">
+              <property name="text">
+               <string>Cantidad</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="inputTransferQuantity">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+              <property name="value">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnExecuteTransfer">
+              <property name="text">
+               <string>Ejecutar transferencia</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelTransferResult">
+            <property name="text">
+             <string>Resultado: pendiente</string>
             </property>
            </widget>
           </item>

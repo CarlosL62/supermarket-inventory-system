@@ -5,6 +5,7 @@ from app.services.branch_manager import BranchManager
 from app.utils.demo_data import load_demo_branches
 from app.gui.views.inventory_view import InventoryView
 from app.gui.views.graph_view import GraphView
+from app.gui.views.transfer_view import TransferView
 from app.gui.helpers.table_setup import (
     setup_branches_table,
     setup_products_table,
@@ -43,6 +44,16 @@ class MainWindow(QMainWindow):
             parent=self
         )
 
+        self.transfer_view = TransferView(
+            self.branch_manager,
+            self.combo_transfer_source_branch,
+            self.combo_transfer_destination_branch,
+            self.combo_transfer_product,
+            self.input_transfer_quantity,
+            self.label_transfer_result,
+            parent=self
+        )
+
         setup_branches_table(self.branches_table)
         setup_products_table(self.products_table)
         setup_connections_table(self.connections_table)
@@ -50,6 +61,7 @@ class MainWindow(QMainWindow):
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()
         self.graph_view.refresh_connections_table()
+        self.transfer_view.load_branch_options()
 
         self.connect_signals()
         if self.branches_table.rowCount() > 0:
@@ -104,6 +116,13 @@ class MainWindow(QMainWindow):
         self.btn_calculate_shortest_path = self.findChild(object, "btnCalculateShortestPath")
         self.label_shortest_path_result = self.findChild(object, "labelShortestPathResult")
 
+        self.combo_transfer_source_branch = self.findChild(object, "comboTransferSourceBranch")
+        self.combo_transfer_destination_branch = self.findChild(object, "comboTransferDestinationBranch")
+        self.combo_transfer_product = self.findChild(object, "comboTransferProduct")
+        self.input_transfer_quantity = self.findChild(object, "inputTransferQuantity")
+        self.btn_execute_transfer = self.findChild(object, "btnExecuteTransfer")
+        self.label_transfer_result = self.findChild(object, "labelTransferResult")
+
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
         self.btn_view_transfers = self.findChild(object, "btnViewTransfers")
@@ -114,6 +133,10 @@ class MainWindow(QMainWindow):
         self.graph_view.load_branch_options()
         self.graph_view.refresh_connections_table()
         self.pages.setCurrentIndex(1)
+
+    def show_transfer_view(self):
+        self.transfer_view.load_branch_options()
+        self.pages.setCurrentIndex(2)
 
     def connect_signals(self):
         self.btn_add_branch.clicked.connect(self.inventory_view.add_branch)
@@ -128,9 +151,11 @@ class MainWindow(QMainWindow):
         self.btn_add_connection.clicked.connect(self.graph_view.add_connection)
         if self.btn_calculate_shortest_path is not None:
             self.btn_calculate_shortest_path.clicked.connect(self.graph_view.calculate_shortest_path)
+        self.combo_transfer_source_branch.currentIndexChanged.connect(self.transfer_view.load_product_options)
+        self.btn_execute_transfer.clicked.connect(self.transfer_view.execute_transfer)
         self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
         self.btn_view_graph.clicked.connect(self.show_graph_view)
-        self.btn_view_transfers.clicked.connect(lambda: self.pages.setCurrentIndex(2))
+        self.btn_view_transfers.clicked.connect(self.show_transfer_view)
         self.btn_view_queues.clicked.connect(lambda: self.pages.setCurrentIndex(3))
         self.btn_view_visualizations.clicked.connect(lambda: self.pages.setCurrentIndex(4))
         self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)
