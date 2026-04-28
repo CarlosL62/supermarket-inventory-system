@@ -21,6 +21,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Sistema de Inventario de Supermercados")
         self.resize(900, 600)
 
+        # BranchManager acts as the central point for branches, graph, inventory, and transfers
         self.branch_manager = BranchManager()
 
         self.load_ui()
@@ -30,10 +31,10 @@ class MainWindow(QMainWindow):
             self.branch_manager,
             self.branches_table,
             self.products_table,
-            search_input = self.input_product_search,
-            start_date_input = self.input_start_date,
-            end_date_input = self.input_end_date,
-            parent = self
+            search_input=self.input_product_search,
+            start_date_input=self.input_start_date,
+            end_date_input=self.input_end_date,
+            parent=self
         )
 
         self.graph_view = GraphView(
@@ -67,6 +68,7 @@ class MainWindow(QMainWindow):
             parent=self
         )
 
+        # Tables are configured before loading data to avoid empty or incorrectly formatted views
         setup_branches_table(self.branches_table)
         setup_products_table(self.products_table)
         setup_connections_table(self.connections_table)
@@ -83,6 +85,7 @@ class MainWindow(QMainWindow):
             self.branches_table.selectRow(0)
             self.inventory_view.handle_branch_selection()
 
+        # Main simulation timer: advances pending transfers once per second
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_simulation)
         self.timer.start(1000)
@@ -99,7 +102,7 @@ class MainWindow(QMainWindow):
         if self.ui is None:
             raise RuntimeError("No se pudo cargar la interfaz main_window.ui")
 
-        # We load the .ui as a temporary QMainWindow and then take ownership of its central widget
+        # The .ui is loaded as a temporary window, then its central widget is reused by this class
         loaded_size = self.ui.size()
         loaded_title = self.ui.windowTitle()
         central_widget = self.ui.takeCentralWidget()
@@ -112,6 +115,7 @@ class MainWindow(QMainWindow):
         self.resize(loaded_size)
 
     def bind_ui_elements(self):
+        # Inventory screen widgets
         self.btn_add_branch = self.findChild(object, "btnAddBranch")
         self.btn_add_product = self.findChild(object, "btnAddProduct")
         self.btn_delete_branch = self.findChild(object, "btnDeleteBranch")
@@ -127,6 +131,7 @@ class MainWindow(QMainWindow):
         self.products_table = self.findChild(object, "productsTable")
         self.pages = self.findChild(object, "pages")
 
+        # Branch network and route comparison widgets
         self.combo_source_branch = self.findChild(object, "comboSourceBranch")
         self.combo_destination_branch = self.findChild(object, "comboDestinationBranch")
         self.input_connection_weight = self.findChild(object, "inputConnectionWeight")
@@ -138,6 +143,7 @@ class MainWindow(QMainWindow):
         self.btn_calculate_shortest_path = self.findChild(object, "btnCalculateShortestPath")
         self.label_shortest_path_result = self.findChild(object, "labelShortestPathResult")
 
+        # Transfer and dispatch queue widgets
         self.combo_transfer_source_branch = self.findChild(object, "comboTransferSourceBranch")
         self.combo_transfer_destination_branch = self.findChild(object, "comboTransferDestinationBranch")
         self.combo_transfer_product = self.findChild(object, "comboTransferProduct")
@@ -148,6 +154,7 @@ class MainWindow(QMainWindow):
         self.label_queue_result = self.findChild(object, "labelQueueResult")
         self.transfer_queue_table = self.findChild(object, "transferQueueTable")
 
+        # Sidebar buttons used to navigate between modules
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
         self.btn_view_transfers = self.findChild(object, "btnViewTransfers")
@@ -160,6 +167,7 @@ class MainWindow(QMainWindow):
         self.graph_view.refresh_connections_table()
 
     def show_transfer_view(self):
+        # Reload branches and products so transfers use updated data
         self.transfer_view.load_branch_options()
         self.pages.setCurrentIndex(2)
 
@@ -167,15 +175,18 @@ class MainWindow(QMainWindow):
         self.queue_view.refresh_queue_table()
         self.pages.setCurrentIndex(3)
 
+    def show_inventory_view(self):
+        # Refresh on entry because branches may have changed from the inventory screen
+        self.pages.setCurrentIndex(0)
+
     def update_simulation(self):
+        # The simulation is based on the FIFO queue of pending transfers
         transfers = self.branch_manager.get_pending_transfers()
 
         for transfer in transfers:
-            # Start transfer if pending
             if transfer.status == "Pendiente":
                 transfer.start()
 
-            # If no time assigned, calculate based on current branch
             if transfer.remaining_time == 0 and not transfer.completed:
                 current_branch_id = transfer.path[transfer.current_index]
                 current_branch = self.branch_manager.find_by_id(current_branch_id)
@@ -183,15 +194,12 @@ class MainWindow(QMainWindow):
                 if current_branch is None:
                     continue
 
-                # Determine role: origin, intermediate, destination
+                # When a stage ends, calculate the next time based on the branch role
                 if transfer.current_index == 0:
-                    # origin
                     time_cost = current_branch.dispatch_interval
                 elif transfer.current_index == len(transfer.path) - 1:
-                    # destination
                     time_cost = current_branch.entry_time
                 else:
-                    # intermediate
                     time_cost = (
                         current_branch.entry_time +
                         current_branch.transfer_time +
@@ -200,16 +208,16 @@ class MainWindow(QMainWindow):
 
                 transfer.set_step_time(time_cost)
 
-            # Advance simulation
             transfer.tick()
 
+        # Stock is moved only when the transfer reaches its final destination
         self.branch_manager.apply_completed_transfers()
 
-        # Refresh queue table
         if transfers:
             self.queue_view.refresh_queue_table()
 
     def connect_signals(self):
+        # Connect interface events to each module action
         self.btn_add_branch.clicked.connect(self.inventory_view.add_branch)
         self.btn_add_product.clicked.connect(self.inventory_view.add_product_to_selected_branch)
         self.btn_delete_branch.clicked.connect(self.inventory_view.delete_selected_branch)
@@ -224,7 +232,7 @@ class MainWindow(QMainWindow):
             self.btn_calculate_shortest_path.clicked.connect(self.graph_view.calculate_shortest_path)
         self.combo_transfer_source_branch.currentIndexChanged.connect(self.transfer_view.load_product_options)
         self.btn_execute_transfer.clicked.connect(self.transfer_view.execute_transfer)
-        self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
+        self.btn_view_inventory.clicked.connect(self.show_inventory_view)
         self.btn_view_graph.clicked.connect(self.show_graph_view)
         self.btn_view_transfers.clicked.connect(self.show_transfer_view)
         self.btn_view_queues.clicked.connect(self.show_queue_view)

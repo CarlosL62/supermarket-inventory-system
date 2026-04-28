@@ -305,7 +305,7 @@
             <item>
              <widget class="QPushButton" name="btnCalculateShortestPath">
               <property name="text">
-               <string>Calcular ruta más corta</string>
+               <string>Comparar rutas</string>
               </property>
              </widget>
             </item>

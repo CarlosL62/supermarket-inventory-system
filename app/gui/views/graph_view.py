@@ -3,9 +3,9 @@ from PySide6.QtGui import QBrush, QColor, QPainter
 from PySide6.QtCore import Qt, QByteArray, QTimer
 from PySide6.QtSvgWidgets import QGraphicsSvgItem
 from PySide6.QtSvg import QSvgRenderer
-from graphviz import Digraph
 from graphviz.backend import ExecutableNotFound
 from app.gui.helpers.table_loaders import load_connections_table
+from app.utils.graphviz_renderer import build_branch_graph_svg
 
 
 class GraphView:
@@ -29,6 +29,11 @@ class GraphView:
         self.min_zoom_factor = 0.35
         self.max_zoom_factor = 6.0
         self.scene_padding = 24
+        self.highlighted_time_path = None
+        self.highlighted_cost_path = None
+        self.clear_highlight_timer = QTimer()
+        self.clear_highlight_timer.setSingleShot(True)
+        self.clear_highlight_timer.timeout.connect(self.clear_highlight)
         self.graphics_view.setScene(self.scene)
         self.graphics_view.setMinimumHeight(420)
         self.connections_table.setMinimumHeight(170)
@@ -116,72 +121,10 @@ class GraphView:
         load_connections_table(self.connections_table, rows)
         self.draw_graph()
 
-    def build_graphviz_diagram(self):
-        dot = Digraph("branch_graph", format="svg")
-        dot.attr(
-            rankdir="LR",
-            bgcolor="#eef2f7",
-            splines="spline",
-            overlap="false",
-            nodesep="0.45",
-            ranksep="0.65",
-            ratio="compress",
-            margin="0",
-            pad="0.0",
-            fontname="Arial"
-        )
-
-        dot.attr(
-            "node",
-            shape="circle",
-            style="filled",
-            fillcolor="#dbeafe",
-            color="#0f172a",
-            fontcolor="#111827",
-            fontname="Arial",
-            fontsize="11",
-            width="1.0",
-            fixedsize="true"
-        )
-
-        dot.attr(
-            "edge",
-            color="#1f2937",
-            fontcolor="#111827",
-            fontname="Arial",
-            fontsize="10",
-            penwidth="2"
-        )
-
-        for branch in self.branch_manager.get_branches():
-            label = f"{branch.id}\n{branch.name}"
-            dot.node(str(branch.id), label)
-
-        for source_id, destination_id, time_weight, cost_weight, is_bidirectional in self.branch_manager.graph.get_all_connections():
-            label = f"T:{time_weight} | C:{cost_weight}"
-
-            if is_bidirectional:
-                dot.edge(
-                    str(source_id),
-                    str(destination_id),
-                    label=label,
-                    dir="both",
-                    color="#2563eb",
-                    fontcolor="#111827",
-                    fontname="Arial"
-                )
-            else:
-                dot.edge(
-                    str(source_id),
-                    str(destination_id),
-                    label=label,
-                    dir="forward",
-                    color="#1f2937",
-                    fontcolor="#111827",
-                    fontname="Arial"
-                )
-
-        return dot
+    def clear_highlight(self):
+        self.highlighted_time_path = None
+        self.highlighted_cost_path = None
+        self.draw_graph()
 
     def update_scene_rect(self):
         if self.current_svg_item is None:
@@ -240,8 +183,12 @@ class GraphView:
         self.zoom_factor = 1.0
 
         try:
-            dot = self.build_graphviz_diagram()
-            svg_data = dot.pipe(format="svg")
+            svg_data = build_branch_graph_svg(
+                self.branch_manager.get_branches(),
+                self.branch_manager.graph.get_all_connections(),
+                highlighted_time_path=self.highlighted_time_path,
+                highlighted_cost_path=self.highlighted_cost_path
+            )
             svg_renderer = QSvgRenderer(QByteArray(svg_data))
 
             if not svg_renderer.isValid():
@@ -252,7 +199,7 @@ class GraphView:
             svg_rect = svg_item.boundingRect()
 
             if svg_rect.isEmpty():
-                raise RuntimeError("El SVG generado por Graphviz no tiene un tamano valido")
+                raise RuntimeError("El SVG generado por Graphviz no tiene un tamaño válido")
 
             self.scene.addItem(svg_item)
             self.current_svg_item = svg_item
@@ -289,8 +236,30 @@ class GraphView:
             QMessageBox.warning(self.parent, "Duplicado", "La conexión ya existe")
             return
 
+        self.highlighted_time_path = None
+        self.highlighted_cost_path = None
+        self.clear_highlight_timer.stop()
         self.refresh_connections_table()
         QMessageBox.information(self.parent, "Éxito", "Conexión agregada correctamente")
+
+    def calculate_path_totals(self, path):
+        total_time = 0
+        total_cost = 0
+
+        if not path:
+            return None, None
+
+        for index in range(len(path) - 1):
+            source_id = path[index]
+            destination_id = path[index + 1]
+
+            for neighbor_id, time_weight, cost_weight in self.branch_manager.graph.get_neighbors(source_id):
+                if neighbor_id == destination_id:
+                    total_time += time_weight
+                    total_cost += cost_weight
+                    break
+
+        return total_time, total_cost
 
     def calculate_shortest_path(self):
         source_id = self.source_combo.currentData()
@@ -304,20 +273,45 @@ class GraphView:
             QMessageBox.warning(self.parent, "Ruta inválida", "Seleccione sucursales diferentes")
             return
 
-        path, total_weight = self.branch_manager.graph.shortest_path(source_id, destination_id)
+        time_path, time_total = self.branch_manager.graph.shortest_path(source_id, destination_id, "time")
+        cost_path, cost_total = self.branch_manager.graph.shortest_path(source_id, destination_id, "cost")
 
-        if not path:
+        self.highlighted_time_path = time_path if time_path else None
+        self.highlighted_cost_path = cost_path if cost_path else None
+
+        if not time_path and not cost_path:
             message = "No existe una ruta entre las sucursales seleccionadas"
             if self.result_label is not None:
                 self.result_label.setText(f"Ruta: {message}")
+            self.draw_graph()
+            self.clear_highlight_timer.stop()
             QMessageBox.warning(self.parent, "Sin ruta", message)
             return
 
-        path_labels = [self.get_branch_label(branch_id) for branch_id in path]
-        path_text = " -> ".join(path_labels)
-        result_text = f"Ruta: {path_text} | Peso total: {total_weight}"
+        time_text = "No disponible"
+        cost_text = "No disponible"
+
+        if time_path:
+            time_labels = [self.get_branch_label(branch_id) for branch_id in time_path]
+            route_time_total, route_cost_total = self.calculate_path_totals(time_path)
+            time_text = (
+                f"{' -> '.join(time_labels)} | "
+                f"Tiempo total: {route_time_total} | Costo total: {route_cost_total}"
+            )
+
+        if cost_path:
+            cost_labels = [self.get_branch_label(branch_id) for branch_id in cost_path]
+            route_time_total, route_cost_total = self.calculate_path_totals(cost_path)
+            cost_text = (
+                f"{' -> '.join(cost_labels)} | "
+                f"Tiempo total: {route_time_total} | Costo total: {route_cost_total}"
+            )
+
+        result_text = f"Ruta rápida: {time_text}\nRuta barata: {cost_text}"
 
         if self.result_label is not None:
             self.result_label.setText(result_text)
 
-        QMessageBox.information(self.parent, "Ruta más corta", result_text)
+        self.draw_graph()
+        self.clear_highlight_timer.start(7000)
+        QMessageBox.information(self.parent, "Comparación de rutas", result_text)
