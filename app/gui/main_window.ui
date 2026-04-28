@@ -319,6 +319,9 @@
            </layout>
           </item>
           <item>
+           <widget class="QGraphicsView" name="graphGraphicsView"/>
+          </item>
+          <item>
            <widget class="QTableWidget" name="connectionsTable"/>
           </item>
          </layout>

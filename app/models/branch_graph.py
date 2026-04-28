@@ -1,5 +1,6 @@
 import heapq
 
+
 class BranchGraph:
     def __init__(self):
         # Each edge stores destination, time weight and cost weight
@@ -39,17 +40,28 @@ class BranchGraph:
 
     def get_all_connections(self):
         connections = []
-        seen = set()
+        processed = set()
 
         for source_id, neighbors in self.graph.items():
             for destination_id, time_weight, cost_weight in neighbors:
-                edge_key = tuple(sorted((source_id, destination_id)))
+                edge_key = (source_id, destination_id, time_weight, cost_weight)
+                reverse_key = (destination_id, source_id, time_weight, cost_weight)
 
-                if edge_key in seen:
+                if edge_key in processed:
                     continue
 
-                seen.add(edge_key)
-                connections.append((source_id, destination_id, time_weight, cost_weight))
+                reverse_exists = any(
+                    neighbor_id == source_id and reverse_time == time_weight and reverse_cost == cost_weight
+                    for neighbor_id, reverse_time, reverse_cost in self.graph.get(destination_id, [])
+                )
+
+                if reverse_exists:
+                    processed.add(edge_key)
+                    processed.add(reverse_key)
+                    connections.append((source_id, destination_id, time_weight, cost_weight, True))
+                else:
+                    processed.add(edge_key)
+                    connections.append((source_id, destination_id, time_weight, cost_weight, False))
 
         return connections
 

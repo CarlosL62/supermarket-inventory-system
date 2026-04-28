@@ -43,6 +43,7 @@ class MainWindow(QMainWindow):
             self.input_connection_weight,
             self.input_connection_cost,
             self.check_bidirectional_connection,
+            self.graph_graphics_view,
             self.connections_table,
             result_label=self.label_shortest_path_result,
             parent=self
@@ -133,6 +134,7 @@ class MainWindow(QMainWindow):
         self.check_bidirectional_connection = self.findChild(object, "checkBidirectionalConnection")
         self.btn_add_connection = self.findChild(object, "btnAddConnection")
         self.connections_table = self.findChild(object, "connectionsTable")
+        self.graph_graphics_view = self.findChild(object, "graphGraphicsView")
         self.btn_calculate_shortest_path = self.findChild(object, "btnCalculateShortestPath")
         self.label_shortest_path_result = self.findChild(object, "labelShortestPathResult")
 
@@ -153,9 +155,9 @@ class MainWindow(QMainWindow):
         self.btn_view_visualizations = self.findChild(object, "btnViewVisualizations")
 
     def show_graph_view(self):
+        self.pages.setCurrentIndex(1)
         self.graph_view.load_branch_options()
         self.graph_view.refresh_connections_table()
-        self.pages.setCurrentIndex(1)
 
     def show_transfer_view(self):
         self.transfer_view.load_branch_options()
