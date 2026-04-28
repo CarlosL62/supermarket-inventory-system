@@ -1,4 +1,5 @@
 from app.services.catalog_service import CatalogService
+from app.structures.transfer_queue import TransferQueue
 
 
 class Branch:
@@ -10,3 +11,6 @@ class Branch:
         self.transfer_time = transfer_time
         self.dispatch_interval = dispatch_interval
         self.inventory = CatalogService()
+        self.incoming_queue = TransferQueue()
+        self.transfer_preparation_queue = TransferQueue()
+        self.outgoing_queue = TransferQueue()

@@ -34,3 +34,16 @@ def load_connections_table(table, connections):
         table.setItem(i, 0, QTableWidgetItem(str(source_id)))
         table.setItem(i, 1, QTableWidgetItem(str(destination_id)))
         table.setItem(i, 2, QTableWidgetItem(str(weight)))
+
+
+def load_transfer_queue_table(table, transfer_requests):
+    table.setRowCount(len(transfer_requests))
+
+    for i, transfer_request in enumerate(transfer_requests):
+        table.setItem(i, 0, QTableWidgetItem(str(transfer_request.source_id)))
+        table.setItem(i, 1, QTableWidgetItem(str(transfer_request.destination_id)))
+        table.setItem(i, 2, QTableWidgetItem(transfer_request.barcode))
+        table.setItem(i, 3, QTableWidgetItem(str(transfer_request.quantity)))
+        table.setItem(i, 4, QTableWidgetItem(transfer_request.get_path_text()))
+        table.setItem(i, 5, QTableWidgetItem(str(transfer_request.total_weight)))
+        table.setItem(i, 6, QTableWidgetItem(transfer_request.status))

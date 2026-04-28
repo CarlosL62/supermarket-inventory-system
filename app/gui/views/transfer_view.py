@@ -2,12 +2,13 @@ from PySide6.QtWidgets import QMessageBox
 
 
 class TransferView:
-    def __init__(self, branch_manager, source_combo, destination_combo, product_combo, quantity_input, result_label, parent=None):
+    def __init__(self, branch_manager, source_combo, destination_combo, product_combo, quantity_input, criterion_combo, result_label, parent=None):
         self.branch_manager = branch_manager
         self.source_combo = source_combo
         self.destination_combo = destination_combo
         self.product_combo = product_combo
         self.quantity_input = quantity_input
+        self.criterion_combo = criterion_combo
         self.result_label = result_label
         self.parent = parent
 
@@ -47,6 +48,7 @@ class TransferView:
         destination_id = self.destination_combo.currentData()
         barcode = self.product_combo.currentData()
         quantity = self.quantity_input.value()
+        criterion = "time" if self.criterion_combo.currentIndex() == 0 else "cost"
 
         if source_id is None or destination_id is None:
             QMessageBox.warning(self.parent, "Datos incompletos", "Seleccione sucursal origen y destino")
@@ -56,20 +58,23 @@ class TransferView:
             QMessageBox.warning(self.parent, "Sin producto", "Seleccione un producto para transferir")
             return
 
-        success, message, path, total_weight = self.branch_manager.transfer_product(
+        success, message, transfer_request = self.branch_manager.create_transfer_request(
             source_id,
             destination_id,
             barcode,
-            quantity
+            quantity,
+            criterion
         )
-
-        if not success:
+        if success:
+            transfer_request.start()
+        else:
             self.result_label.setText(f"Resultado: {message}")
-            QMessageBox.warning(self.parent, "Transferencia no realizada", message)
+            QMessageBox.warning(self.parent, "Transferencia no agregada", message)
             return
 
-        path_text = " -> ".join(str(branch_id) for branch_id in path)
-        result_text = f"Resultado: {message} | Ruta: {path_text} | Peso total: {total_weight}"
+        result_text = (
+            f"Resultado: {message} | Ruta: {transfer_request.get_path_text()} "
+            f"| Peso total: {transfer_request.total_weight}"
+        )
         self.result_label.setText(result_text)
-        self.load_product_options()
-        QMessageBox.information(self.parent, "Transferencia realizada", result_text)
+        QMessageBox.information(self.parent, "Transferencia en cola", result_text)

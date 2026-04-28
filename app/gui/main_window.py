@@ -1,15 +1,17 @@
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
+from PySide6.QtCore import QFile, QTimer
 from app.services.branch_manager import BranchManager
 from app.utils.demo_data import load_demo_branches
 from app.gui.views.inventory_view import InventoryView
 from app.gui.views.graph_view import GraphView
 from app.gui.views.transfer_view import TransferView
+from app.gui.views.queue_view import QueueView
 from app.gui.helpers.table_setup import (
     setup_branches_table,
     setup_products_table,
     setup_connections_table,
+    setup_transfer_queue_table,
 )
 
 
@@ -39,6 +41,8 @@ class MainWindow(QMainWindow):
             self.combo_source_branch,
             self.combo_destination_branch,
             self.input_connection_weight,
+            self.input_connection_cost,
+            self.check_bidirectional_connection,
             self.connections_table,
             result_label=self.label_shortest_path_result,
             parent=self
@@ -50,23 +54,37 @@ class MainWindow(QMainWindow):
             self.combo_transfer_destination_branch,
             self.combo_transfer_product,
             self.input_transfer_quantity,
+            self.combo_transfer_criterion,
             self.label_transfer_result,
+            parent=self
+        )
+
+        self.queue_view = QueueView(
+            self.branch_manager,
+            self.transfer_queue_table,
+            self.label_queue_result,
             parent=self
         )
 
         setup_branches_table(self.branches_table)
         setup_products_table(self.products_table)
         setup_connections_table(self.connections_table)
+        setup_transfer_queue_table(self.transfer_queue_table)
         load_demo_branches(self.branch_manager)
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()
         self.graph_view.refresh_connections_table()
         self.transfer_view.load_branch_options()
+        self.queue_view.refresh_queue_table()
 
         self.connect_signals()
         if self.branches_table.rowCount() > 0:
             self.branches_table.selectRow(0)
             self.inventory_view.handle_branch_selection()
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_simulation)
+        self.timer.start(1000)
 
     def load_ui(self):
         ui_file = QFile("app/gui/main_window.ui")
@@ -111,6 +129,8 @@ class MainWindow(QMainWindow):
         self.combo_source_branch = self.findChild(object, "comboSourceBranch")
         self.combo_destination_branch = self.findChild(object, "comboDestinationBranch")
         self.input_connection_weight = self.findChild(object, "inputConnectionWeight")
+        self.input_connection_cost = self.findChild(object, "inputConnectionCost")
+        self.check_bidirectional_connection = self.findChild(object, "checkBidirectionalConnection")
         self.btn_add_connection = self.findChild(object, "btnAddConnection")
         self.connections_table = self.findChild(object, "connectionsTable")
         self.btn_calculate_shortest_path = self.findChild(object, "btnCalculateShortestPath")
@@ -120,8 +140,11 @@ class MainWindow(QMainWindow):
         self.combo_transfer_destination_branch = self.findChild(object, "comboTransferDestinationBranch")
         self.combo_transfer_product = self.findChild(object, "comboTransferProduct")
         self.input_transfer_quantity = self.findChild(object, "inputTransferQuantity")
+        self.combo_transfer_criterion = self.findChild(object, "comboTransferCriterion")
         self.btn_execute_transfer = self.findChild(object, "btnExecuteTransfer")
         self.label_transfer_result = self.findChild(object, "labelTransferResult")
+        self.label_queue_result = self.findChild(object, "labelQueueResult")
+        self.transfer_queue_table = self.findChild(object, "transferQueueTable")
 
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
@@ -137,6 +160,52 @@ class MainWindow(QMainWindow):
     def show_transfer_view(self):
         self.transfer_view.load_branch_options()
         self.pages.setCurrentIndex(2)
+
+    def show_queue_view(self):
+        self.queue_view.refresh_queue_table()
+        self.pages.setCurrentIndex(3)
+
+    def update_simulation(self):
+        transfers = self.branch_manager.get_pending_transfers()
+
+        for transfer in transfers:
+            # Start transfer if pending
+            if transfer.status == "Pendiente":
+                transfer.start()
+
+            # If no time assigned, calculate based on current branch
+            if transfer.remaining_time == 0 and not transfer.completed:
+                current_branch_id = transfer.path[transfer.current_index]
+                current_branch = self.branch_manager.find_by_id(current_branch_id)
+
+                if current_branch is None:
+                    continue
+
+                # Determine role: origin, intermediate, destination
+                if transfer.current_index == 0:
+                    # origin
+                    time_cost = current_branch.dispatch_interval
+                elif transfer.current_index == len(transfer.path) - 1:
+                    # destination
+                    time_cost = current_branch.entry_time
+                else:
+                    # intermediate
+                    time_cost = (
+                        current_branch.entry_time +
+                        current_branch.transfer_time +
+                        current_branch.dispatch_interval
+                    )
+
+                transfer.set_step_time(time_cost)
+
+            # Advance simulation
+            transfer.tick()
+
+        self.branch_manager.apply_completed_transfers()
+
+        # Refresh queue table
+        if transfers:
+            self.queue_view.refresh_queue_table()
 
     def connect_signals(self):
         self.btn_add_branch.clicked.connect(self.inventory_view.add_branch)
@@ -156,6 +225,6 @@ class MainWindow(QMainWindow):
         self.btn_view_inventory.clicked.connect(lambda: self.pages.setCurrentIndex(0))
         self.btn_view_graph.clicked.connect(self.show_graph_view)
         self.btn_view_transfers.clicked.connect(self.show_transfer_view)
-        self.btn_view_queues.clicked.connect(lambda: self.pages.setCurrentIndex(3))
+        self.btn_view_queues.clicked.connect(self.show_queue_view)
         self.btn_view_visualizations.clicked.connect(lambda: self.pages.setCurrentIndex(4))
         self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)

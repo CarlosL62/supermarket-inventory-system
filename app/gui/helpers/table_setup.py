@@ -32,3 +32,14 @@ def setup_connections_table(table):
     table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
     table.setEditTriggers(QAbstractItemView.NoEditTriggers)
     table.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+
+def setup_transfer_queue_table(table):
+    table.setColumnCount(7)
+    table.setHorizontalHeaderLabels([
+        "Origen", "Destino", "Código", "Cantidad",
+        "Ruta", "Peso total", "Estado"
+    ])
+    table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+    table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+    table.setSelectionBehavior(QAbstractItemView.SelectRows)

@@ -244,7 +244,7 @@
             <item>
              <widget class="QLabel" name="labelConnectionWeight">
               <property name="text">
-               <string>Peso</string>
+               <string>Tiempo conexión</string>
               </property>
              </widget>
             </item>
@@ -258,6 +258,36 @@
               </property>
               <property name="value">
                <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelConnectionCost">
+              <property name="text">
+               <string>Costo conexión</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="inputConnectionCost">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+              <property name="value">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBidirectionalConnection">
+              <property name="text">
+               <string>Bidireccional</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -282,7 +312,7 @@
             <item>
              <widget class="QLabel" name="labelShortestPathResult">
               <property name="text">
-               <string>Ruta: pendiente</string>
+               <string>Ruta: seleccione origen y destino</string>
               </property>
              </widget>
             </item>
@@ -359,6 +389,27 @@
              </widget>
             </item>
             <item>
+             <widget class="QLabel" name="labelTransferCriterion">
+              <property name="text">
+               <string>Criterio</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboTransferCriterion">
+              <item>
+               <property name="text">
+                <string>Tiempo mínimo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Costo más bajo</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="btnExecuteTransfer">
               <property name="text">
                <string>Ejecutar transferencia</string>
@@ -370,7 +421,7 @@
           <item>
            <widget class="QLabel" name="labelTransferResult">
             <property name="text">
-             <string>Resultado: pendiente</string>
+             <string>Resultado: sin transferencias recientes</string>
             </property>
            </widget>
           </item>
@@ -379,14 +430,25 @@
         <widget class="QWidget" name="queuesPage">
          <layout class="QVBoxLayout" name="queuesLayout">
           <item>
-           <widget class="QLabel" name="labelQueues">
+           <widget class="QLabel" name="labelQueuesSection">
             <property name="text">
-             <string>Módulo de colas en desarrollo</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <string>Cola de transferencias</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="queueControlsLayout">
+            <item>
+             <widget class="QLabel" name="labelQueueResult">
+              <property name="text">
+               <string>Simulación automática activa</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="transferQueueTable"/>
           </item>
          </layout>
         </widget>

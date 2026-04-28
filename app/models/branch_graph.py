@@ -2,25 +2,33 @@ import heapq
 
 class BranchGraph:
     def __init__(self):
-        # Adjacency list: {branch_id: [(neighbor_id, weight), ...]}
+        # Each edge stores destination, time weight and cost weight
         self.graph = {}
 
     def add_branch(self, branch_id):
         if branch_id not in self.graph:
             self.graph[branch_id] = []
 
-    def add_connection(self, source_id, destination_id, weight):
+    def add_connection(self, source_id, destination_id, time_weight, cost_weight=None, bidirectional=True):
         if source_id not in self.graph:
             self.add_branch(source_id)
         if destination_id not in self.graph:
             self.add_branch(destination_id)
 
-        for neighbor_id, _ in self.graph[source_id]:
+        # If no cost is provided, we use the same value as time
+        if cost_weight is None:
+            cost_weight = time_weight
+
+        for neighbor_id, _, _ in self.graph[source_id]:
             if neighbor_id == destination_id:
                 return False
 
-        self.graph[source_id].append((destination_id, weight))
-        self.graph[destination_id].append((source_id, weight))  # undirected
+        self.graph[source_id].append((destination_id, time_weight, cost_weight))
+
+        # If the user marks it as bidirectional, we also add the reverse edge
+        if bidirectional:
+            self.graph[destination_id].append((source_id, time_weight, cost_weight))
+
         return True
 
     def get_neighbors(self, branch_id):
@@ -30,23 +38,18 @@ class BranchGraph:
         return list(self.graph.keys())
 
     def get_all_connections(self):
-
         connections = []
-
         seen = set()
 
         for source_id, neighbors in self.graph.items():
-
-            for destination_id, weight in neighbors:
-
+            for destination_id, time_weight, cost_weight in neighbors:
                 edge_key = tuple(sorted((source_id, destination_id)))
 
                 if edge_key in seen:
                     continue
 
                 seen.add(edge_key)
-
-                connections.append((source_id, destination_id, weight))
+                connections.append((source_id, destination_id, time_weight, cost_weight))
 
         return connections
 
@@ -58,14 +61,14 @@ class BranchGraph:
 
         for source_id in self.graph:
             self.graph[source_id] = [
-                (neighbor_id, weight)
-                for neighbor_id, weight in self.graph[source_id]
+                (neighbor_id, time_weight, cost_weight)
+                for neighbor_id, time_weight, cost_weight in self.graph[source_id]
                 if neighbor_id != branch_id
             ]
 
         return True
 
-    def shortest_path(self, start_id, end_id):
+    def shortest_path(self, start_id, end_id, criterion="time"):
         if start_id not in self.graph or end_id not in self.graph:
             return [], None
 
@@ -84,8 +87,10 @@ class BranchGraph:
             if current_distance > distances[current_id]:
                 continue
 
-            for neighbor_id, weight in self.graph[current_id]:
-                new_distance = current_distance + weight
+            for neighbor_id, time_weight, cost_weight in self.graph[current_id]:
+                # The same Dijkstra logic works, only the selected edge weight changes
+                edge_weight = cost_weight if criterion == "cost" else time_weight
+                new_distance = current_distance + edge_weight
 
                 if new_distance < distances[neighbor_id]:
                     distances[neighbor_id] = new_distance
