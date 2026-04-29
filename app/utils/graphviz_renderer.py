@@ -13,6 +13,40 @@ def get_path_edges(path):
     return edges
 
 
+def format_tree_value(value, value_fields=None):
+    if value is None:
+        return ""
+
+    if isinstance(value, (str, int, float)):
+        return str(value)
+
+    if hasattr(value, "__dict__"):
+        attributes = vars(value)
+
+        if value_fields is not None:
+            for field in value_fields:
+                if field in attributes and attributes[field] is not None:
+                    return format_tree_value(attributes[field], value_fields)
+
+        preferred_fields = (
+            "key", "value", "data", "product", "item", "record",
+            "barcode", "name", "product_name", "category",
+            "expiration_date", "expiry_date", "expiration", "date"
+        )
+
+        for field in preferred_fields:
+            if field in attributes and attributes[field] is not None:
+                return format_tree_value(attributes[field], value_fields)
+
+        for field, field_value in attributes.items():
+            if field in ("left", "right", "height", "children", "parent"):
+                continue
+            if field_value is not None:
+                return format_tree_value(field_value, value_fields)
+
+    return str(value)
+
+
 def build_branch_graph_svg(branches, connections, highlighted_time_path=None, highlighted_cost_path=None):
     time_edges = get_path_edges(highlighted_time_path)
     cost_edges = get_path_edges(highlighted_cost_path)
@@ -107,6 +141,179 @@ def build_branch_graph_svg(branches, connections, highlighted_time_path=None, hi
                 fontcolor="#111827",
                 fontname="Arial",
                 penwidth=pen_width
+            )
+
+    return dot.pipe(format="svg")
+
+
+def build_binary_tree_svg(root, title="Árbol binario", value_fields=None):
+    dot = Digraph("binary_tree", format="svg")
+    dot.attr(
+        rankdir="TB",
+        bgcolor="#eef2f7",
+        splines="line",
+        nodesep="0.45",
+        ranksep="0.7",
+        margin="0",
+        pad="0.1",
+        fontname="Arial",
+        label=title,
+        labelloc="t",
+        fontsize="12",
+        fontcolor="#111827"
+    )
+
+    dot.attr(
+        "node",
+        shape="ellipse",
+        style="filled",
+        fillcolor="#dbeafe",
+        color="#0f172a",
+        fontcolor="#111827",
+        fontname="Arial",
+        fontsize="10",
+        margin="0.12,0.08"
+    )
+
+    dot.attr(
+        "edge",
+        color="#1f2937",
+        fontcolor="#111827",
+        fontname="Arial",
+        fontsize="10",
+        penwidth="2"
+    )
+
+    if root is None:
+        dot.node("empty", "Vacío", shape="box")
+        return dot.pipe(format="svg")
+
+    def get_node_value(node):
+        for attr in ("key", "value", "data", "product", "item", "record", "barcode", "name", "product_name"):
+            if hasattr(node, attr):
+                return format_tree_value(getattr(node, attr), value_fields)
+
+        return format_tree_value(node, value_fields)
+
+    def add_node(node):
+        node_id = str(id(node))
+        dot.node(node_id, get_node_value(node))
+
+        left = getattr(node, "left", None)
+        right = getattr(node, "right", None)
+
+        if left is not None:
+            left_id = add_node(left)
+            dot.edge(node_id, left_id)
+
+        if right is not None:
+            right_id = add_node(right)
+            dot.edge(node_id, right_id)
+
+        return node_id
+
+    add_node(root)
+    return dot.pipe(format="svg")
+
+
+def build_multiway_tree_svg(root, title="Árbol", value_fields=None, show_leaf_links=False):
+    dot = Digraph("multiway_tree", format="svg")
+    dot.attr(
+        rankdir="TB",
+        bgcolor="#eef2f7",
+        splines="line",
+        nodesep="0.5",
+        ranksep="0.75",
+        margin="0",
+        pad="0.1",
+        fontname="Arial",
+        label=title,
+        labelloc="t",
+        fontsize="12",
+        fontcolor="#111827"
+    )
+
+    dot.attr(
+        "node",
+        shape="box",
+        style="rounded,filled",
+        fillcolor="#dcfce7",
+        color="#14532d",
+        fontcolor="#111827",
+        fontname="Arial",
+        fontsize="11",
+        margin="0.12,0.08"
+    )
+
+    dot.attr(
+        "edge",
+        color="#1f2937",
+        fontcolor="#111827",
+        fontname="Arial",
+        fontsize="10",
+        penwidth="2"
+    )
+
+    if root is None:
+        dot.node("empty", "Vacío", shape="box")
+        return dot.pipe(format="svg")
+    leaf_nodes = []
+
+    def get_node_keys(node):
+        for attr in ("keys", "values", "data"):
+            if hasattr(node, attr):
+                keys = getattr(node, attr)
+
+                if isinstance(keys, list):
+                    return [format_tree_value(key, value_fields) for key in keys]
+
+                return [format_tree_value(keys, value_fields)]
+
+        return [format_tree_value(node, value_fields)]
+
+    def get_node_children(node):
+        for attr in ("children", "child", "sons"):
+            if hasattr(node, attr):
+                return getattr(node, attr)
+        return []
+
+    def is_leaf_node(node):
+        for attr in ("is_leaf", "leaf"):
+            if hasattr(node, attr):
+                return bool(getattr(node, attr))
+
+        return len(get_node_children(node)) == 0
+
+    def add_node(node):
+        node_id = str(id(node))
+        keys = get_node_keys(node)
+        label = "  |  ".join(keys)
+        dot.node(node_id, label)
+        if show_leaf_links and is_leaf_node(node):
+            leaf_nodes.append(node)
+
+        for child in get_node_children(node):
+            if child is None:
+                continue
+
+            child_id = add_node(child)
+            dot.edge(node_id, child_id)
+
+        return node_id
+
+    add_node(root)
+
+    if show_leaf_links and len(leaf_nodes) > 1:
+        for index in range(len(leaf_nodes) - 1):
+            current_leaf_id = str(id(leaf_nodes[index]))
+            next_leaf_id = str(id(leaf_nodes[index + 1]))
+            dot.edge(
+                current_leaf_id,
+                next_leaf_id,
+                color="#2563eb",
+                style="dashed",
+                penwidth="2",
+                constraint="false",
             )
 
     return dot.pipe(format="svg")

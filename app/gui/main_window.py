@@ -7,6 +7,7 @@ from app.gui.views.inventory_view import InventoryView
 from app.gui.views.graph_view import GraphView
 from app.gui.views.transfer_view import TransferView
 from app.gui.views.queue_view import QueueView
+from app.gui.views.visualization_view import VisualizationView
 from app.gui.helpers.table_setup import (
     setup_branches_table,
     setup_products_table,
@@ -68,6 +69,16 @@ class MainWindow(QMainWindow):
             parent=self
         )
 
+        self.visualization_view = VisualizationView(
+            self.branch_manager,
+            self.combo_visualization_branch,
+            self.combo_visualization_structure,
+            self.btn_refresh_visualization,
+            self.tree_graphics_view,
+            self.label_visualization_result,
+            parent=self
+        )
+
         # Tables are configured before loading data to avoid empty or incorrectly formatted views
         setup_branches_table(self.branches_table)
         setup_products_table(self.products_table)
@@ -79,6 +90,8 @@ class MainWindow(QMainWindow):
         self.graph_view.refresh_connections_table()
         self.transfer_view.load_branch_options()
         self.queue_view.refresh_queue_table()
+
+        self.visualization_view.load_branch_options()
 
         self.connect_signals()
         if self.branches_table.rowCount() > 0:
@@ -154,6 +167,13 @@ class MainWindow(QMainWindow):
         self.label_queue_result = self.findChild(object, "labelQueueResult")
         self.transfer_queue_table = self.findChild(object, "transferQueueTable")
 
+        # Structure visualization widgets
+        self.combo_visualization_branch = self.findChild(object, "comboVisualizationBranch")
+        self.combo_visualization_structure = self.findChild(object, "comboVisualizationStructure")
+        self.btn_refresh_visualization = self.findChild(object, "btnRefreshVisualization")
+        self.label_visualization_result = self.findChild(object, "labelVisualizationResult")
+        self.tree_graphics_view = self.findChild(object, "treeGraphicsView")
+
         # Sidebar buttons used to navigate between modules
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
@@ -174,6 +194,10 @@ class MainWindow(QMainWindow):
     def show_queue_view(self):
         self.queue_view.refresh_queue_table()
         self.pages.setCurrentIndex(3)
+
+    def show_visualization_view(self):
+        self.visualization_view.load_branch_options()
+        self.pages.setCurrentIndex(4)
 
     def show_inventory_view(self):
         # Refresh on entry because branches may have changed from the inventory screen
@@ -232,9 +256,10 @@ class MainWindow(QMainWindow):
             self.btn_calculate_shortest_path.clicked.connect(self.graph_view.calculate_shortest_path)
         self.combo_transfer_source_branch.currentIndexChanged.connect(self.transfer_view.load_product_options)
         self.btn_execute_transfer.clicked.connect(self.transfer_view.execute_transfer)
+        self.btn_refresh_visualization.clicked.connect(self.visualization_view.render_tree)
         self.btn_view_inventory.clicked.connect(self.show_inventory_view)
         self.btn_view_graph.clicked.connect(self.show_graph_view)
         self.btn_view_transfers.clicked.connect(self.show_transfer_view)
         self.btn_view_queues.clicked.connect(self.show_queue_view)
-        self.btn_view_visualizations.clicked.connect(lambda: self.pages.setCurrentIndex(4))
+        self.btn_view_visualizations.clicked.connect(self.show_visualization_view)
         self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)

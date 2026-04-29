@@ -458,14 +458,68 @@
         <widget class="QWidget" name="visualizationsPage">
          <layout class="QVBoxLayout" name="visualizationsLayout">
           <item>
-           <widget class="QLabel" name="labelVisualizations">
+           <widget class="QLabel" name="labelVisualizationsSection">
             <property name="text">
-             <string>Módulo de visualizaciones en desarrollo</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <string>Visualización de estructuras</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="visualizationControlsLayout">
+            <item>
+             <widget class="QLabel" name="labelVisualizationBranch">
+              <property name="text">
+               <string>Sucursal</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboVisualizationBranch"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelVisualizationStructure">
+              <property name="text">
+               <string>Estructura</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboVisualizationStructure">
+              <item>
+               <property name="text">
+                <string>AVL</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>B Tree</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>B+ Tree</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnRefreshVisualization">
+              <property name="text">
+               <string>Actualizar visualización</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelVisualizationResult">
+            <property name="text">
+             <string>Seleccione una sucursal y estructura para visualizar</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGraphicsView" name="treeGraphicsView"/>
           </item>
          </layout>
         </widget>
