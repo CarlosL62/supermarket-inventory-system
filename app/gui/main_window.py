@@ -218,19 +218,22 @@ class MainWindow(QMainWindow):
                 if current_branch is None:
                     continue
 
-                # When a stage ends, calculate the next time based on the branch role
+                # When a stage ends, calculate the next time and stage name based on the branch role
                 if transfer.current_index == 0:
                     time_cost = current_branch.dispatch_interval
+                    stage_name = "En cola de salida"
                 elif transfer.current_index == len(transfer.path) - 1:
                     time_cost = current_branch.entry_time
+                    stage_name = "En cola de ingreso"
                 else:
                     time_cost = (
                         current_branch.entry_time +
                         current_branch.transfer_time +
                         current_branch.dispatch_interval
                     )
+                    stage_name = "En preparación de traspaso"
 
-                transfer.set_step_time(time_cost)
+                transfer.set_step_time(time_cost, stage_name)
 
             transfer.tick()
 

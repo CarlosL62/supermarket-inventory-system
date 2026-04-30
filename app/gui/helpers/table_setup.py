@@ -35,10 +35,11 @@ def setup_connections_table(table):
 
 
 def setup_transfer_queue_table(table):
-    table.setColumnCount(7)
+    table.setColumnCount(9)
     table.setHorizontalHeaderLabels([
         "Origen", "Destino", "Código", "Cantidad",
-        "Ruta", "Peso total", "Estado"
+        "Ruta", "Peso total",
+        "Etapa actual", "Tiempo restante", "Progreso"
     ])
     table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
     table.setEditTriggers(QAbstractItemView.NoEditTriggers)
