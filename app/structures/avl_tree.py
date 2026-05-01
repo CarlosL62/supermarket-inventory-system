@@ -27,9 +27,11 @@ class AVLTree:
         x = y.left
         t2 = x.right
 
+        # Move y down to the right side of x
         x.right = y
         y.left = t2
 
+        # Heights must be updated from bottom to top after rotating
         y.height = 1 + max(self._get_height(y.left), self._get_height(y.right))
         x.height = 1 + max(self._get_height(x.left), self._get_height(x.right))
 
@@ -39,9 +41,11 @@ class AVLTree:
         y = x.right
         t2 = y.left
 
+        # Move x down to the left side of y
         y.left = x
         x.right = t2
 
+        # Heights must be updated from bottom to top after rotating
         x.height = 1 + max(self._get_height(x.left), self._get_height(x.right))
         y.height = 1 + max(self._get_height(y.left), self._get_height(y.right))
 
@@ -61,9 +65,11 @@ class AVLTree:
         else:
             return node
 
+        # Update height before checking the balance factor
         node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
         balance = self._get_balance(node)
 
+        # Rebalance the four AVL insertion cases
         if balance > 1 and product.name.lower() < node.left.product.name.lower():
             return self._right_rotate(node)
 
@@ -95,18 +101,25 @@ class AVLTree:
         elif name.lower() > node.product.name.lower():
             node.right = self._remove(node.right, name)
         else:
+            # Node with one child or no child
             if node.left is None:
                 return node.right
             if node.right is None:
                 return node.left
 
+            # Node with two children: replace it with the inorder successor
             successor = self._get_min_value_node(node.right)
             node.product = successor.product
             node.right = self._remove(node.right, successor.product.name)
 
+        if node is None:
+            return None
+
+        # Update height before checking the balance factor after deletion
         node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
         balance = self._get_balance(node)
 
+        # Rebalance the four AVL deletion cases
         if balance > 1 and self._get_balance(node.left) >= 0:
             return self._right_rotate(node)
 

@@ -8,6 +8,7 @@ def load_demo_branches(branch_manager):
     branch_manager.add_branch(Branch(3, "Sur", "Zona 12", 6, 4, 12))
     branch_manager.add_branch(Branch(4, "Occidente", "Zona 7", 7, 5, 15))
     branch_manager.add_branch(Branch(5, "Sin conexión", "Zona 18", 3, 2, 6))
+    branch_manager.add_branch(Branch(6, "Pruebas Árboles", "Zona 10", 4, 3, 7))
 
     branch_manager.connect_branches(1, 2, 10, 3, True)
     branch_manager.connect_branches(1, 3, 4, 9, True)
@@ -115,4 +116,81 @@ def load_demo_branches(branch_manager):
         )
         branches[4].inventory.add_product(
             Product("Papas", "1000000027", "Snacks", "2026-04-17", "Crujientes", 10.25, 44)
+        )
+
+    if len(branches) >= 6:
+        branches[5].inventory.add_product(
+            Product("Almendras", "1000000028", "Snacks", "2026-01-05", "NutriMix", 18.25, 30)
+        )
+        branches[5].inventory.add_product(
+            Product("Brocoli", "1000000029", "Verduras", "2026-01-12", "Fresco", 6.40, 26)
+        )
+        branches[5].inventory.add_product(
+            Product("Chocolate", "1000000030", "Snacks", "2026-01-19", "DulceHogar", 11.75, 24)
+        )
+        branches[5].inventory.add_product(
+            Product("Durazno", "1000000031", "Frutas", "2026-01-26", "DelCampo", 5.90, 34)
+        )
+        branches[5].inventory.add_product(
+            Product("Espinaca", "1000000032", "Verduras", "2026-02-02", "Fresco", 4.80, 40)
+        )
+        branches[5].inventory.add_product(
+            Product("Fideos", "1000000033", "Despensa", "2026-02-09", "LaItaliana", 7.35, 55)
+        )
+        branches[5].inventory.add_product(
+            Product("Granola", "1000000034", "Desayuno", "2026-02-16", "NaturalFit", 16.20, 22)
+        )
+        branches[5].inventory.add_product(
+            Product("Harina", "1000000035", "Despensa", "2026-02-23", "Molino", 9.10, 60)
+        )
+        branches[5].inventory.add_product(
+            Product("Ice Tea", "1000000036", "Bebidas", "2026-03-02", "BuenDia", 8.95, 28)
+        )
+        branches[5].inventory.add_product(
+            Product("Jalea", "1000000037", "Despensa", "2026-03-09", "Dorada", 13.50, 18)
+        )
+        branches[5].inventory.add_product(
+            Product("Kiwi", "1000000038", "Frutas", "2026-03-16", "DelCampo", 6.85, 32)
+        )
+        branches[5].inventory.add_product(
+            Product("Lentejas", "1000000039", "Granos", "2026-03-23", "Chapines", 10.40, 48)
+        )
+        branches[5].inventory.add_product(
+            Product("Mantequilla", "1000000040", "Lacteos", "2026-03-30", "LaVaquita", 14.75, 20)
+        )
+        branches[5].inventory.add_product(
+            Product("Nueces", "1000000041", "Snacks", "2026-04-06", "NutriMix", 21.60, 16)
+        )
+        branches[5].inventory.add_product(
+            Product("Oregano", "1000000042", "Condimentos", "2026-04-13", "SazonMax", 5.25, 35)
+        )
+        branches[5].inventory.add_product(
+            Product("Pepino", "1000000043", "Verduras", "2026-04-20", "Fresco", 3.70, 45)
+        )
+        branches[5].inventory.add_product(
+            Product("Quinoa", "1000000044", "Granos", "2026-04-27", "NaturalFit", 24.30, 14)
+        )
+        branches[5].inventory.add_product(
+            Product("Repollo", "1000000045", "Verduras", "2026-05-04", "Fresco", 4.10, 39)
+        )
+        branches[5].inventory.add_product(
+            Product("Sardinas", "1000000046", "Enlatados", "2026-05-11", "MarAzul", 10.95, 31)
+        )
+        branches[5].inventory.add_product(
+            Product("Tortillas", "1000000047", "Panaderia", "2026-05-18", "LaMesa", 6.15, 52)
+        )
+        branches[5].inventory.add_product(
+            Product("Uvas", "1000000048", "Frutas", "2026-05-25", "DelCampo", 12.80, 27)
+        )
+        branches[5].inventory.add_product(
+            Product("Vinagre", "1000000049", "Condimentos", "2026-06-01", "SazonMax", 7.90, 33)
+        )
+        branches[5].inventory.add_product(
+            Product("Waffles", "1000000050", "Desayuno", "2026-06-08", "Crunchy", 15.40, 21)
+        )
+        branches[5].inventory.add_product(
+            Product("Yuca", "1000000051", "Verduras", "2026-06-15", "Fresco", 5.60, 36)
+        )
+        branches[5].inventory.add_product(
+            Product("Zanahoria", "1000000052", "Verduras", "2026-06-22", "Fresco", 4.30, 42)
         )

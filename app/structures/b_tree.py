@@ -9,7 +9,7 @@ class BTreeNode:
 
 
 class BTree:
-    def __init__(self, min_degree=2):
+    def __init__(self, min_degree=3):
         self.root = None
         self.min_degree = min_degree
 
@@ -113,45 +113,130 @@ class BTree:
             self._search_by_range(node.children[i], start_date, end_date, results)
 
     def remove(self, expiry_date: str):
-        self._remove(self.root, expiry_date)
-
-        if self.root is not None and not self.root.is_leaf and len(self.root.keys) == 0:
-            self.root = self.root.children[0] if self.root.children else None
-
-        if self.root is not None and self.root.is_leaf and len(self.root.keys) == 0:
-            self.root = None
-
-    def _remove(self, node, expiry_date: str):
-        if node is None:
+        if self.root is None:
             return
 
-        i = 0
-        while i < len(node.keys) and expiry_date > node.keys[i].expiry_date:
-            i += 1
+        self._remove(self.root, expiry_date)
 
-        if i < len(node.keys) and node.keys[i].expiry_date == expiry_date:
+        if len(self.root.keys) == 0:
+            if self.root.is_leaf:
+                self.root = None
+            else:
+                self.root = self.root.children[0]
+
+    def _remove(self, node, expiry_date: str):
+        index = self._find_key_index(node, expiry_date)
+
+        if index < len(node.keys) and node.keys[index].expiry_date == expiry_date:
             if node.is_leaf:
-                del node.keys[i]
-                return
-
-            successor = self._get_successor(node, i)
-            node.keys[i] = successor
-            self._remove(node.children[i + 1], successor.expiry_date)
+                self._remove_from_leaf(node, index)
+            else:
+                self._remove_from_internal(node, index)
             return
 
         if node.is_leaf:
             return
 
-        if i < len(node.children):
-            self._remove(node.children[i], expiry_date)
+        child_index = index
+        child = node.children[child_index]
 
-    def _get_successor(self, node, index: int):
-        current = node.children[index + 1]
+        if len(child.keys) < self.min_degree:
+            self._fill_child(node, child_index)
+
+            if child_index > len(node.keys):
+                child_index -= 1
+
+        self._remove(node.children[child_index], expiry_date)
+
+
+    def _find_key_index(self, node, expiry_date: str):
+        index = 0
+
+        while index < len(node.keys) and node.keys[index].expiry_date < expiry_date:
+            index += 1
+
+        return index
+
+    def _remove_from_leaf(self, node, index: int):
+        del node.keys[index]
+
+    def _remove_from_internal(self, node, index: int):
+        key = node.keys[index]
+        left_child = node.children[index]
+        right_child = node.children[index + 1]
+
+        if len(left_child.keys) >= self.min_degree:
+            predecessor = self._get_predecessor(left_child)
+            node.keys[index] = predecessor
+            self._remove(left_child, predecessor.expiry_date)
+        elif len(right_child.keys) >= self.min_degree:
+            successor = self._get_successor(right_child)
+            node.keys[index] = successor
+            self._remove(right_child, successor.expiry_date)
+        else:
+            self._merge_children(node, index)
+            self._remove(left_child, key.expiry_date)
+
+    def _get_predecessor(self, node):
+        current = node
+
+        while not current.is_leaf:
+            current = current.children[-1]
+
+        return current.keys[-1]
+
+    def _get_successor(self, node):
+        current = node
 
         while not current.is_leaf:
             current = current.children[0]
 
         return current.keys[0]
+
+    def _fill_child(self, parent, child_index: int):
+        if child_index > 0 and len(parent.children[child_index - 1].keys) >= self.min_degree:
+            self._borrow_from_previous(parent, child_index)
+        elif child_index < len(parent.children) - 1 and len(parent.children[child_index + 1].keys) >= self.min_degree:
+            self._borrow_from_next(parent, child_index)
+        else:
+            if child_index < len(parent.children) - 1:
+                self._merge_children(parent, child_index)
+            else:
+                self._merge_children(parent, child_index - 1)
+
+    def _borrow_from_previous(self, parent, child_index: int):
+        child = parent.children[child_index]
+        sibling = parent.children[child_index - 1]
+
+        child.keys.insert(0, parent.keys[child_index - 1])
+
+        if not child.is_leaf:
+            child.children.insert(0, sibling.children.pop())
+
+        parent.keys[child_index - 1] = sibling.keys.pop()
+
+    def _borrow_from_next(self, parent, child_index: int):
+        child = parent.children[child_index]
+        sibling = parent.children[child_index + 1]
+
+        child.keys.append(parent.keys[child_index])
+
+        if not child.is_leaf:
+            child.children.append(sibling.children.pop(0))
+
+        parent.keys[child_index] = sibling.keys.pop(0)
+
+    def _merge_children(self, parent, child_index: int):
+        child = parent.children[child_index]
+        sibling = parent.children[child_index + 1]
+
+        child.keys.append(parent.keys.pop(child_index))
+        child.keys.extend(sibling.keys)
+
+        if not child.is_leaf:
+            child.children.extend(sibling.children)
+
+        parent.children.pop(child_index + 1)
 
     def get_all_products(self):
         return self.search_by_range("0000-01-01", "9999-12-31")
