@@ -1,6 +1,7 @@
 from app.gui.dialogs.add_branch_dialog import AddBranchDialog
 from app.gui.dialogs.add_product_dialog import AddProductDialog
 from app.gui.helpers.table_loaders import load_branches_table, load_products_table
+from app.services.inventory_processing_service import InventoryProcessingService
 from PySide6.QtWidgets import QMessageBox
 
 
@@ -14,6 +15,54 @@ class InventoryView:
         self.end_date_input = end_date_input
         self.date_range_filter_active = False
         self.parent = parent
+
+    def get_selected_branch_products(self):
+        branch = self.require_selected_branch()
+        if branch is None:
+            return None, []
+
+        return branch, branch.inventory.get_all_products()
+
+
+    def search_products_with_metrics(self, method="sequential"):
+        branch, products = self.get_selected_branch_products()
+        if branch is None:
+            return
+
+        if self.search_input is None:
+            return
+
+        query = self.search_input.text().strip()
+        if not query:
+            self.load_products_for_branch(branch)
+            return
+
+        found_products, elapsed_ms = InventoryProcessingService.search_products(
+            products,
+            query,
+            method
+        )
+
+        search_labels = {
+            "name": "nombre",
+            "barcode": "código de barras",
+            "category": "categoría",
+            "sequential": "secuencial",
+            "binary": "binaria por nombre",
+            "hash": "hash por código"
+        }
+        search_label = search_labels.get(method, method)
+
+        elapsed_us = elapsed_ms * 1000
+        message = (
+            f"Búsqueda por {search_label} | "
+            f"Coincidencias: {len(found_products)} | "
+            f"Tiempo: {elapsed_us:.2f} μs"
+        )
+
+        load_products_table(self.products_table, found_products)
+        QMessageBox.information(self.parent, "Métrica de búsqueda", message)
+
 
     def get_selected_product_barcode(self):
         selected_items = self.products_table.selectedItems()
@@ -90,30 +139,16 @@ class InventoryView:
         self.load_products_for_branch(branch)
 
     def search_products_in_selected_branch(self):
-        branch = self.require_selected_branch()
-        if branch is None:
-            return
+        self.search_products_with_metrics("name")
 
-        if self.search_input is None:
-            return
+    def search_products_by_name(self):
+        self.search_products_with_metrics("name")
 
-        query = self.search_input.text().strip().lower()
-        if not query:
-            self.load_products_for_branch(branch)
-            return
+    def search_products_by_barcode(self):
+        self.search_products_with_metrics("barcode")
 
-        products = branch.inventory.get_all_products()
-        filtered_products = []
-
-        for product in products:
-            if (
-                query in product.name.lower()
-                or query in product.barcode.lower()
-                or query in product.category.lower()
-            ):
-                filtered_products.append(product)
-
-        load_products_table(self.products_table, filtered_products)
+    def search_products_by_category(self):
+        self.search_products_with_metrics("category")
 
     def clear_product_search(self):
         self.reset_all_filters()

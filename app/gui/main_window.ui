@@ -52,6 +52,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="btnViewBenchmark">
+        <property name="text">
+         <string>Rendimiento</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Orientation::Vertical</enum>
@@ -133,14 +140,28 @@
             <item>
              <widget class="QLineEdit" name="inputProductSearch">
               <property name="placeholderText">
-               <string>Buscar por nombre, código o categoría</string>
+               <string>Ingrese nombre, código o categoría</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="btnSearchProduct">
               <property name="text">
-               <string>Buscar producto</string>
+               <string>Buscar nombre</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSearchProductByBarcode">
+              <property name="text">
+               <string>Buscar código</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSearchProductByCategory">
+              <property name="text">
+               <string>Buscar categoría</string>
               </property>
              </widget>
             </item>
@@ -520,6 +541,116 @@
           </item>
           <item>
            <widget class="QGraphicsView" name="treeGraphicsView"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="benchmarkPage">
+         <layout class="QVBoxLayout" name="benchmarkLayout">
+          <item>
+           <widget class="QLabel" name="labelBenchmarkSection">
+            <property name="text">
+             <string>Análisis de rendimiento</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="benchmarkControlsLayout">
+            <item>
+             <widget class="QLabel" name="labelBenchmarkBranch">
+              <property name="text">
+               <string>Sucursal</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBenchmarkBranch"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelBenchmarkN">
+              <property name="text">
+               <string>N consultas</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="inputBenchmarkN">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+              <property name="value">
+               <number>20</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelBenchmarkM">
+              <property name="text">
+               <string>M repeticiones</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="inputBenchmarkM">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+              <property name="value">
+               <number>5</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="benchmarkButtonsLayout">
+            <item>
+             <widget class="QPushButton" name="btnBenchmarkSearch">
+              <property name="text">
+               <string>Medir búsquedas</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBenchmarkInsert">
+              <property name="text">
+               <string>Medir inserciones</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBenchmarkDelete">
+              <property name="text">
+               <string>Medir eliminaciones</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBenchmarkTransfer">
+              <property name="text">
+               <string>Medir transferencias</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelBenchmarkResult">
+            <property name="text">
+             <string>Seleccione una sucursal y ejecute una medición</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="benchmarkResultsTable"/>
           </item>
          </layout>
         </widget>

@@ -7,7 +7,12 @@ class HashTable:
         self.table = [[] for _ in range(capacity)]
 
     def _hash_function(self, barcode: str) -> int:
-        return sum(ord(char) for char in barcode) % self.capacity
+        hash_value = 0
+
+        for char in barcode:
+            hash_value = (hash_value * 31 + ord(char)) % self.capacity
+
+        return hash_value
 
     def insert(self, product: Product) -> bool:
         index = self._hash_function(product.barcode)

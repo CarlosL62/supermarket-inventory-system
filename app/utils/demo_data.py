@@ -9,12 +9,15 @@ def load_demo_branches(branch_manager):
     branch_manager.add_branch(Branch(4, "Occidente", "Zona 7", 7, 5, 15))
     branch_manager.add_branch(Branch(5, "Sin conexión", "Zona 18", 3, 2, 6))
     branch_manager.add_branch(Branch(6, "Pruebas Árboles", "Zona 10", 4, 3, 7))
+    branch_manager.add_branch(Branch(7, "Carga 500", "Zona 15", 5, 4, 9))
 
     branch_manager.connect_branches(1, 2, 10, 3, True)
     branch_manager.connect_branches(1, 3, 4, 9, True)
     branch_manager.connect_branches(3, 2, 3, 8, True)
     branch_manager.connect_branches(2, 4, 8, 2, True)
     branch_manager.connect_branches(3, 4, 2, 10, True)
+    branch_manager.connect_branches(1, 7, 6, 4, True)
+    branch_manager.connect_branches(7, 4, 5, 6, True)
 
     branches = branch_manager.get_branches()
 
@@ -194,3 +197,37 @@ def load_demo_branches(branch_manager):
         branches[5].inventory.add_product(
             Product("Zanahoria", "1000000052", "Verduras", "2026-06-22", "Fresco", 4.30, 42)
         )
+
+    if len(branches) >= 7:
+        benchmark_categories = [
+            "Abarrotes", "Bebidas", "Carnes", "Congelados", "Despensa",
+            "Enlatados", "Frutas", "Higiene", "Lacteos", "Limpieza",
+            "Panaderia", "Proteinas", "Snacks", "Verduras"
+        ]
+        benchmark_brands = [
+            "MarcaA", "MarcaB", "MarcaC", "MarcaD", "MarcaE",
+            "MarcaF", "MarcaG", "MarcaH", "MarcaI", "MarcaJ"
+        ]
+
+        for index in range(500):
+            product_number = index + 1
+            category = benchmark_categories[index % len(benchmark_categories)]
+            brand = benchmark_brands[index % len(benchmark_brands)]
+            month = (index % 12) + 1
+            day = (index % 28) + 1
+            expiry_date = f"2027-{month:02d}-{day:02d}"
+            barcode = f"{2000000000 + product_number:010d}"
+            price = round(5.00 + (index % 95) * 0.75, 2)
+            stock = 10 + (index % 90)
+
+            branches[6].inventory.add_product(
+                Product(
+                    f"Producto Benchmark {product_number:03d}",
+                    barcode,
+                    category,
+                    expiry_date,
+                    brand,
+                    price,
+                    stock
+                )
+            )
