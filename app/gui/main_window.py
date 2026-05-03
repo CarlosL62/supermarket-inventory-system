@@ -76,6 +76,10 @@ class MainWindow(QMainWindow):
             self.combo_visualization_branch,
             self.combo_visualization_structure,
             self.btn_refresh_visualization,
+            self.btn_export_visualization,
+            self.btn_zoom_in_visualization,
+            self.btn_zoom_out_visualization,
+            self.btn_reset_zoom_visualization,
             self.tree_graphics_view,
             self.label_visualization_result,
             parent=self
@@ -114,7 +118,10 @@ class MainWindow(QMainWindow):
         setup_products_table(self.products_table)
         setup_connections_table(self.connections_table)
         setup_transfer_queue_table(self.transfer_queue_table)
+
+        # Demo data for testing only
         #load_demo_branches(self.branch_manager)
+
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()
         self.graph_view.refresh_connections_table()
@@ -205,6 +212,10 @@ class MainWindow(QMainWindow):
         self.combo_visualization_branch = self.findChild(object, "comboVisualizationBranch")
         self.combo_visualization_structure = self.findChild(object, "comboVisualizationStructure")
         self.btn_refresh_visualization = self.findChild(object, "btnRefreshVisualization")
+        self.btn_export_visualization = self.findChild(object, "btnExportVisualization")
+        self.btn_zoom_in_visualization = self.findChild(object, "btnZoomInVisualization")
+        self.btn_zoom_out_visualization = self.findChild(object, "btnZoomOutVisualization")
+        self.btn_reset_zoom_visualization = self.findChild(object, "btnResetZoomVisualization")
         self.label_visualization_result = self.findChild(object, "labelVisualizationResult")
         self.tree_graphics_view = self.findChild(object, "treeGraphicsView")
         # Performance benchmark widgets
@@ -243,7 +254,6 @@ class MainWindow(QMainWindow):
             self.benchmark_view.load_branch_options()
         self.pages.setCurrentIndex(5)
 
-
     def show_csv_view(self):
         if self.csv_view is not None:
             self.csv_view.load_error_log()
@@ -256,10 +266,8 @@ class MainWindow(QMainWindow):
         self.transfer_view.load_branch_options()
         self.queue_view.refresh_queue_table()
         self.visualization_view.load_branch_options()
-
         if self.benchmark_view is not None:
             self.benchmark_view.load_branch_options()
-
 
     def show_graph_view(self):
         self.pages.setCurrentIndex(1)

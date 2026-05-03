@@ -1,4 +1,5 @@
 from graphviz import Digraph
+from html import escape
 
 
 def get_path_edges(path):
@@ -11,6 +12,10 @@ def get_path_edges(path):
         edges.add((path[index], path[index + 1]))
 
     return edges
+
+
+def safe_html(value):
+    return escape(str(value), quote=True)
 
 
 def format_tree_value(value, value_fields=None):
@@ -257,6 +262,7 @@ def build_multiway_tree_svg(root, title="Árbol", value_fields=None, show_leaf_l
     if root is None:
         dot.node("empty", "Vacío", shape="box")
         return dot.pipe(format="svg")
+
     leaf_nodes = []
 
     def get_node_keys(node):
@@ -289,6 +295,7 @@ def build_multiway_tree_svg(root, title="Árbol", value_fields=None, show_leaf_l
         keys = get_node_keys(node)
         label = "  |  ".join(keys)
         dot.node(node_id, label)
+
         if show_leaf_links and is_leaf_node(node):
             leaf_nodes.append(node)
 
@@ -315,5 +322,96 @@ def build_multiway_tree_svg(root, title="Árbol", value_fields=None, show_leaf_l
                 penwidth="2",
                 constraint="false",
             )
+
+    return dot.pipe(format="svg")
+
+
+def build_hash_table_svg(hash_table, title="Hash Table"):
+    dot = Digraph("hash_table", format="svg")
+    dot.attr(
+        rankdir="TB",
+        bgcolor="#eef2f7",
+        splines="line",
+        nodesep="0.45",
+        ranksep="0.75",
+        margin="0",
+        pad="0.1",
+        fontname="Arial",
+        label=title,
+        labelloc="t",
+        fontsize="12",
+        fontcolor="#111827"
+    )
+    dot.attr("node", shape="plaintext", fontname="Arial")
+    dot.attr("edge", color="#64748b", arrowsize="0.7")
+
+    if hash_table is None:
+        dot.node(
+            "empty",
+            label="<<TABLE BORDER='1' CELLBORDER='1' CELLSPACING='0' CELLPADDING='8'>"
+                  "<TR><TD BGCOLOR='#fee2e2'><B>Hash Table not found</B></TD></TR>"
+                  "</TABLE>>"
+        )
+        return dot.pipe(format="svg")
+
+    table = getattr(hash_table, "table", [])
+    capacity = getattr(hash_table, "capacity", len(table))
+    used_buckets = sum(1 for bucket in table if bucket)
+    total_products = sum(len(bucket) for bucket in table)
+    collisions = sum(max(0, len(bucket) - 1) for bucket in table)
+    load_factor = total_products / capacity if capacity else 0
+
+    summary_label = (
+        f"<<TABLE BORDER='2' CELLBORDER='1' CELLSPACING='0' CELLPADDING='7'>"
+        f"<TR><TD COLSPAN='2' BGCOLOR='#c7d2fe'><B>Resumen de Hash Table</B></TD></TR>"
+        f"<TR><TD><B>Capacidad</B></TD><TD>{capacity}</TD></TR>"
+        f"<TR><TD><B>Buckets usados</B></TD><TD>{used_buckets}</TD></TR>"
+        f"<TR><TD><B>Total productos</B></TD><TD>{total_products}</TD></TR>"
+        f"<TR><TD><B>Colisiones</B></TD><TD>{collisions}</TD></TR>"
+        f"<TR><TD><B>Factor de carga</B></TD><TD>{load_factor:.4f}</TD></TR>"
+        f"</TABLE>>"
+    )
+    dot.node("summary", label=summary_label)
+    dot.node(
+        "bucket_section",
+        label="<<TABLE BORDER='0' CELLBORDER='0' CELLSPACING='0' CELLPADDING='4'>"
+              "<TR><TD><B>Buckets ocupados</B></TD></TR>"
+              "</TABLE>>"
+    )
+    dot.edge("summary", "bucket_section", style="invis")
+
+    bucket_nodes = []
+
+    for index, bucket in enumerate(table):
+        if not bucket:
+            continue
+
+        bucket_id = f"bucket_{index}"
+        bucket_nodes.append(bucket_id)
+        bucket_color = "#fecaca" if len(bucket) > 1 else "#dbeafe"
+        bucket_label = (
+            f"<<TABLE BORDER='1' CELLBORDER='1' CELLSPACING='0' CELLPADDING='6'>"
+            f"<TR><TD BGCOLOR='{bucket_color}'><B>Bucket {index}</B></TD></TR>"
+            f"<TR><TD>Items: {len(bucket)}</TD></TR>"
+            f"</TABLE>>"
+        )
+        dot.node(bucket_id, label=bucket_label)
+
+        dot.edge("bucket_section", bucket_id, style="invis", constraint="false")
+        previous_id = bucket_id
+
+        for product_index, product in enumerate(bucket):
+            product_id = f"bucket_{index}_product_{product_index}"
+            product_name = safe_html(getattr(product, "name", "Producto"))
+            barcode = safe_html(getattr(product, "barcode", ""))
+            product_label = (
+                f"<<TABLE BORDER='1' CELLBORDER='1' CELLSPACING='0' CELLPADDING='6'>"
+                f"<TR><TD BGCOLOR='#dcfce7'><B>{product_name}</B></TD></TR>"
+                f"<TR><TD>{barcode}</TD></TR>"
+                f"</TABLE>>"
+            )
+            dot.node(product_id, label=product_label)
+            dot.edge(previous_id, product_id)
+            previous_id = product_id
 
     return dot.pipe(format="svg")
