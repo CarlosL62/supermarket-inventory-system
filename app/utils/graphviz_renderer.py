@@ -69,15 +69,15 @@ def build_branch_graph_svg(branches, connections, highlighted_time_path=None, hi
 
     dot.attr(
         "node",
-        shape="circle",
+        shape="ellipse",
         style="filled",
         fillcolor="#dbeafe",
         color="#0f172a",
         fontcolor="#111827",
         fontname="Arial",
-        fontsize="11",
-        width="1.0",
-        fixedsize="true"
+        fontsize="10",
+        margin="0.14,0.08",
+        fixedsize="false"
     )
 
     dot.attr(
