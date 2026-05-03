@@ -59,6 +59,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="btnViewCsv">
+        <property name="text">
+         <string>Carga CSV</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Orientation::Vertical</enum>
@@ -651,6 +658,130 @@
           </item>
           <item>
            <widget class="QTableWidget" name="benchmarkResultsTable"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="csvPage">
+         <layout class="QVBoxLayout" name="csvLayout">
+          <item>
+           <widget class="QLabel" name="labelCsvSection">
+            <property name="text">
+             <string>Carga y validación de archivos CSV</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="csvBranchesLayout">
+            <item>
+             <widget class="QLabel" name="labelCsvBranches">
+              <property name="text">
+               <string>Sucursales</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="inputCsvBranches">
+              <property name="placeholderText">
+               <string>CSV: ID, Nombre, Ubicación, t_ingreso, t_traspaso, t_despacho</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSelectCsvBranches">
+              <property name="text">
+               <string>Seleccionar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="csvConnectionsLayout">
+            <item>
+             <widget class="QLabel" name="labelCsvConnections">
+              <property name="text">
+               <string>Conexiones</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="inputCsvConnections">
+              <property name="placeholderText">
+               <string>CSV: OrigenID, DestinoID, Tiempo, Costo</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSelectCsvConnections">
+              <property name="text">
+               <string>Seleccionar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="csvProductsLayout">
+            <item>
+             <widget class="QLabel" name="labelCsvProducts">
+              <property name="text">
+               <string>Productos</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="inputCsvProducts">
+              <property name="placeholderText">
+               <string>CSV: SucursalID, Nombre, CodigoBarra, Categoria, FechaCaducidad, Marca, Precio, Stock</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSelectCsvProducts">
+              <property name="text">
+               <string>Seleccionar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="csvActionsLayout">
+            <item>
+             <widget class="QPushButton" name="btnLoadCsvFiles">
+              <property name="text">
+               <string>Cargar CSV</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelCsvResult">
+              <property name="text">
+               <string>Seleccione los tres archivos CSV para iniciar la carga</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelCsvErrors">
+            <property name="text">
+             <string>errors.log</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="textCsvErrors">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="plainText">
+             <string>Aún no hay errores registrados</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

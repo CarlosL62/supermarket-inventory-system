@@ -9,6 +9,7 @@ from app.gui.views.transfer_view import TransferView
 from app.gui.views.queue_view import QueueView
 from app.gui.views.visualization_view import VisualizationView
 from app.gui.views.benchmark_view import BenchmarkView
+from app.gui.views.csv_view import CSVView
 from app.gui.helpers.table_setup import (
     setup_branches_table,
     setup_products_table,
@@ -91,12 +92,29 @@ class MainWindow(QMainWindow):
                 parent=self
             )
 
+        self.csv_view = None
+        if self.input_csv_branches is not None:
+            self.csv_view = CSVView(
+                self.branch_manager,
+                self.input_csv_branches,
+                self.input_csv_connections,
+                self.input_csv_products,
+                self.btn_select_csv_branches,
+                self.btn_select_csv_connections,
+                self.btn_select_csv_products,
+                self.btn_load_csv_files,
+                self.text_csv_errors,
+                self.label_csv_result,
+                refresh_callback=self.refresh_after_csv_load,
+                parent=self
+            )
+
         # Tables are configured before loading data to avoid empty or incorrectly formatted views
         setup_branches_table(self.branches_table)
         setup_products_table(self.products_table)
         setup_connections_table(self.connections_table)
         setup_transfer_queue_table(self.transfer_queue_table)
-        load_demo_branches(self.branch_manager)
+        #load_demo_branches(self.branch_manager)
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()
         self.graph_view.refresh_connections_table()
@@ -200,6 +218,17 @@ class MainWindow(QMainWindow):
         self.label_benchmark_result = self.findChild(object, "labelBenchmarkResult")
         self.benchmark_results_table = self.findChild(object, "benchmarkResultsTable")
 
+        # CSV loading widgets
+        self.input_csv_branches = self.findChild(object, "inputCsvBranches")
+        self.input_csv_connections = self.findChild(object, "inputCsvConnections")
+        self.input_csv_products = self.findChild(object, "inputCsvProducts")
+        self.btn_select_csv_branches = self.findChild(object, "btnSelectCsvBranches")
+        self.btn_select_csv_connections = self.findChild(object, "btnSelectCsvConnections")
+        self.btn_select_csv_products = self.findChild(object, "btnSelectCsvProducts")
+        self.btn_load_csv_files = self.findChild(object, "btnLoadCsvFiles")
+        self.label_csv_result = self.findChild(object, "labelCsvResult")
+        self.text_csv_errors = self.findChild(object, "textCsvErrors")
+
         # Sidebar buttons used to navigate between modules
         self.btn_view_inventory = self.findChild(object, "btnViewInventory")
         self.btn_view_graph = self.findChild(object, "btnViewGraph")
@@ -207,11 +236,29 @@ class MainWindow(QMainWindow):
         self.btn_view_queues = self.findChild(object, "btnViewQueues")
         self.btn_view_visualizations = self.findChild(object, "btnViewVisualizations")
         self.btn_view_benchmark = self.findChild(object, "btnViewBenchmark")
+        self.btn_view_csv = self.findChild(object, "btnViewCsv")
 
     def show_benchmark_view(self):
         if self.benchmark_view is not None:
             self.benchmark_view.load_branch_options()
         self.pages.setCurrentIndex(5)
+
+
+    def show_csv_view(self):
+        if self.csv_view is not None:
+            self.csv_view.load_error_log()
+        self.pages.setCurrentIndex(6)
+
+    def refresh_after_csv_load(self):
+        self.inventory_view.refresh_branches_table()
+        self.graph_view.load_branch_options()
+        self.graph_view.refresh_connections_table()
+        self.transfer_view.load_branch_options()
+        self.queue_view.refresh_queue_table()
+        self.visualization_view.load_branch_options()
+
+        if self.benchmark_view is not None:
+            self.benchmark_view.load_branch_options()
 
 
     def show_graph_view(self):
@@ -323,4 +370,6 @@ class MainWindow(QMainWindow):
         self.btn_view_visualizations.clicked.connect(self.show_visualization_view)
         if self.btn_view_benchmark is not None:
             self.btn_view_benchmark.clicked.connect(self.show_benchmark_view)
+        if self.btn_view_csv is not None:
+            self.btn_view_csv.clicked.connect(self.show_csv_view)
         self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)

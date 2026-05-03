@@ -1,0 +1,13 @@
+SucursalID,Nombre,CodigoBarra,Categoria,FechaCaducidad,Marca,Precio,Stock
+101,Red Apple,3000000001,Fruits,2027-01-15,"Fruits Company, Inc.",4.5,35
+101,Premium Rice,3000000002,Pantry,2027-03-20,Happy Grain,12.75,50
+101,Natural Juice,3000000003,Drinks,2027-02-10,"Fresh Drinks, S.A.",8.25,20
+102,Whole Milk,3000000004,Dairy,2026-12-05,La Vaquita,9.8,40
+102,Whole Wheat Bread,3000000005,Bakery,2026-11-18,Neighborhood Bakery,6.5,25
+102,Canned Tuna,3000000006,Canned Food,2028-04-01,Blue Sea,10.0,60
+103,Liquid Detergent,3000000007,Cleaning,2028-08-09,Clean Max,22.99,18
+103,Strawberry Yogurt,3000000008,Dairy,2026-10-25,Dairy Plus,5.75,33
+103,Classic Chips,3000000009,Snacks,2027-05-30,Crunchy Foods,7.4,45
+101,Ground Coffee,3000000010,Pantry,2027-07-14,Cafe Chapin,28.0,16
+102,Green Grapes,3000000011,Fruits,2026-09-30,"Fruits Company, Inc.",13.2,22
+103,Hand Soap,3000000012,Hygiene,2028-02-28,Clean Care,6.35,48

@@ -1,0 +1,4 @@
+OrigenID,DestinoID,Tiempo,Costo
+101,999,5,3
+101,102,fast,4
+101,103,8

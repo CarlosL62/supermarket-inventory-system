@@ -1,0 +1,6 @@
+SucursalID,Nombre,CodigoBarra,Categoria,FechaCaducidad,Marca,Precio,Stock
+101,Short Barcode,12345,Test,2027-01-01,Brand,10.0,5
+101,Duplicate Barcode,3000000001,Test,2027-01-01,Brand,10.0,5
+999,Missing Branch,3000000090,Test,2027-01-01,Brand,10.0,5
+101,Bad Price,3000000091,Test,2027-01-01,Brand,Q10,5
+101,Empty Category,3000000092,,2027-01-01,Brand,10.0,5
