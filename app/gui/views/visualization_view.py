@@ -1,9 +1,10 @@
-from PySide6.QtWidgets import QMessageBox, QGraphicsScene, QGraphicsView, QFileDialog
-from PySide6.QtGui import QBrush, QColor, QImage, QPainter
+from PySide6.QtWidgets import QMessageBox, QGraphicsScene, QGraphicsView
+from PySide6.QtGui import QBrush, QColor
 from PySide6.QtCore import Qt, QByteArray
 from PySide6.QtSvgWidgets import QGraphicsSvgItem
 from PySide6.QtSvg import QSvgRenderer
 from graphviz.backend import ExecutableNotFound
+from app.gui.helpers.svg_exporter import export_svg
 from app.utils.graphviz_renderer import build_binary_tree_svg, build_multiway_tree_svg, build_hash_table_svg
 
 
@@ -254,38 +255,4 @@ class VisualizationView:
             QMessageBox.warning(self.parent, "Sin visualización", "Primero genere una visualización")
             return
 
-        file_path, selected_filter = QFileDialog.getSaveFileName(
-            self.parent,
-            "Exportar visualización",
-            "visualizacion.svg",
-            "SVG Files (*.svg);;PNG Files (*.png)"
-        )
-
-        if not file_path:
-            return
-
-        try:
-            if selected_filter.startswith("PNG") or file_path.lower().endswith(".png"):
-                if not file_path.lower().endswith(".png"):
-                    file_path += ".png"
-
-                renderer = QSvgRenderer(QByteArray(self.get_svg_bytes()))
-                size = renderer.defaultSize()
-                image = QImage(size.width(), size.height(), QImage.Format.Format_ARGB32)
-                image.fill(Qt.GlobalColor.white)
-
-                painter = QPainter(image)
-                renderer.render(painter)
-                painter.end()
-                image.save(file_path)
-            else:
-                if not file_path.lower().endswith(".svg"):
-                    file_path += ".svg"
-
-                with open(file_path, "w", encoding="utf-8") as svg_file:
-                    svg_file.write(self.get_svg_text())
-
-            QMessageBox.information(self.parent, "Exportación completada", f"Archivo guardado en:\n{file_path}")
-
-        except Exception as error:
-            QMessageBox.critical(self.parent, "Error al exportar", f"No se pudo exportar la visualización:\n{error}")
+        export_svg(self.current_svg_data, self.parent, "visualizacion.svg")
