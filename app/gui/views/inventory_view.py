@@ -40,7 +40,8 @@ class InventoryView:
         found_products, elapsed_ms = InventoryProcessingService.search_products(
             products,
             query,
-            method
+            method,
+            inventory=branch.inventory
         )
 
         search_labels = {

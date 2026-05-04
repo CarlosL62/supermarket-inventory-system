@@ -122,7 +122,7 @@ class MainWindow(QMainWindow):
         setup_transfer_queue_table(self.transfer_queue_table)
 
         # Demo data for testing only
-        load_demo_branches(self.branch_manager)
+        #load_demo_branches(self.branch_manager)
 
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()

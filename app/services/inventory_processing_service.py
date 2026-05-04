@@ -90,6 +90,31 @@ class InventoryProcessingService:
         return [] if result is None else [result]
 
     @classmethod
+    def search_with_inventory(cls, inventory, products, query, method):
+        # The application uses the real inventory structures for user searches:
+        # AVL for names, Hash for barcodes, and the inventory category method
+        # for category searches. The fallback list search is kept for partial
+        # matches and for cases where the indexed structure returns no result
+        if method == "name":
+            found_products = cls.search_avl_structure(inventory, query)
+            return found_products if found_products else cls.search_by_name(products, query)
+
+        if method == "barcode":
+            found_products = cls.search_hash_structure(inventory, query)
+            return found_products if found_products else cls.search_by_barcode(products, query)
+
+        if method == "category":
+            found_products = inventory.search_by_category(query)
+            return found_products if found_products else cls.search_by_category(products, query)
+
+        if method == "sequential":
+            return cls.sequential_search(products, query)
+
+        # Date-range searches are handled by the inventory module directly
+        # through its dedicated expiry-date workflow, not by this text helper
+        return None
+
+    @classmethod
     def benchmark_search_methods(cls, inventory, n=20, m=5):
         products = inventory.get_all_products()
 
@@ -120,6 +145,10 @@ class InventoryProcessingService:
             "Extremo último": [last_product] * requested_queries,
         }
 
+        # The benchmark intentionally compares only the three structures
+        # requested for search performance: linked list, AVL, and Hash
+        # B and B+ remain part of the application search flow, but they are
+        # outside the scope of this specific benchmark
         methods = {
             "Lista enlazada": lambda product: cls.search_linked_list_structure(
                 inventory,
@@ -167,21 +196,27 @@ class InventoryProcessingService:
         return results
 
     @classmethod
-    def search_products(cls, products, query, method="name"):
+    def search_products(cls, products, query, method="name", inventory=None):
         start_time = time.perf_counter()
 
-        if method == "barcode":
-            found_products = cls.search_by_barcode(products, query)
-        elif method == "category":
-            found_products = cls.search_by_category(products, query)
-        elif method == "binary":
-            found_products = cls.binary_search_by_name(products, query)
-        elif method == "hash":
-            found_products = cls.hash_search_by_barcode(products, query)
-        elif method == "sequential":
-            found_products = cls.sequential_search(products, query)
+        if inventory is not None:
+            found_products = cls.search_with_inventory(inventory, products, query, method)
         else:
-            found_products = cls.search_by_name(products, query)
+            found_products = None
+
+        if found_products is None:
+            if method == "barcode":
+                found_products = cls.search_by_barcode(products, query)
+            elif method == "category":
+                found_products = cls.search_by_category(products, query)
+            elif method == "binary":
+                found_products = cls.binary_search_by_name(products, query)
+            elif method == "hash":
+                found_products = cls.hash_search_by_barcode(products, query)
+            elif method == "sequential":
+                found_products = cls.sequential_search(products, query)
+            else:
+                found_products = cls.search_by_name(products, query)
 
         elapsed_ms = (time.perf_counter() - start_time) * 1000
         return found_products, elapsed_ms
