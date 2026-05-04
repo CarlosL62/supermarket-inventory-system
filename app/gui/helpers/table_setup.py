@@ -42,5 +42,8 @@ def setup_transfer_queue_table(table):
         "Etapa actual", "Tiempo restante", "Progreso"
     ])
     table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+    table.setWordWrap(True)
+    table.verticalHeader().setDefaultSectionSize(64)
+    table.verticalHeader().setMinimumSectionSize(48)
     table.setEditTriggers(QAbstractItemView.NoEditTriggers)
     table.setSelectionBehavior(QAbstractItemView.SelectRows)

@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QMessageBox
+from app.gui.helpers.transfer_worker import TransferWorker
 
 
 class TransferView:
@@ -11,6 +12,7 @@ class TransferView:
         self.criterion_combo = criterion_combo
         self.result_label = result_label
         self.parent = parent
+        self.transfer_workers = []
 
         self.source_combo.currentIndexChanged.connect(self.preview_transfer)
         self.destination_combo.currentIndexChanged.connect(self.preview_transfer)
@@ -65,6 +67,79 @@ class TransferView:
 
         return total_time
 
+    def get_connection_time(self, source_id, destination_id):
+        for neighbor_id, time_weight, cost_weight in self.branch_manager.graph.get_neighbors(source_id):
+            if neighbor_id == destination_id:
+                return time_weight
+
+        return 0
+
+    def build_simulation_steps(self, path):
+        steps = []
+
+        if not path:
+            return steps
+
+        for index, branch_id in enumerate(path):
+            branch = self.branch_manager.find_by_id(branch_id)
+
+            if branch is None:
+                continue
+
+            is_origin = index == 0
+            is_destination = index == len(path) - 1
+
+            if is_origin:
+                steps.append({
+                    "branch_id": branch_id,
+                    "stage": "Cola de salida",
+                    "duration": branch.dispatch_interval,
+                    "description": "Producto listo para salir desde la sucursal origen"
+                })
+            else:
+                steps.append({
+                    "branch_id": branch_id,
+                    "stage": "Cola de ingreso",
+                    "duration": branch.entry_time,
+                    "description": "Producto recibido y procesado por la sucursal"
+                })
+
+            if not is_destination:
+                next_branch_id = path[index + 1]
+
+                if not is_origin:
+                    steps.append({
+                        "branch_id": branch_id,
+                        "stage": "Cola de preparación de traspaso",
+                        "duration": branch.transfer_time,
+                        "description": "Sucursal intermedia prepara el producto para continuar la ruta"
+                    })
+
+                    steps.append({
+                        "branch_id": branch_id,
+                        "stage": "Cola de salida",
+                        "duration": branch.dispatch_interval,
+                        "description": "Sucursal intermedia despacha el producto hacia la siguiente sucursal"
+                    })
+
+                connection_time = self.get_connection_time(branch_id, next_branch_id)
+                steps.append({
+                    "branch_id": branch_id,
+                    "stage": f"En tránsito hacia {self.get_branch_name(next_branch_id)}",
+                    "duration": connection_time,
+                    "description": "Producto viajando por la conexión seleccionada"
+                })
+
+        return steps
+
+    def calculate_transfer_timing(self, path):
+        connection_time, connection_cost = self.get_connection_totals(path)
+        simulation_steps = self.build_simulation_steps(path)
+        eta = sum(step.get("duration", 0) for step in simulation_steps)
+        internal_time = eta - connection_time
+
+        return connection_time, connection_cost, internal_time, eta, simulation_steps
+
     def build_preview_text(self):
         source_id = self.source_combo.currentData()
         destination_id = self.destination_combo.currentData()
@@ -103,9 +178,7 @@ class TransferView:
         if not path:
             return "Vista previa: no existe ruta entre las sucursales seleccionadas"
 
-        connection_time, connection_cost = self.get_connection_totals(path)
-        internal_time = self.estimate_internal_processing_time(path)
-        eta = connection_time + internal_time
+        connection_time, connection_cost, internal_time, eta, _ = self.calculate_transfer_timing(path)
         path_text = self.get_path_names_text(path)
 
         return (
@@ -149,6 +222,39 @@ class TransferView:
 
         self.preview_transfer()
 
+    def start_transfer_worker(self, transfer_request):
+        worker = TransferWorker(transfer_request, self.branch_manager)
+        # Reserve the first queue ticket before the thread starts so FIFO
+        # follows creation order instead of thread scheduling order.
+        worker.reserve_current_queue_ticket()
+        worker.updated.connect(self.handle_transfer_worker_update)
+        worker.finished.connect(lambda transfer_request, finished_worker=worker: self.handle_transfer_worker_finished(
+            transfer_request,
+            finished_worker
+        ))
+        self.transfer_workers.append(worker)
+        worker.start()
+
+    def handle_transfer_worker_update(self, transfer_request):
+        if self.parent is not None and hasattr(self.parent, "queue_view"):
+            self.parent.queue_view.refresh_queue_table()
+
+    def handle_transfer_worker_finished(self, transfer_request, finished_worker):
+        if finished_worker in self.transfer_workers:
+            self.transfer_workers.remove(finished_worker)
+
+        finished_worker.deleteLater()
+
+        if self.parent is not None and hasattr(self.parent, "queue_view"):
+            self.parent.queue_view.refresh_queue_table()
+
+    def stop_all_workers(self):
+        for worker in list(self.transfer_workers):
+            worker.stop()
+
+        for worker in list(self.transfer_workers):
+            worker.wait()
+
     def execute_transfer(self):
         source_id = self.source_combo.currentData()
         destination_id = self.destination_combo.currentData()
@@ -172,11 +278,13 @@ class TransferView:
             criterion
         )
         if success:
-            connection_time, connection_cost = self.get_connection_totals(transfer_request.path)
-            internal_time = self.estimate_internal_processing_time(transfer_request.path)
-            eta = connection_time + internal_time
+            connection_time, connection_cost, internal_time, eta, simulation_steps = self.calculate_transfer_timing(
+                transfer_request.path
+            )
             transfer_request.set_estimated_total_time(eta)
+            transfer_request.configure_simulation_steps(simulation_steps)
             transfer_request.start()
+            self.start_transfer_worker(transfer_request)
         else:
             self.result_label.setText(f"Resultado: {message}")
             QMessageBox.warning(self.parent, "Transferencia no agregada", message)

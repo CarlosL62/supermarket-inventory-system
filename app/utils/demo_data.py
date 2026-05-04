@@ -3,21 +3,21 @@ from app.models.product import Product
 
 
 def load_demo_branches(branch_manager):
-    branch_manager.add_branch(Branch(1, "Central", "Zona 1", 5, 3, 10))
-    branch_manager.add_branch(Branch(2, "Norte", "Zona 5", 4, 2, 8))
-    branch_manager.add_branch(Branch(3, "Sur", "Zona 12", 6, 4, 12))
-    branch_manager.add_branch(Branch(4, "Occidente", "Zona 7", 7, 5, 15))
-    branch_manager.add_branch(Branch(5, "Sin conexión", "Zona 18", 3, 2, 6))
-    branch_manager.add_branch(Branch(6, "Pruebas Árboles", "Zona 10", 4, 3, 7))
-    branch_manager.add_branch(Branch(7, "Carga 500", "Zona 15", 5, 4, 9))
+    branch_manager.add_branch(Branch(1, "Central", "Zona 1", 20, 18, 25))
+    branch_manager.add_branch(Branch(2, "Norte", "Zona 5", 18, 15, 22))
+    branch_manager.add_branch(Branch(3, "Sur", "Zona 12", 22, 20, 28))
+    branch_manager.add_branch(Branch(4, "Occidente", "Zona 7", 25, 22, 30))
+    branch_manager.add_branch(Branch(5, "Sin conexión", "Zona 18", 16, 14, 20))
+    branch_manager.add_branch(Branch(6, "Pruebas Árboles", "Zona 10", 18, 16, 24))
+    branch_manager.add_branch(Branch(7, "Carga 500", "Zona 15", 20, 18, 26))
 
-    branch_manager.connect_branches(1, 2, 10, 3, True)
-    branch_manager.connect_branches(1, 3, 4, 9, True)
-    branch_manager.connect_branches(3, 2, 3, 8, True)
-    branch_manager.connect_branches(2, 4, 8, 2, True)
-    branch_manager.connect_branches(3, 4, 2, 10, True)
-    branch_manager.connect_branches(1, 7, 6, 4, True)
-    branch_manager.connect_branches(7, 4, 5, 6, True)
+    branch_manager.connect_branches(1, 2, 45, 3, True)
+    branch_manager.connect_branches(1, 3, 35, 9, True)
+    branch_manager.connect_branches(3, 2, 28, 8, True)
+    branch_manager.connect_branches(2, 4, 40, 2, True)
+    branch_manager.connect_branches(3, 4, 30, 10, True)
+    branch_manager.connect_branches(1, 7, 38, 4, True)
+    branch_manager.connect_branches(7, 4, 42, 6, True)
 
     branches = branch_manager.get_branches()
 

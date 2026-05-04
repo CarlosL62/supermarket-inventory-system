@@ -46,12 +46,30 @@ def load_transfer_queue_table(table, transfer_requests, branch_manager):
         source_text = source_branch.name if source_branch else str(transfer_request.source_id)
         destination_text = destination_branch.name if destination_branch else str(transfer_request.destination_id)
 
-        table.setItem(i, 0, QTableWidgetItem(source_text))
-        table.setItem(i, 1, QTableWidgetItem(destination_text))
-        table.setItem(i, 2, QTableWidgetItem(transfer_request.barcode))
-        table.setItem(i, 3, QTableWidgetItem(str(transfer_request.quantity)))
-        table.setItem(i, 4, QTableWidgetItem(transfer_request.get_path_text()))
-        table.setItem(i, 5, QTableWidgetItem(str(transfer_request.total_weight)))
-        table.setItem(i, 6, QTableWidgetItem(transfer_request.current_stage))
-        table.setItem(i, 7, QTableWidgetItem(f"{transfer_request.remaining_time}s"))
-        table.setItem(i, 8, QTableWidgetItem(transfer_request.get_progress_text()))
+        path_text = transfer_request.get_path_text()
+        stage_text = transfer_request.current_stage
+        status_text = transfer_request.status
+
+        if status_text and status_text != stage_text:
+            stage_text = f"{stage_text}\n{status_text}"
+        remaining_text = f"{transfer_request.remaining_time}s"
+        progress_text = transfer_request.get_progress_text()
+
+        items = [
+            source_text,
+            destination_text,
+            transfer_request.barcode,
+            str(transfer_request.quantity),
+            path_text,
+            str(transfer_request.total_weight),
+            stage_text,
+            remaining_text,
+            progress_text,
+        ]
+
+        for col, text in enumerate(items):
+            item = QTableWidgetItem(str(text))
+            item.setToolTip(str(text))
+            table.setItem(i, col, item)
+
+        table.resizeRowToContents(i)

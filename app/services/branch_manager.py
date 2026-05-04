@@ -164,7 +164,7 @@ class BranchManager:
     def apply_completed_transfers(self):
         for transfer in self.transfer_queue.get_all():
             # Avoid applying multiple times
-            if transfer.completed and not getattr(transfer, "applied", False):
+            if transfer.completed and not transfer.applied:
                 self.transfer_product(
                     transfer.source_id,
                     transfer.destination_id,

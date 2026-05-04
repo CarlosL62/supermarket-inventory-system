@@ -302,10 +302,13 @@ class MainWindow(QMainWindow):
 
 
     def update_simulation(self):
-        # The simulation is based on the FIFO queue of pending transfers
+        # Legacy timer fallback. Threaded transfers are advanced by TransferWorker.
         transfers = self.branch_manager.get_pending_transfers()
 
         for transfer in transfers:
+            if transfer.simulation_steps:
+                continue
+
             if transfer.status == "Pendiente":
                 transfer.start()
 
@@ -381,3 +384,7 @@ class MainWindow(QMainWindow):
         if self.btn_view_csv is not None:
             self.btn_view_csv.clicked.connect(self.show_csv_view)
         self.branches_table.itemSelectionChanged.connect(self.inventory_view.handle_branch_selection)
+
+    def closeEvent(self, event):
+        self.transfer_view.stop_all_workers()
+        super().closeEvent(event)

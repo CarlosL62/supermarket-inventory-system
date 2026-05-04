@@ -14,3 +14,9 @@ class Branch:
         self.incoming_queue = TransferQueue()
         self.transfer_preparation_queue = TransferQueue()
         self.outgoing_queue = TransferQueue()
+
+        # Runtime locks used by transfer worker threads to enforce FIFO behavior
+        # Each branch can process only one transfer at a time per queue type
+        self.incoming_queue_busy = False
+        self.transfer_preparation_queue_busy = False
+        self.outgoing_queue_busy = False
