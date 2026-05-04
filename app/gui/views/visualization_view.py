@@ -62,15 +62,6 @@ class VisualizationView:
 
         return self.current_svg_data.encode("utf-8")
 
-    def get_svg_text(self):
-        if self.current_svg_data is None:
-            return ""
-
-        if isinstance(self.current_svg_data, bytes):
-            return self.current_svg_data.decode("utf-8")
-
-        return self.current_svg_data
-
     def handle_resize(self, event):
         if self.current_svg_item is not None and self.zoom_factor == 1.0:
             self.fit_visualization()

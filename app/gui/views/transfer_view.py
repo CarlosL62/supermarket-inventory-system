@@ -115,24 +115,6 @@ class TransferView:
 
         return total_time, total_cost
 
-    def estimate_internal_processing_time(self, path):
-        total_time = 0
-
-        for index, branch_id in enumerate(path):
-            branch = self.branch_manager.find_by_id(branch_id)
-
-            if branch is None:
-                continue
-
-            if index == 0:
-                total_time += branch.dispatch_interval
-            elif index == len(path) - 1:
-                total_time += branch.entry_time
-            else:
-                total_time += branch.entry_time + branch.transfer_time + branch.dispatch_interval
-
-        return total_time
-
     def get_connection_time(self, source_id, destination_id):
         for neighbor_id, time_weight, cost_weight in self.branch_manager.graph.get_neighbors(source_id):
             if neighbor_id == destination_id:
@@ -330,11 +312,11 @@ class TransferView:
         self.transfer_workers.append(worker)
         worker.start()
 
-    def handle_transfer_worker_update(self, transfer_request):
+    def handle_transfer_worker_update(self, _transfer_request):
         if self.parent is not None and hasattr(self.parent, "queue_view"):
             self.parent.queue_view.refresh_queue_table()
 
-    def handle_transfer_worker_finished(self, transfer_request, finished_worker):
+    def handle_transfer_worker_finished(self, _transfer_request, finished_worker):
         if finished_worker in self.transfer_workers:
             self.transfer_workers.remove(finished_worker)
 

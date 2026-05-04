@@ -19,6 +19,10 @@ from app.gui.helpers.table_setup import (
 
 
 class MainWindow(QMainWindow):
+    # Set to True to preload the built-in demo branches and products.
+    # This keeps demo data available without leaving ad hoc commented lines.
+    USE_DEMO_DATA = True
+
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sistema de Inventario de Supermercados")
@@ -120,9 +124,7 @@ class MainWindow(QMainWindow):
         setup_products_table(self.products_table)
         setup_connections_table(self.connections_table)
         setup_transfer_queue_table(self.transfer_queue_table)
-
-        # Demo data for testing only
-        #load_demo_branches(self.branch_manager)
+        self.load_initial_data()
 
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()
@@ -143,6 +145,10 @@ class MainWindow(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_simulation)
         self.timer.start(1000)
+
+    def load_initial_data(self):
+        if self.USE_DEMO_DATA:
+            load_demo_branches(self.branch_manager)
 
     def load_ui(self):
         ui_file = QFile("app/gui/main_window.ui")

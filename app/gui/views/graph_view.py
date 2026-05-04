@@ -69,15 +69,6 @@ class GraphView:
 
         return self.current_svg_data.encode("utf-8")
 
-    def get_svg_text(self):
-        if self.current_svg_data is None:
-            return ""
-
-        if isinstance(self.current_svg_data, bytes):
-            return self.current_svg_data.decode("utf-8")
-
-        return self.current_svg_data
-
     def handle_graph_resize(self, event):
         self._default_resize_event(event)
         self.fit_graph_image(reset_zoom=False)
@@ -337,8 +328,8 @@ class GraphView:
             QMessageBox.warning(self.parent, "Ruta inválida", "Seleccione sucursales diferentes")
             return
 
-        time_path, time_total = self.branch_manager.graph.shortest_path(source_id, destination_id, "time")
-        cost_path, cost_total = self.branch_manager.graph.shortest_path(source_id, destination_id, "cost")
+        time_path, _ = self.branch_manager.graph.shortest_path(source_id, destination_id, "time")
+        cost_path, _ = self.branch_manager.graph.shortest_path(source_id, destination_id, "cost")
 
         self.clear_highlight_timer.stop()
         self.highlighted_time_path = time_path if time_path else None
