@@ -15,7 +15,7 @@ IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
             tracking down the missing module yourself. Thanks!
 
 missing module named _winapi - imported by encodings (delayed, conditional, optional), shutil (conditional), ntpath (optional), subprocess (conditional), mimetypes (optional)
-missing module named 'collections.abc' - imported by traceback (top-level), typing (top-level), inspect (top-level), logging (top-level), importlib.resources.readers (top-level), selectors (top-level), tracemalloc (top-level), PySide6.QtCore (top-level), PySide6.QtNetwork (top-level), PySide6.QtGui (top-level), PySide6.QtWidgets (top-level), PySide6.QtOpenGL (top-level), http.client (top-level), PySide6.QtDBus (top-level)
+missing module named 'collections.abc' - imported by tracemalloc (top-level), traceback (top-level), typing (top-level), inspect (top-level), logging (top-level), importlib.resources.readers (top-level), selectors (top-level), PySide6.QtCore (top-level), PySide6.QtNetwork (top-level), PySide6.QtGui (top-level), PySide6.QtWidgets (top-level), PySide6.QtOpenGL (top-level), http.client (top-level), PySide6.QtDBus (top-level)
 missing module named winreg - imported by importlib._bootstrap_external (conditional), platform (delayed, optional), mimetypes (optional), urllib.request (delayed, conditional, optional)
 missing module named nt - imported by shutil (conditional), importlib._bootstrap_external (conditional), ntpath (optional), _colorize (delayed, conditional, optional), os (delayed, conditional, optional), ctypes (delayed, conditional)
 missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional)

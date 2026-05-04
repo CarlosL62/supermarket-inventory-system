@@ -17,6 +17,7 @@ class QueueView:
         self.route_scene = QGraphicsScene() if route_graphics_view is not None else None
         self.route_svg_renderer = None
         self.route_svg_item = None
+        self.last_render_signature = None
 
         self.setup_route_graphics_view()
         self.transfers_table.itemSelectionChanged.connect(self.handle_transfer_selection)
@@ -39,9 +40,14 @@ class QueueView:
         pending_transfers = self.branch_manager.get_pending_transfers()
         load_transfer_queue_table(self.transfers_table, pending_transfers, self.branch_manager)
 
-        if selected_transfer is not None:
-            self.restore_selected_transfer(selected_transfer)
+        if selected_transfer is None:
+            self.clear_route_preview()
+            return
+
+        if self.restore_selected_transfer(selected_transfer):
             self.render_selected_transfer_route(selected_transfer)
+        else:
+            self.clear_route_preview()
 
     def restore_selected_transfer(self, selected_transfer):
         for row in range(self.transfers_table.rowCount()):
@@ -54,7 +60,9 @@ class QueueView:
 
             if transfer_request is selected_transfer:
                 self.transfers_table.selectRow(row)
-                return
+                return True
+
+        return False
 
     def get_selected_transfer(self):
         selected_items = self.transfers_table.selectedItems()
@@ -64,15 +72,21 @@ class QueueView:
 
         return selected_items[0].data(Qt.ItemDataRole.UserRole)
 
+    def clear_route_preview(self):
+        self.last_render_signature = None
+
+        if self.route_scene is not None:
+            self.route_scene.clear()
+
+        self.route_svg_renderer = None
+        self.route_svg_item = None
+
     def render_selected_transfer_route(self, transfer_request):
         if self.route_graphics_view is None or self.route_scene is None:
             return
 
-        self.route_scene.clear()
-        self.route_svg_renderer = None
-        self.route_svg_item = None
-
         if not transfer_request.path:
+            self.clear_route_preview()
             self.route_scene.addText("No existe ruta para visualizar")
             return
 
@@ -80,6 +94,20 @@ class QueueView:
         highlighted_time_path = transfer_request.path if criterion == "time" else None
         highlighted_cost_path = transfer_request.path if criterion == "cost" else None
         current_branch_id = transfer_request.get_current_branch_id()
+        render_signature = (
+            id(transfer_request),
+            tuple(transfer_request.path),
+            criterion,
+            current_branch_id,
+        )
+
+        if render_signature == self.last_render_signature:
+            return
+
+        self.last_render_signature = render_signature
+        self.route_scene.clear()
+        self.route_svg_renderer = None
+        self.route_svg_item = None
 
         svg_data = build_branch_graph_svg(
             self.branch_manager.get_branches(),
@@ -109,6 +137,7 @@ class QueueView:
         transfer_request = self.get_selected_transfer()
 
         if transfer_request is None:
+            self.clear_route_preview()
             return
 
         if self.result_label is not None:
