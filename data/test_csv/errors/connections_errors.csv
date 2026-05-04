@@ -1,0 +1,5 @@
+OrigenID,DestinoID,Tiempo,Costo,Bidireccional
+101,999,5,3,true
+101,102,fast,4,true
+101,103,8
+A,102,6,2,true

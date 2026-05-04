@@ -21,7 +21,7 @@ from app.gui.helpers.table_setup import (
 class MainWindow(QMainWindow):
     # Set to True to preload the built-in demo branches and products.
     # This keeps demo data available without leaving ad hoc commented lines.
-    USE_DEMO_DATA = True
+    USE_DEMO_DATA = False
 
     def __init__(self):
         super().__init__()

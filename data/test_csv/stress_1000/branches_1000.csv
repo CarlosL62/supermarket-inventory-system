@@ -1,0 +1,6 @@
+ID,Nombre,Ubicación,t_ingreso,t_traspaso,t_despacho
+201,Stress Central,Zone 1,20,18,25
+202,Stress North,Zone 5,18,15,22
+203,Stress South,Zone 12,22,20,28
+204,Stress West,Zone 7,25,22,30
+205,Stress East,Zone 15,20,18,26

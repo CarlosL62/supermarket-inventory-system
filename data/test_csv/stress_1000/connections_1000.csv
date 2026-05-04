@@ -1,0 +1,7 @@
+OrigenID,DestinoID,Tiempo,Costo,Bidireccional
+201,202,45,3,true
+201,203,35,9,true
+202,204,40,2,true
+203,204,30,10,true
+204,205,42,6,true
+202,205,55,4,true

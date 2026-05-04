@@ -1,0 +1,5 @@
+ID,Nombre,Ubicación,t_ingreso,t_traspaso,t_despacho
+ABC,Invalid ID Branch,Zone X,5,3,8
+301,,Zone 4,4,2,6
+302,Bad Time Branch,Zone 5,five,3,9
+303,Incomplete Branch,Zone 6,4

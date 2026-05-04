@@ -4,3 +4,4 @@ SucursalID,Nombre,CodigoBarra,Categoria,FechaCaducidad,Marca,Precio,Stock
 999,Missing Branch,3000000090,Test,2027-01-01,Brand,10.0,5
 101,Bad Price,3000000091,Test,2027-01-01,Brand,Q10,5
 101,Empty Category,3000000092,,2027-01-01,Brand,10.0,5
+101,,3000000093,Test,2027-01-01,Brand,10.0,5

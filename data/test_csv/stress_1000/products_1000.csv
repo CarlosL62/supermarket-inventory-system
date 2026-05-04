@@ -1,0 +1,1001 @@
+SucursalID,Nombre,CodigoBarra,Categoria,FechaCaducidad,Marca,Precio,Stock
+201,Stress Product 0001,4000000001,Dairy,2026-01-02,"Fresh Drinks, S.A.",3.25,6
+202,Stress Product 0002,4000000002,Pantry,2026-01-03,Happy Grain,4.0,7
+203,Stress Product 0003,4000000003,Drinks,2026-01-04,La Vaquita,4.75,8
+204,Stress Product 0004,4000000004,Cleaning,2026-01-05,Clean Max,5.5,9
+205,Stress Product 0005,4000000005,Bakery,2026-01-06,Blue Sea,6.25,10
+201,Stress Product 0006,4000000006,Snacks,2026-01-07,Cafe Chapin,7.0,11
+202,Stress Product 0007,4000000007,Hygiene,2026-01-08,"Fruits Company, Inc.",7.75,12
+203,Stress Product 0008,4000000008,Fruits,2026-01-09,"Fresh Drinks, S.A.",8.5,13
+204,Stress Product 0009,4000000009,Dairy,2026-01-10,Happy Grain,9.25,14
+205,Stress Product 0010,4000000010,Pantry,2026-01-11,La Vaquita,10.0,15
+201,Stress Product 0011,4000000011,Drinks,2026-01-12,Clean Max,10.75,16
+202,Stress Product 0012,4000000012,Cleaning,2026-01-13,Blue Sea,11.5,17
+203,Stress Product 0013,4000000013,Bakery,2026-01-14,Cafe Chapin,12.25,18
+204,Stress Product 0014,4000000014,Snacks,2026-01-15,"Fruits Company, Inc.",13.0,19
+205,Stress Product 0015,4000000015,Hygiene,2026-01-16,"Fresh Drinks, S.A.",13.75,20
+201,Stress Product 0016,4000000016,Fruits,2026-01-17,Happy Grain,14.5,21
+202,Stress Product 0017,4000000017,Dairy,2026-01-18,La Vaquita,15.25,22
+203,Stress Product 0018,4000000018,Pantry,2026-01-19,Clean Max,16.0,23
+204,Stress Product 0019,4000000019,Drinks,2026-01-20,Blue Sea,16.75,24
+205,Stress Product 0020,4000000020,Cleaning,2026-01-21,Cafe Chapin,17.5,25
+201,Stress Product 0021,4000000021,Bakery,2026-01-22,"Fruits Company, Inc.",18.25,26
+202,Stress Product 0022,4000000022,Snacks,2026-01-23,"Fresh Drinks, S.A.",19.0,27
+203,Stress Product 0023,4000000023,Hygiene,2026-01-24,Happy Grain,19.75,28
+204,Stress Product 0024,4000000024,Fruits,2026-01-25,La Vaquita,20.5,29
+205,Stress Product 0025,4000000025,Dairy,2026-01-26,Clean Max,21.25,30
+201,Stress Product 0026,4000000026,Pantry,2026-01-27,Blue Sea,22.0,31
+202,Stress Product 0027,4000000027,Drinks,2026-01-28,Cafe Chapin,22.75,32
+203,Stress Product 0028,4000000028,Cleaning,2026-01-29,"Fruits Company, Inc.",23.5,33
+204,Stress Product 0029,4000000029,Bakery,2026-01-30,"Fresh Drinks, S.A.",24.25,34
+205,Stress Product 0030,4000000030,Snacks,2026-01-31,Happy Grain,25.0,35
+201,Stress Product 0031,4000000031,Hygiene,2026-02-01,La Vaquita,25.75,36
+202,Stress Product 0032,4000000032,Fruits,2026-02-02,Clean Max,26.5,37
+203,Stress Product 0033,4000000033,Dairy,2026-02-03,Blue Sea,27.25,38
+204,Stress Product 0034,4000000034,Pantry,2026-02-04,Cafe Chapin,28.0,39
+205,Stress Product 0035,4000000035,Drinks,2026-02-05,"Fruits Company, Inc.",28.75,40
+201,Stress Product 0036,4000000036,Cleaning,2026-02-06,"Fresh Drinks, S.A.",29.5,41
+202,Stress Product 0037,4000000037,Bakery,2026-02-07,Happy Grain,30.25,42
+203,Stress Product 0038,4000000038,Snacks,2026-02-08,La Vaquita,31.0,43
+204,Stress Product 0039,4000000039,Hygiene,2026-02-09,Clean Max,31.75,44
+205,Stress Product 0040,4000000040,Fruits,2026-02-10,Blue Sea,32.5,45
+201,Stress Product 0041,4000000041,Dairy,2026-02-11,Cafe Chapin,33.25,46
+202,Stress Product 0042,4000000042,Pantry,2026-02-12,"Fruits Company, Inc.",34.0,47
+203,Stress Product 0043,4000000043,Drinks,2026-02-13,"Fresh Drinks, S.A.",34.75,48
+204,Stress Product 0044,4000000044,Cleaning,2026-02-14,Happy Grain,35.5,49
+205,Stress Product 0045,4000000045,Bakery,2026-02-15,La Vaquita,36.25,50
+201,Stress Product 0046,4000000046,Snacks,2026-02-16,Clean Max,37.0,51
+202,Stress Product 0047,4000000047,Hygiene,2026-02-17,Blue Sea,37.75,52
+203,Stress Product 0048,4000000048,Fruits,2026-02-18,Cafe Chapin,38.5,53
+204,Stress Product 0049,4000000049,Dairy,2026-02-19,"Fruits Company, Inc.",39.25,54
+205,Stress Product 0050,4000000050,Pantry,2026-02-20,"Fresh Drinks, S.A.",40.0,55
+201,Stress Product 0051,4000000051,Drinks,2026-02-21,Happy Grain,40.75,56
+202,Stress Product 0052,4000000052,Cleaning,2026-02-22,La Vaquita,41.5,57
+203,Stress Product 0053,4000000053,Bakery,2026-02-23,Clean Max,42.25,58
+204,Stress Product 0054,4000000054,Snacks,2026-02-24,Blue Sea,43.0,59
+205,Stress Product 0055,4000000055,Hygiene,2026-02-25,Cafe Chapin,43.75,60
+201,Stress Product 0056,4000000056,Fruits,2026-02-26,"Fruits Company, Inc.",44.5,61
+202,Stress Product 0057,4000000057,Dairy,2026-02-27,"Fresh Drinks, S.A.",45.25,62
+203,Stress Product 0058,4000000058,Pantry,2026-02-28,Happy Grain,46.0,63
+204,Stress Product 0059,4000000059,Drinks,2026-03-01,La Vaquita,46.75,64
+205,Stress Product 0060,4000000060,Cleaning,2026-03-02,Clean Max,47.5,65
+201,Stress Product 0061,4000000061,Bakery,2026-03-03,Blue Sea,48.25,66
+202,Stress Product 0062,4000000062,Snacks,2026-03-04,Cafe Chapin,49.0,67
+203,Stress Product 0063,4000000063,Hygiene,2026-03-05,"Fruits Company, Inc.",49.75,68
+204,Stress Product 0064,4000000064,Fruits,2026-03-06,"Fresh Drinks, S.A.",50.5,69
+205,Stress Product 0065,4000000065,Dairy,2026-03-07,Happy Grain,51.25,70
+201,Stress Product 0066,4000000066,Pantry,2026-03-08,La Vaquita,52.0,71
+202,Stress Product 0067,4000000067,Drinks,2026-03-09,Clean Max,52.75,72
+203,Stress Product 0068,4000000068,Cleaning,2026-03-10,Blue Sea,53.5,73
+204,Stress Product 0069,4000000069,Bakery,2026-03-11,Cafe Chapin,54.25,74
+205,Stress Product 0070,4000000070,Snacks,2026-03-12,"Fruits Company, Inc.",55.0,75
+201,Stress Product 0071,4000000071,Hygiene,2026-03-13,"Fresh Drinks, S.A.",55.75,76
+202,Stress Product 0072,4000000072,Fruits,2026-03-14,Happy Grain,56.5,77
+203,Stress Product 0073,4000000073,Dairy,2026-03-15,La Vaquita,57.25,78
+204,Stress Product 0074,4000000074,Pantry,2026-03-16,Clean Max,58.0,79
+205,Stress Product 0075,4000000075,Drinks,2026-03-17,Blue Sea,58.75,80
+201,Stress Product 0076,4000000076,Cleaning,2026-03-18,Cafe Chapin,59.5,81
+202,Stress Product 0077,4000000077,Bakery,2026-03-19,"Fruits Company, Inc.",60.25,82
+203,Stress Product 0078,4000000078,Snacks,2026-03-20,"Fresh Drinks, S.A.",61.0,83
+204,Stress Product 0079,4000000079,Hygiene,2026-03-21,Happy Grain,61.75,84
+205,Stress Product 0080,4000000080,Fruits,2026-03-22,La Vaquita,62.5,85
+201,Stress Product 0081,4000000081,Dairy,2026-03-23,Clean Max,63.25,86
+202,Stress Product 0082,4000000082,Pantry,2026-03-24,Blue Sea,64.0,87
+203,Stress Product 0083,4000000083,Drinks,2026-03-25,Cafe Chapin,64.75,88
+204,Stress Product 0084,4000000084,Cleaning,2026-03-26,"Fruits Company, Inc.",65.5,89
+205,Stress Product 0085,4000000085,Bakery,2026-03-27,"Fresh Drinks, S.A.",66.25,90
+201,Stress Product 0086,4000000086,Snacks,2026-03-28,Happy Grain,67.0,91
+202,Stress Product 0087,4000000087,Hygiene,2026-03-29,La Vaquita,67.75,92
+203,Stress Product 0088,4000000088,Fruits,2026-03-30,Clean Max,68.5,93
+204,Stress Product 0089,4000000089,Dairy,2026-03-31,Blue Sea,69.25,94
+205,Stress Product 0090,4000000090,Pantry,2026-04-01,Cafe Chapin,70.0,95
+201,Stress Product 0091,4000000091,Drinks,2026-04-02,"Fruits Company, Inc.",70.75,96
+202,Stress Product 0092,4000000092,Cleaning,2026-04-03,"Fresh Drinks, S.A.",71.5,97
+203,Stress Product 0093,4000000093,Bakery,2026-04-04,Happy Grain,72.25,98
+204,Stress Product 0094,4000000094,Snacks,2026-04-05,La Vaquita,73.0,99
+205,Stress Product 0095,4000000095,Hygiene,2026-04-06,Clean Max,73.75,5
+201,Stress Product 0096,4000000096,Fruits,2026-04-07,Blue Sea,74.5,6
+202,Stress Product 0097,4000000097,Dairy,2026-04-08,Cafe Chapin,75.25,7
+203,Stress Product 0098,4000000098,Pantry,2026-04-09,"Fruits Company, Inc.",76.0,8
+204,Stress Product 0099,4000000099,Drinks,2026-04-10,"Fresh Drinks, S.A.",76.75,9
+205,Stress Product 0100,4000000100,Cleaning,2026-04-11,Happy Grain,77.5,10
+201,Stress Product 0101,4000000101,Bakery,2026-04-12,La Vaquita,78.25,11
+202,Stress Product 0102,4000000102,Snacks,2026-04-13,Clean Max,79.0,12
+203,Stress Product 0103,4000000103,Hygiene,2026-04-14,Blue Sea,79.75,13
+204,Stress Product 0104,4000000104,Fruits,2026-04-15,Cafe Chapin,80.5,14
+205,Stress Product 0105,4000000105,Dairy,2026-04-16,"Fruits Company, Inc.",81.25,15
+201,Stress Product 0106,4000000106,Pantry,2026-04-17,"Fresh Drinks, S.A.",82.0,16
+202,Stress Product 0107,4000000107,Drinks,2026-04-18,Happy Grain,82.75,17
+203,Stress Product 0108,4000000108,Cleaning,2026-04-19,La Vaquita,83.5,18
+204,Stress Product 0109,4000000109,Bakery,2026-04-20,Clean Max,84.25,19
+205,Stress Product 0110,4000000110,Snacks,2026-04-21,Blue Sea,85.0,20
+201,Stress Product 0111,4000000111,Hygiene,2026-04-22,Cafe Chapin,85.75,21
+202,Stress Product 0112,4000000112,Fruits,2026-04-23,"Fruits Company, Inc.",86.5,22
+203,Stress Product 0113,4000000113,Dairy,2026-04-24,"Fresh Drinks, S.A.",87.25,23
+204,Stress Product 0114,4000000114,Pantry,2026-04-25,Happy Grain,88.0,24
+205,Stress Product 0115,4000000115,Drinks,2026-04-26,La Vaquita,88.75,25
+201,Stress Product 0116,4000000116,Cleaning,2026-04-27,Clean Max,89.5,26
+202,Stress Product 0117,4000000117,Bakery,2026-04-28,Blue Sea,90.25,27
+203,Stress Product 0118,4000000118,Snacks,2026-04-29,Cafe Chapin,91.0,28
+204,Stress Product 0119,4000000119,Hygiene,2026-04-30,"Fruits Company, Inc.",91.75,29
+205,Stress Product 0120,4000000120,Fruits,2026-05-01,"Fresh Drinks, S.A.",2.5,30
+201,Stress Product 0121,4000000121,Dairy,2026-05-02,Happy Grain,3.25,31
+202,Stress Product 0122,4000000122,Pantry,2026-05-03,La Vaquita,4.0,32
+203,Stress Product 0123,4000000123,Drinks,2026-05-04,Clean Max,4.75,33
+204,Stress Product 0124,4000000124,Cleaning,2026-05-05,Blue Sea,5.5,34
+205,Stress Product 0125,4000000125,Bakery,2026-05-06,Cafe Chapin,6.25,35
+201,Stress Product 0126,4000000126,Snacks,2026-05-07,"Fruits Company, Inc.",7.0,36
+202,Stress Product 0127,4000000127,Hygiene,2026-05-08,"Fresh Drinks, S.A.",7.75,37
+203,Stress Product 0128,4000000128,Fruits,2026-05-09,Happy Grain,8.5,38
+204,Stress Product 0129,4000000129,Dairy,2026-05-10,La Vaquita,9.25,39
+205,Stress Product 0130,4000000130,Pantry,2026-05-11,Clean Max,10.0,40
+201,Stress Product 0131,4000000131,Drinks,2026-05-12,Blue Sea,10.75,41
+202,Stress Product 0132,4000000132,Cleaning,2026-05-13,Cafe Chapin,11.5,42
+203,Stress Product 0133,4000000133,Bakery,2026-05-14,"Fruits Company, Inc.",12.25,43
+204,Stress Product 0134,4000000134,Snacks,2026-05-15,"Fresh Drinks, S.A.",13.0,44
+205,Stress Product 0135,4000000135,Hygiene,2026-05-16,Happy Grain,13.75,45
+201,Stress Product 0136,4000000136,Fruits,2026-05-17,La Vaquita,14.5,46
+202,Stress Product 0137,4000000137,Dairy,2026-05-18,Clean Max,15.25,47
+203,Stress Product 0138,4000000138,Pantry,2026-05-19,Blue Sea,16.0,48
+204,Stress Product 0139,4000000139,Drinks,2026-05-20,Cafe Chapin,16.75,49
+205,Stress Product 0140,4000000140,Cleaning,2026-05-21,"Fruits Company, Inc.",17.5,50
+201,Stress Product 0141,4000000141,Bakery,2026-05-22,"Fresh Drinks, S.A.",18.25,51
+202,Stress Product 0142,4000000142,Snacks,2026-05-23,Happy Grain,19.0,52
+203,Stress Product 0143,4000000143,Hygiene,2026-05-24,La Vaquita,19.75,53
+204,Stress Product 0144,4000000144,Fruits,2026-05-25,Clean Max,20.5,54
+205,Stress Product 0145,4000000145,Dairy,2026-05-26,Blue Sea,21.25,55
+201,Stress Product 0146,4000000146,Pantry,2026-05-27,Cafe Chapin,22.0,56
+202,Stress Product 0147,4000000147,Drinks,2026-05-28,"Fruits Company, Inc.",22.75,57
+203,Stress Product 0148,4000000148,Cleaning,2026-05-29,"Fresh Drinks, S.A.",23.5,58
+204,Stress Product 0149,4000000149,Bakery,2026-05-30,Happy Grain,24.25,59
+205,Stress Product 0150,4000000150,Snacks,2026-05-31,La Vaquita,25.0,60
+201,Stress Product 0151,4000000151,Hygiene,2026-06-01,Clean Max,25.75,61
+202,Stress Product 0152,4000000152,Fruits,2026-06-02,Blue Sea,26.5,62
+203,Stress Product 0153,4000000153,Dairy,2026-06-03,Cafe Chapin,27.25,63
+204,Stress Product 0154,4000000154,Pantry,2026-06-04,"Fruits Company, Inc.",28.0,64
+205,Stress Product 0155,4000000155,Drinks,2026-06-05,"Fresh Drinks, S.A.",28.75,65
+201,Stress Product 0156,4000000156,Cleaning,2026-06-06,Happy Grain,29.5,66
+202,Stress Product 0157,4000000157,Bakery,2026-06-07,La Vaquita,30.25,67
+203,Stress Product 0158,4000000158,Snacks,2026-06-08,Clean Max,31.0,68
+204,Stress Product 0159,4000000159,Hygiene,2026-06-09,Blue Sea,31.75,69
+205,Stress Product 0160,4000000160,Fruits,2026-06-10,Cafe Chapin,32.5,70
+201,Stress Product 0161,4000000161,Dairy,2026-06-11,"Fruits Company, Inc.",33.25,71
+202,Stress Product 0162,4000000162,Pantry,2026-06-12,"Fresh Drinks, S.A.",34.0,72
+203,Stress Product 0163,4000000163,Drinks,2026-06-13,Happy Grain,34.75,73
+204,Stress Product 0164,4000000164,Cleaning,2026-06-14,La Vaquita,35.5,74
+205,Stress Product 0165,4000000165,Bakery,2026-06-15,Clean Max,36.25,75
+201,Stress Product 0166,4000000166,Snacks,2026-06-16,Blue Sea,37.0,76
+202,Stress Product 0167,4000000167,Hygiene,2026-06-17,Cafe Chapin,37.75,77
+203,Stress Product 0168,4000000168,Fruits,2026-06-18,"Fruits Company, Inc.",38.5,78
+204,Stress Product 0169,4000000169,Dairy,2026-06-19,"Fresh Drinks, S.A.",39.25,79
+205,Stress Product 0170,4000000170,Pantry,2026-06-20,Happy Grain,40.0,80
+201,Stress Product 0171,4000000171,Drinks,2026-06-21,La Vaquita,40.75,81
+202,Stress Product 0172,4000000172,Cleaning,2026-06-22,Clean Max,41.5,82
+203,Stress Product 0173,4000000173,Bakery,2026-06-23,Blue Sea,42.25,83
+204,Stress Product 0174,4000000174,Snacks,2026-06-24,Cafe Chapin,43.0,84
+205,Stress Product 0175,4000000175,Hygiene,2026-06-25,"Fruits Company, Inc.",43.75,85
+201,Stress Product 0176,4000000176,Fruits,2026-06-26,"Fresh Drinks, S.A.",44.5,86
+202,Stress Product 0177,4000000177,Dairy,2026-06-27,Happy Grain,45.25,87
+203,Stress Product 0178,4000000178,Pantry,2026-06-28,La Vaquita,46.0,88
+204,Stress Product 0179,4000000179,Drinks,2026-06-29,Clean Max,46.75,89
+205,Stress Product 0180,4000000180,Cleaning,2026-06-30,Blue Sea,47.5,90
+201,Stress Product 0181,4000000181,Bakery,2026-07-01,Cafe Chapin,48.25,91
+202,Stress Product 0182,4000000182,Snacks,2026-07-02,"Fruits Company, Inc.",49.0,92
+203,Stress Product 0183,4000000183,Hygiene,2026-07-03,"Fresh Drinks, S.A.",49.75,93
+204,Stress Product 0184,4000000184,Fruits,2026-07-04,Happy Grain,50.5,94
+205,Stress Product 0185,4000000185,Dairy,2026-07-05,La Vaquita,51.25,95
+201,Stress Product 0186,4000000186,Pantry,2026-07-06,Clean Max,52.0,96
+202,Stress Product 0187,4000000187,Drinks,2026-07-07,Blue Sea,52.75,97
+203,Stress Product 0188,4000000188,Cleaning,2026-07-08,Cafe Chapin,53.5,98
+204,Stress Product 0189,4000000189,Bakery,2026-07-09,"Fruits Company, Inc.",54.25,99
+205,Stress Product 0190,4000000190,Snacks,2026-07-10,"Fresh Drinks, S.A.",55.0,5
+201,Stress Product 0191,4000000191,Hygiene,2026-07-11,Happy Grain,55.75,6
+202,Stress Product 0192,4000000192,Fruits,2026-07-12,La Vaquita,56.5,7
+203,Stress Product 0193,4000000193,Dairy,2026-07-13,Clean Max,57.25,8
+204,Stress Product 0194,4000000194,Pantry,2026-07-14,Blue Sea,58.0,9
+205,Stress Product 0195,4000000195,Drinks,2026-07-15,Cafe Chapin,58.75,10
+201,Stress Product 0196,4000000196,Cleaning,2026-07-16,"Fruits Company, Inc.",59.5,11
+202,Stress Product 0197,4000000197,Bakery,2026-07-17,"Fresh Drinks, S.A.",60.25,12
+203,Stress Product 0198,4000000198,Snacks,2026-07-18,Happy Grain,61.0,13
+204,Stress Product 0199,4000000199,Hygiene,2026-07-19,La Vaquita,61.75,14
+205,Stress Product 0200,4000000200,Fruits,2026-07-20,Clean Max,62.5,15
+201,Stress Product 0201,4000000201,Dairy,2026-07-21,Blue Sea,63.25,16
+202,Stress Product 0202,4000000202,Pantry,2026-07-22,Cafe Chapin,64.0,17
+203,Stress Product 0203,4000000203,Drinks,2026-07-23,"Fruits Company, Inc.",64.75,18
+204,Stress Product 0204,4000000204,Cleaning,2026-07-24,"Fresh Drinks, S.A.",65.5,19
+205,Stress Product 0205,4000000205,Bakery,2026-07-25,Happy Grain,66.25,20
+201,Stress Product 0206,4000000206,Snacks,2026-07-26,La Vaquita,67.0,21
+202,Stress Product 0207,4000000207,Hygiene,2026-07-27,Clean Max,67.75,22
+203,Stress Product 0208,4000000208,Fruits,2026-07-28,Blue Sea,68.5,23
+204,Stress Product 0209,4000000209,Dairy,2026-07-29,Cafe Chapin,69.25,24
+205,Stress Product 0210,4000000210,Pantry,2026-07-30,"Fruits Company, Inc.",70.0,25
+201,Stress Product 0211,4000000211,Drinks,2026-07-31,"Fresh Drinks, S.A.",70.75,26
+202,Stress Product 0212,4000000212,Cleaning,2026-08-01,Happy Grain,71.5,27
+203,Stress Product 0213,4000000213,Bakery,2026-08-02,La Vaquita,72.25,28
+204,Stress Product 0214,4000000214,Snacks,2026-08-03,Clean Max,73.0,29
+205,Stress Product 0215,4000000215,Hygiene,2026-08-04,Blue Sea,73.75,30
+201,Stress Product 0216,4000000216,Fruits,2026-08-05,Cafe Chapin,74.5,31
+202,Stress Product 0217,4000000217,Dairy,2026-08-06,"Fruits Company, Inc.",75.25,32
+203,Stress Product 0218,4000000218,Pantry,2026-08-07,"Fresh Drinks, S.A.",76.0,33
+204,Stress Product 0219,4000000219,Drinks,2026-08-08,Happy Grain,76.75,34
+205,Stress Product 0220,4000000220,Cleaning,2026-08-09,La Vaquita,77.5,35
+201,Stress Product 0221,4000000221,Bakery,2026-08-10,Clean Max,78.25,36
+202,Stress Product 0222,4000000222,Snacks,2026-08-11,Blue Sea,79.0,37
+203,Stress Product 0223,4000000223,Hygiene,2026-08-12,Cafe Chapin,79.75,38
+204,Stress Product 0224,4000000224,Fruits,2026-08-13,"Fruits Company, Inc.",80.5,39
+205,Stress Product 0225,4000000225,Dairy,2026-08-14,"Fresh Drinks, S.A.",81.25,40
+201,Stress Product 0226,4000000226,Pantry,2026-08-15,Happy Grain,82.0,41
+202,Stress Product 0227,4000000227,Drinks,2026-08-16,La Vaquita,82.75,42
+203,Stress Product 0228,4000000228,Cleaning,2026-08-17,Clean Max,83.5,43
+204,Stress Product 0229,4000000229,Bakery,2026-08-18,Blue Sea,84.25,44
+205,Stress Product 0230,4000000230,Snacks,2026-08-19,Cafe Chapin,85.0,45
+201,Stress Product 0231,4000000231,Hygiene,2026-08-20,"Fruits Company, Inc.",85.75,46
+202,Stress Product 0232,4000000232,Fruits,2026-08-21,"Fresh Drinks, S.A.",86.5,47
+203,Stress Product 0233,4000000233,Dairy,2026-08-22,Happy Grain,87.25,48
+204,Stress Product 0234,4000000234,Pantry,2026-08-23,La Vaquita,88.0,49
+205,Stress Product 0235,4000000235,Drinks,2026-08-24,Clean Max,88.75,50
+201,Stress Product 0236,4000000236,Cleaning,2026-08-25,Blue Sea,89.5,51
+202,Stress Product 0237,4000000237,Bakery,2026-08-26,Cafe Chapin,90.25,52
+203,Stress Product 0238,4000000238,Snacks,2026-08-27,"Fruits Company, Inc.",91.0,53
+204,Stress Product 0239,4000000239,Hygiene,2026-08-28,"Fresh Drinks, S.A.",91.75,54
+205,Stress Product 0240,4000000240,Fruits,2026-08-29,Happy Grain,2.5,55
+201,Stress Product 0241,4000000241,Dairy,2026-08-30,La Vaquita,3.25,56
+202,Stress Product 0242,4000000242,Pantry,2026-08-31,Clean Max,4.0,57
+203,Stress Product 0243,4000000243,Drinks,2026-09-01,Blue Sea,4.75,58
+204,Stress Product 0244,4000000244,Cleaning,2026-09-02,Cafe Chapin,5.5,59
+205,Stress Product 0245,4000000245,Bakery,2026-09-03,"Fruits Company, Inc.",6.25,60
+201,Stress Product 0246,4000000246,Snacks,2026-09-04,"Fresh Drinks, S.A.",7.0,61
+202,Stress Product 0247,4000000247,Hygiene,2026-09-05,Happy Grain,7.75,62
+203,Stress Product 0248,4000000248,Fruits,2026-09-06,La Vaquita,8.5,63
+204,Stress Product 0249,4000000249,Dairy,2026-09-07,Clean Max,9.25,64
+205,Stress Product 0250,4000000250,Pantry,2026-09-08,Blue Sea,10.0,65
+201,Stress Product 0251,4000000251,Drinks,2026-09-09,Cafe Chapin,10.75,66
+202,Stress Product 0252,4000000252,Cleaning,2026-09-10,"Fruits Company, Inc.",11.5,67
+203,Stress Product 0253,4000000253,Bakery,2026-09-11,"Fresh Drinks, S.A.",12.25,68
+204,Stress Product 0254,4000000254,Snacks,2026-09-12,Happy Grain,13.0,69
+205,Stress Product 0255,4000000255,Hygiene,2026-09-13,La Vaquita,13.75,70
+201,Stress Product 0256,4000000256,Fruits,2026-09-14,Clean Max,14.5,71
+202,Stress Product 0257,4000000257,Dairy,2026-09-15,Blue Sea,15.25,72
+203,Stress Product 0258,4000000258,Pantry,2026-09-16,Cafe Chapin,16.0,73
+204,Stress Product 0259,4000000259,Drinks,2026-09-17,"Fruits Company, Inc.",16.75,74
+205,Stress Product 0260,4000000260,Cleaning,2026-09-18,"Fresh Drinks, S.A.",17.5,75
+201,Stress Product 0261,4000000261,Bakery,2026-09-19,Happy Grain,18.25,76
+202,Stress Product 0262,4000000262,Snacks,2026-09-20,La Vaquita,19.0,77
+203,Stress Product 0263,4000000263,Hygiene,2026-09-21,Clean Max,19.75,78
+204,Stress Product 0264,4000000264,Fruits,2026-09-22,Blue Sea,20.5,79
+205,Stress Product 0265,4000000265,Dairy,2026-09-23,Cafe Chapin,21.25,80
+201,Stress Product 0266,4000000266,Pantry,2026-09-24,"Fruits Company, Inc.",22.0,81
+202,Stress Product 0267,4000000267,Drinks,2026-09-25,"Fresh Drinks, S.A.",22.75,82
+203,Stress Product 0268,4000000268,Cleaning,2026-09-26,Happy Grain,23.5,83
+204,Stress Product 0269,4000000269,Bakery,2026-09-27,La Vaquita,24.25,84
+205,Stress Product 0270,4000000270,Snacks,2026-09-28,Clean Max,25.0,85
+201,Stress Product 0271,4000000271,Hygiene,2026-09-29,Blue Sea,25.75,86
+202,Stress Product 0272,4000000272,Fruits,2026-09-30,Cafe Chapin,26.5,87
+203,Stress Product 0273,4000000273,Dairy,2026-10-01,"Fruits Company, Inc.",27.25,88
+204,Stress Product 0274,4000000274,Pantry,2026-10-02,"Fresh Drinks, S.A.",28.0,89
+205,Stress Product 0275,4000000275,Drinks,2026-10-03,Happy Grain,28.75,90
+201,Stress Product 0276,4000000276,Cleaning,2026-10-04,La Vaquita,29.5,91
+202,Stress Product 0277,4000000277,Bakery,2026-10-05,Clean Max,30.25,92
+203,Stress Product 0278,4000000278,Snacks,2026-10-06,Blue Sea,31.0,93
+204,Stress Product 0279,4000000279,Hygiene,2026-10-07,Cafe Chapin,31.75,94
+205,Stress Product 0280,4000000280,Fruits,2026-10-08,"Fruits Company, Inc.",32.5,95
+201,Stress Product 0281,4000000281,Dairy,2026-10-09,"Fresh Drinks, S.A.",33.25,96
+202,Stress Product 0282,4000000282,Pantry,2026-10-10,Happy Grain,34.0,97
+203,Stress Product 0283,4000000283,Drinks,2026-10-11,La Vaquita,34.75,98
+204,Stress Product 0284,4000000284,Cleaning,2026-10-12,Clean Max,35.5,99
+205,Stress Product 0285,4000000285,Bakery,2026-10-13,Blue Sea,36.25,5
+201,Stress Product 0286,4000000286,Snacks,2026-10-14,Cafe Chapin,37.0,6
+202,Stress Product 0287,4000000287,Hygiene,2026-10-15,"Fruits Company, Inc.",37.75,7
+203,Stress Product 0288,4000000288,Fruits,2026-10-16,"Fresh Drinks, S.A.",38.5,8
+204,Stress Product 0289,4000000289,Dairy,2026-10-17,Happy Grain,39.25,9
+205,Stress Product 0290,4000000290,Pantry,2026-10-18,La Vaquita,40.0,10
+201,Stress Product 0291,4000000291,Drinks,2026-10-19,Clean Max,40.75,11
+202,Stress Product 0292,4000000292,Cleaning,2026-10-20,Blue Sea,41.5,12
+203,Stress Product 0293,4000000293,Bakery,2026-10-21,Cafe Chapin,42.25,13
+204,Stress Product 0294,4000000294,Snacks,2026-10-22,"Fruits Company, Inc.",43.0,14
+205,Stress Product 0295,4000000295,Hygiene,2026-10-23,"Fresh Drinks, S.A.",43.75,15
+201,Stress Product 0296,4000000296,Fruits,2026-10-24,Happy Grain,44.5,16
+202,Stress Product 0297,4000000297,Dairy,2026-10-25,La Vaquita,45.25,17
+203,Stress Product 0298,4000000298,Pantry,2026-10-26,Clean Max,46.0,18
+204,Stress Product 0299,4000000299,Drinks,2026-10-27,Blue Sea,46.75,19
+205,Stress Product 0300,4000000300,Cleaning,2026-10-28,Cafe Chapin,47.5,20
+201,Stress Product 0301,4000000301,Bakery,2026-10-29,"Fruits Company, Inc.",48.25,21
+202,Stress Product 0302,4000000302,Snacks,2026-10-30,"Fresh Drinks, S.A.",49.0,22
+203,Stress Product 0303,4000000303,Hygiene,2026-10-31,Happy Grain,49.75,23
+204,Stress Product 0304,4000000304,Fruits,2026-11-01,La Vaquita,50.5,24
+205,Stress Product 0305,4000000305,Dairy,2026-11-02,Clean Max,51.25,25
+201,Stress Product 0306,4000000306,Pantry,2026-11-03,Blue Sea,52.0,26
+202,Stress Product 0307,4000000307,Drinks,2026-11-04,Cafe Chapin,52.75,27
+203,Stress Product 0308,4000000308,Cleaning,2026-11-05,"Fruits Company, Inc.",53.5,28
+204,Stress Product 0309,4000000309,Bakery,2026-11-06,"Fresh Drinks, S.A.",54.25,29
+205,Stress Product 0310,4000000310,Snacks,2026-11-07,Happy Grain,55.0,30
+201,Stress Product 0311,4000000311,Hygiene,2026-11-08,La Vaquita,55.75,31
+202,Stress Product 0312,4000000312,Fruits,2026-11-09,Clean Max,56.5,32
+203,Stress Product 0313,4000000313,Dairy,2026-11-10,Blue Sea,57.25,33
+204,Stress Product 0314,4000000314,Pantry,2026-11-11,Cafe Chapin,58.0,34
+205,Stress Product 0315,4000000315,Drinks,2026-11-12,"Fruits Company, Inc.",58.75,35
+201,Stress Product 0316,4000000316,Cleaning,2026-11-13,"Fresh Drinks, S.A.",59.5,36
+202,Stress Product 0317,4000000317,Bakery,2026-11-14,Happy Grain,60.25,37
+203,Stress Product 0318,4000000318,Snacks,2026-11-15,La Vaquita,61.0,38
+204,Stress Product 0319,4000000319,Hygiene,2026-11-16,Clean Max,61.75,39
+205,Stress Product 0320,4000000320,Fruits,2026-11-17,Blue Sea,62.5,40
+201,Stress Product 0321,4000000321,Dairy,2026-11-18,Cafe Chapin,63.25,41
+202,Stress Product 0322,4000000322,Pantry,2026-11-19,"Fruits Company, Inc.",64.0,42
+203,Stress Product 0323,4000000323,Drinks,2026-11-20,"Fresh Drinks, S.A.",64.75,43
+204,Stress Product 0324,4000000324,Cleaning,2026-11-21,Happy Grain,65.5,44
+205,Stress Product 0325,4000000325,Bakery,2026-11-22,La Vaquita,66.25,45
+201,Stress Product 0326,4000000326,Snacks,2026-11-23,Clean Max,67.0,46
+202,Stress Product 0327,4000000327,Hygiene,2026-11-24,Blue Sea,67.75,47
+203,Stress Product 0328,4000000328,Fruits,2026-11-25,Cafe Chapin,68.5,48
+204,Stress Product 0329,4000000329,Dairy,2026-11-26,"Fruits Company, Inc.",69.25,49
+205,Stress Product 0330,4000000330,Pantry,2026-11-27,"Fresh Drinks, S.A.",70.0,50
+201,Stress Product 0331,4000000331,Drinks,2026-11-28,Happy Grain,70.75,51
+202,Stress Product 0332,4000000332,Cleaning,2026-11-29,La Vaquita,71.5,52
+203,Stress Product 0333,4000000333,Bakery,2026-11-30,Clean Max,72.25,53
+204,Stress Product 0334,4000000334,Snacks,2026-12-01,Blue Sea,73.0,54
+205,Stress Product 0335,4000000335,Hygiene,2026-12-02,Cafe Chapin,73.75,55
+201,Stress Product 0336,4000000336,Fruits,2026-12-03,"Fruits Company, Inc.",74.5,56
+202,Stress Product 0337,4000000337,Dairy,2026-12-04,"Fresh Drinks, S.A.",75.25,57
+203,Stress Product 0338,4000000338,Pantry,2026-12-05,Happy Grain,76.0,58
+204,Stress Product 0339,4000000339,Drinks,2026-12-06,La Vaquita,76.75,59
+205,Stress Product 0340,4000000340,Cleaning,2026-12-07,Clean Max,77.5,60
+201,Stress Product 0341,4000000341,Bakery,2026-12-08,Blue Sea,78.25,61
+202,Stress Product 0342,4000000342,Snacks,2026-12-09,Cafe Chapin,79.0,62
+203,Stress Product 0343,4000000343,Hygiene,2026-12-10,"Fruits Company, Inc.",79.75,63
+204,Stress Product 0344,4000000344,Fruits,2026-12-11,"Fresh Drinks, S.A.",80.5,64
+205,Stress Product 0345,4000000345,Dairy,2026-12-12,Happy Grain,81.25,65
+201,Stress Product 0346,4000000346,Pantry,2026-12-13,La Vaquita,82.0,66
+202,Stress Product 0347,4000000347,Drinks,2026-12-14,Clean Max,82.75,67
+203,Stress Product 0348,4000000348,Cleaning,2026-12-15,Blue Sea,83.5,68
+204,Stress Product 0349,4000000349,Bakery,2026-12-16,Cafe Chapin,84.25,69
+205,Stress Product 0350,4000000350,Snacks,2026-12-17,"Fruits Company, Inc.",85.0,70
+201,Stress Product 0351,4000000351,Hygiene,2026-12-18,"Fresh Drinks, S.A.",85.75,71
+202,Stress Product 0352,4000000352,Fruits,2026-12-19,Happy Grain,86.5,72
+203,Stress Product 0353,4000000353,Dairy,2026-12-20,La Vaquita,87.25,73
+204,Stress Product 0354,4000000354,Pantry,2026-12-21,Clean Max,88.0,74
+205,Stress Product 0355,4000000355,Drinks,2026-12-22,Blue Sea,88.75,75
+201,Stress Product 0356,4000000356,Cleaning,2026-12-23,Cafe Chapin,89.5,76
+202,Stress Product 0357,4000000357,Bakery,2026-12-24,"Fruits Company, Inc.",90.25,77
+203,Stress Product 0358,4000000358,Snacks,2026-12-25,"Fresh Drinks, S.A.",91.0,78
+204,Stress Product 0359,4000000359,Hygiene,2026-12-26,Happy Grain,91.75,79
+205,Stress Product 0360,4000000360,Fruits,2026-12-27,La Vaquita,2.5,80
+201,Stress Product 0361,4000000361,Dairy,2026-12-28,Clean Max,3.25,81
+202,Stress Product 0362,4000000362,Pantry,2026-12-29,Blue Sea,4.0,82
+203,Stress Product 0363,4000000363,Drinks,2026-12-30,Cafe Chapin,4.75,83
+204,Stress Product 0364,4000000364,Cleaning,2026-12-31,"Fruits Company, Inc.",5.5,84
+205,Stress Product 0365,4000000365,Bakery,2027-01-01,"Fresh Drinks, S.A.",6.25,85
+201,Stress Product 0366,4000000366,Snacks,2027-01-02,Happy Grain,7.0,86
+202,Stress Product 0367,4000000367,Hygiene,2027-01-03,La Vaquita,7.75,87
+203,Stress Product 0368,4000000368,Fruits,2027-01-04,Clean Max,8.5,88
+204,Stress Product 0369,4000000369,Dairy,2027-01-05,Blue Sea,9.25,89
+205,Stress Product 0370,4000000370,Pantry,2027-01-06,Cafe Chapin,10.0,90
+201,Stress Product 0371,4000000371,Drinks,2027-01-07,"Fruits Company, Inc.",10.75,91
+202,Stress Product 0372,4000000372,Cleaning,2027-01-08,"Fresh Drinks, S.A.",11.5,92
+203,Stress Product 0373,4000000373,Bakery,2027-01-09,Happy Grain,12.25,93
+204,Stress Product 0374,4000000374,Snacks,2027-01-10,La Vaquita,13.0,94
+205,Stress Product 0375,4000000375,Hygiene,2027-01-11,Clean Max,13.75,95
+201,Stress Product 0376,4000000376,Fruits,2027-01-12,Blue Sea,14.5,96
+202,Stress Product 0377,4000000377,Dairy,2027-01-13,Cafe Chapin,15.25,97
+203,Stress Product 0378,4000000378,Pantry,2027-01-14,"Fruits Company, Inc.",16.0,98
+204,Stress Product 0379,4000000379,Drinks,2027-01-15,"Fresh Drinks, S.A.",16.75,99
+205,Stress Product 0380,4000000380,Cleaning,2027-01-16,Happy Grain,17.5,5
+201,Stress Product 0381,4000000381,Bakery,2027-01-17,La Vaquita,18.25,6
+202,Stress Product 0382,4000000382,Snacks,2027-01-18,Clean Max,19.0,7
+203,Stress Product 0383,4000000383,Hygiene,2027-01-19,Blue Sea,19.75,8
+204,Stress Product 0384,4000000384,Fruits,2027-01-20,Cafe Chapin,20.5,9
+205,Stress Product 0385,4000000385,Dairy,2027-01-21,"Fruits Company, Inc.",21.25,10
+201,Stress Product 0386,4000000386,Pantry,2027-01-22,"Fresh Drinks, S.A.",22.0,11
+202,Stress Product 0387,4000000387,Drinks,2027-01-23,Happy Grain,22.75,12
+203,Stress Product 0388,4000000388,Cleaning,2027-01-24,La Vaquita,23.5,13
+204,Stress Product 0389,4000000389,Bakery,2027-01-25,Clean Max,24.25,14
+205,Stress Product 0390,4000000390,Snacks,2027-01-26,Blue Sea,25.0,15
+201,Stress Product 0391,4000000391,Hygiene,2027-01-27,Cafe Chapin,25.75,16
+202,Stress Product 0392,4000000392,Fruits,2027-01-28,"Fruits Company, Inc.",26.5,17
+203,Stress Product 0393,4000000393,Dairy,2027-01-29,"Fresh Drinks, S.A.",27.25,18
+204,Stress Product 0394,4000000394,Pantry,2027-01-30,Happy Grain,28.0,19
+205,Stress Product 0395,4000000395,Drinks,2027-01-31,La Vaquita,28.75,20
+201,Stress Product 0396,4000000396,Cleaning,2027-02-01,Clean Max,29.5,21
+202,Stress Product 0397,4000000397,Bakery,2027-02-02,Blue Sea,30.25,22
+203,Stress Product 0398,4000000398,Snacks,2027-02-03,Cafe Chapin,31.0,23
+204,Stress Product 0399,4000000399,Hygiene,2027-02-04,"Fruits Company, Inc.",31.75,24
+205,Stress Product 0400,4000000400,Fruits,2027-02-05,"Fresh Drinks, S.A.",32.5,25
+201,Stress Product 0401,4000000401,Dairy,2027-02-06,Happy Grain,33.25,26
+202,Stress Product 0402,4000000402,Pantry,2027-02-07,La Vaquita,34.0,27
+203,Stress Product 0403,4000000403,Drinks,2027-02-08,Clean Max,34.75,28
+204,Stress Product 0404,4000000404,Cleaning,2027-02-09,Blue Sea,35.5,29
+205,Stress Product 0405,4000000405,Bakery,2027-02-10,Cafe Chapin,36.25,30
+201,Stress Product 0406,4000000406,Snacks,2027-02-11,"Fruits Company, Inc.",37.0,31
+202,Stress Product 0407,4000000407,Hygiene,2027-02-12,"Fresh Drinks, S.A.",37.75,32
+203,Stress Product 0408,4000000408,Fruits,2027-02-13,Happy Grain,38.5,33
+204,Stress Product 0409,4000000409,Dairy,2027-02-14,La Vaquita,39.25,34
+205,Stress Product 0410,4000000410,Pantry,2027-02-15,Clean Max,40.0,35
+201,Stress Product 0411,4000000411,Drinks,2027-02-16,Blue Sea,40.75,36
+202,Stress Product 0412,4000000412,Cleaning,2027-02-17,Cafe Chapin,41.5,37
+203,Stress Product 0413,4000000413,Bakery,2027-02-18,"Fruits Company, Inc.",42.25,38
+204,Stress Product 0414,4000000414,Snacks,2027-02-19,"Fresh Drinks, S.A.",43.0,39
+205,Stress Product 0415,4000000415,Hygiene,2027-02-20,Happy Grain,43.75,40
+201,Stress Product 0416,4000000416,Fruits,2027-02-21,La Vaquita,44.5,41
+202,Stress Product 0417,4000000417,Dairy,2027-02-22,Clean Max,45.25,42
+203,Stress Product 0418,4000000418,Pantry,2027-02-23,Blue Sea,46.0,43
+204,Stress Product 0419,4000000419,Drinks,2027-02-24,Cafe Chapin,46.75,44
+205,Stress Product 0420,4000000420,Cleaning,2027-02-25,"Fruits Company, Inc.",47.5,45
+201,Stress Product 0421,4000000421,Bakery,2027-02-26,"Fresh Drinks, S.A.",48.25,46
+202,Stress Product 0422,4000000422,Snacks,2027-02-27,Happy Grain,49.0,47
+203,Stress Product 0423,4000000423,Hygiene,2027-02-28,La Vaquita,49.75,48
+204,Stress Product 0424,4000000424,Fruits,2027-03-01,Clean Max,50.5,49
+205,Stress Product 0425,4000000425,Dairy,2027-03-02,Blue Sea,51.25,50
+201,Stress Product 0426,4000000426,Pantry,2027-03-03,Cafe Chapin,52.0,51
+202,Stress Product 0427,4000000427,Drinks,2027-03-04,"Fruits Company, Inc.",52.75,52
+203,Stress Product 0428,4000000428,Cleaning,2027-03-05,"Fresh Drinks, S.A.",53.5,53
+204,Stress Product 0429,4000000429,Bakery,2027-03-06,Happy Grain,54.25,54
+205,Stress Product 0430,4000000430,Snacks,2027-03-07,La Vaquita,55.0,55
+201,Stress Product 0431,4000000431,Hygiene,2027-03-08,Clean Max,55.75,56
+202,Stress Product 0432,4000000432,Fruits,2027-03-09,Blue Sea,56.5,57
+203,Stress Product 0433,4000000433,Dairy,2027-03-10,Cafe Chapin,57.25,58
+204,Stress Product 0434,4000000434,Pantry,2027-03-11,"Fruits Company, Inc.",58.0,59
+205,Stress Product 0435,4000000435,Drinks,2027-03-12,"Fresh Drinks, S.A.",58.75,60
+201,Stress Product 0436,4000000436,Cleaning,2027-03-13,Happy Grain,59.5,61
+202,Stress Product 0437,4000000437,Bakery,2027-03-14,La Vaquita,60.25,62
+203,Stress Product 0438,4000000438,Snacks,2027-03-15,Clean Max,61.0,63
+204,Stress Product 0439,4000000439,Hygiene,2027-03-16,Blue Sea,61.75,64
+205,Stress Product 0440,4000000440,Fruits,2027-03-17,Cafe Chapin,62.5,65
+201,Stress Product 0441,4000000441,Dairy,2027-03-18,"Fruits Company, Inc.",63.25,66
+202,Stress Product 0442,4000000442,Pantry,2027-03-19,"Fresh Drinks, S.A.",64.0,67
+203,Stress Product 0443,4000000443,Drinks,2027-03-20,Happy Grain,64.75,68
+204,Stress Product 0444,4000000444,Cleaning,2027-03-21,La Vaquita,65.5,69
+205,Stress Product 0445,4000000445,Bakery,2027-03-22,Clean Max,66.25,70
+201,Stress Product 0446,4000000446,Snacks,2027-03-23,Blue Sea,67.0,71
+202,Stress Product 0447,4000000447,Hygiene,2027-03-24,Cafe Chapin,67.75,72
+203,Stress Product 0448,4000000448,Fruits,2027-03-25,"Fruits Company, Inc.",68.5,73
+204,Stress Product 0449,4000000449,Dairy,2027-03-26,"Fresh Drinks, S.A.",69.25,74
+205,Stress Product 0450,4000000450,Pantry,2027-03-27,Happy Grain,70.0,75
+201,Stress Product 0451,4000000451,Drinks,2027-03-28,La Vaquita,70.75,76
+202,Stress Product 0452,4000000452,Cleaning,2027-03-29,Clean Max,71.5,77
+203,Stress Product 0453,4000000453,Bakery,2027-03-30,Blue Sea,72.25,78
+204,Stress Product 0454,4000000454,Snacks,2027-03-31,Cafe Chapin,73.0,79
+205,Stress Product 0455,4000000455,Hygiene,2027-04-01,"Fruits Company, Inc.",73.75,80
+201,Stress Product 0456,4000000456,Fruits,2027-04-02,"Fresh Drinks, S.A.",74.5,81
+202,Stress Product 0457,4000000457,Dairy,2027-04-03,Happy Grain,75.25,82
+203,Stress Product 0458,4000000458,Pantry,2027-04-04,La Vaquita,76.0,83
+204,Stress Product 0459,4000000459,Drinks,2027-04-05,Clean Max,76.75,84
+205,Stress Product 0460,4000000460,Cleaning,2027-04-06,Blue Sea,77.5,85
+201,Stress Product 0461,4000000461,Bakery,2027-04-07,Cafe Chapin,78.25,86
+202,Stress Product 0462,4000000462,Snacks,2027-04-08,"Fruits Company, Inc.",79.0,87
+203,Stress Product 0463,4000000463,Hygiene,2027-04-09,"Fresh Drinks, S.A.",79.75,88
+204,Stress Product 0464,4000000464,Fruits,2027-04-10,Happy Grain,80.5,89
+205,Stress Product 0465,4000000465,Dairy,2027-04-11,La Vaquita,81.25,90
+201,Stress Product 0466,4000000466,Pantry,2027-04-12,Clean Max,82.0,91
+202,Stress Product 0467,4000000467,Drinks,2027-04-13,Blue Sea,82.75,92
+203,Stress Product 0468,4000000468,Cleaning,2027-04-14,Cafe Chapin,83.5,93
+204,Stress Product 0469,4000000469,Bakery,2027-04-15,"Fruits Company, Inc.",84.25,94
+205,Stress Product 0470,4000000470,Snacks,2027-04-16,"Fresh Drinks, S.A.",85.0,95
+201,Stress Product 0471,4000000471,Hygiene,2027-04-17,Happy Grain,85.75,96
+202,Stress Product 0472,4000000472,Fruits,2027-04-18,La Vaquita,86.5,97
+203,Stress Product 0473,4000000473,Dairy,2027-04-19,Clean Max,87.25,98
+204,Stress Product 0474,4000000474,Pantry,2027-04-20,Blue Sea,88.0,99
+205,Stress Product 0475,4000000475,Drinks,2027-04-21,Cafe Chapin,88.75,5
+201,Stress Product 0476,4000000476,Cleaning,2027-04-22,"Fruits Company, Inc.",89.5,6
+202,Stress Product 0477,4000000477,Bakery,2027-04-23,"Fresh Drinks, S.A.",90.25,7
+203,Stress Product 0478,4000000478,Snacks,2027-04-24,Happy Grain,91.0,8
+204,Stress Product 0479,4000000479,Hygiene,2027-04-25,La Vaquita,91.75,9
+205,Stress Product 0480,4000000480,Fruits,2027-04-26,Clean Max,2.5,10
+201,Stress Product 0481,4000000481,Dairy,2027-04-27,Blue Sea,3.25,11
+202,Stress Product 0482,4000000482,Pantry,2027-04-28,Cafe Chapin,4.0,12
+203,Stress Product 0483,4000000483,Drinks,2027-04-29,"Fruits Company, Inc.",4.75,13
+204,Stress Product 0484,4000000484,Cleaning,2027-04-30,"Fresh Drinks, S.A.",5.5,14
+205,Stress Product 0485,4000000485,Bakery,2027-05-01,Happy Grain,6.25,15
+201,Stress Product 0486,4000000486,Snacks,2027-05-02,La Vaquita,7.0,16
+202,Stress Product 0487,4000000487,Hygiene,2027-05-03,Clean Max,7.75,17
+203,Stress Product 0488,4000000488,Fruits,2027-05-04,Blue Sea,8.5,18
+204,Stress Product 0489,4000000489,Dairy,2027-05-05,Cafe Chapin,9.25,19
+205,Stress Product 0490,4000000490,Pantry,2027-05-06,"Fruits Company, Inc.",10.0,20
+201,Stress Product 0491,4000000491,Drinks,2027-05-07,"Fresh Drinks, S.A.",10.75,21
+202,Stress Product 0492,4000000492,Cleaning,2027-05-08,Happy Grain,11.5,22
+203,Stress Product 0493,4000000493,Bakery,2027-05-09,La Vaquita,12.25,23
+204,Stress Product 0494,4000000494,Snacks,2027-05-10,Clean Max,13.0,24
+205,Stress Product 0495,4000000495,Hygiene,2027-05-11,Blue Sea,13.75,25
+201,Stress Product 0496,4000000496,Fruits,2027-05-12,Cafe Chapin,14.5,26
+202,Stress Product 0497,4000000497,Dairy,2027-05-13,"Fruits Company, Inc.",15.25,27
+203,Stress Product 0498,4000000498,Pantry,2027-05-14,"Fresh Drinks, S.A.",16.0,28
+204,Stress Product 0499,4000000499,Drinks,2027-05-15,Happy Grain,16.75,29
+205,Stress Product 0500,4000000500,Cleaning,2027-05-16,La Vaquita,17.5,30
+201,Stress Product 0501,4000000501,Bakery,2027-05-17,Clean Max,18.25,31
+202,Stress Product 0502,4000000502,Snacks,2027-05-18,Blue Sea,19.0,32
+203,Stress Product 0503,4000000503,Hygiene,2027-05-19,Cafe Chapin,19.75,33
+204,Stress Product 0504,4000000504,Fruits,2027-05-20,"Fruits Company, Inc.",20.5,34
+205,Stress Product 0505,4000000505,Dairy,2027-05-21,"Fresh Drinks, S.A.",21.25,35
+201,Stress Product 0506,4000000506,Pantry,2027-05-22,Happy Grain,22.0,36
+202,Stress Product 0507,4000000507,Drinks,2027-05-23,La Vaquita,22.75,37
+203,Stress Product 0508,4000000508,Cleaning,2027-05-24,Clean Max,23.5,38
+204,Stress Product 0509,4000000509,Bakery,2027-05-25,Blue Sea,24.25,39
+205,Stress Product 0510,4000000510,Snacks,2027-05-26,Cafe Chapin,25.0,40
+201,Stress Product 0511,4000000511,Hygiene,2027-05-27,"Fruits Company, Inc.",25.75,41
+202,Stress Product 0512,4000000512,Fruits,2027-05-28,"Fresh Drinks, S.A.",26.5,42
+203,Stress Product 0513,4000000513,Dairy,2027-05-29,Happy Grain,27.25,43
+204,Stress Product 0514,4000000514,Pantry,2027-05-30,La Vaquita,28.0,44
+205,Stress Product 0515,4000000515,Drinks,2027-05-31,Clean Max,28.75,45
+201,Stress Product 0516,4000000516,Cleaning,2027-06-01,Blue Sea,29.5,46
+202,Stress Product 0517,4000000517,Bakery,2027-06-02,Cafe Chapin,30.25,47
+203,Stress Product 0518,4000000518,Snacks,2027-06-03,"Fruits Company, Inc.",31.0,48
+204,Stress Product 0519,4000000519,Hygiene,2027-06-04,"Fresh Drinks, S.A.",31.75,49
+205,Stress Product 0520,4000000520,Fruits,2027-06-05,Happy Grain,32.5,50
+201,Stress Product 0521,4000000521,Dairy,2027-06-06,La Vaquita,33.25,51
+202,Stress Product 0522,4000000522,Pantry,2027-06-07,Clean Max,34.0,52
+203,Stress Product 0523,4000000523,Drinks,2027-06-08,Blue Sea,34.75,53
+204,Stress Product 0524,4000000524,Cleaning,2027-06-09,Cafe Chapin,35.5,54
+205,Stress Product 0525,4000000525,Bakery,2027-06-10,"Fruits Company, Inc.",36.25,55
+201,Stress Product 0526,4000000526,Snacks,2027-06-11,"Fresh Drinks, S.A.",37.0,56
+202,Stress Product 0527,4000000527,Hygiene,2027-06-12,Happy Grain,37.75,57
+203,Stress Product 0528,4000000528,Fruits,2027-06-13,La Vaquita,38.5,58
+204,Stress Product 0529,4000000529,Dairy,2027-06-14,Clean Max,39.25,59
+205,Stress Product 0530,4000000530,Pantry,2027-06-15,Blue Sea,40.0,60
+201,Stress Product 0531,4000000531,Drinks,2027-06-16,Cafe Chapin,40.75,61
+202,Stress Product 0532,4000000532,Cleaning,2027-06-17,"Fruits Company, Inc.",41.5,62
+203,Stress Product 0533,4000000533,Bakery,2027-06-18,"Fresh Drinks, S.A.",42.25,63
+204,Stress Product 0534,4000000534,Snacks,2027-06-19,Happy Grain,43.0,64
+205,Stress Product 0535,4000000535,Hygiene,2027-06-20,La Vaquita,43.75,65
+201,Stress Product 0536,4000000536,Fruits,2027-06-21,Clean Max,44.5,66
+202,Stress Product 0537,4000000537,Dairy,2027-06-22,Blue Sea,45.25,67
+203,Stress Product 0538,4000000538,Pantry,2027-06-23,Cafe Chapin,46.0,68
+204,Stress Product 0539,4000000539,Drinks,2027-06-24,"Fruits Company, Inc.",46.75,69
+205,Stress Product 0540,4000000540,Cleaning,2027-06-25,"Fresh Drinks, S.A.",47.5,70
+201,Stress Product 0541,4000000541,Bakery,2027-06-26,Happy Grain,48.25,71
+202,Stress Product 0542,4000000542,Snacks,2027-06-27,La Vaquita,49.0,72
+203,Stress Product 0543,4000000543,Hygiene,2027-06-28,Clean Max,49.75,73
+204,Stress Product 0544,4000000544,Fruits,2027-06-29,Blue Sea,50.5,74
+205,Stress Product 0545,4000000545,Dairy,2027-06-30,Cafe Chapin,51.25,75
+201,Stress Product 0546,4000000546,Pantry,2027-07-01,"Fruits Company, Inc.",52.0,76
+202,Stress Product 0547,4000000547,Drinks,2027-07-02,"Fresh Drinks, S.A.",52.75,77
+203,Stress Product 0548,4000000548,Cleaning,2027-07-03,Happy Grain,53.5,78
+204,Stress Product 0549,4000000549,Bakery,2027-07-04,La Vaquita,54.25,79
+205,Stress Product 0550,4000000550,Snacks,2027-07-05,Clean Max,55.0,80
+201,Stress Product 0551,4000000551,Hygiene,2027-07-06,Blue Sea,55.75,81
+202,Stress Product 0552,4000000552,Fruits,2027-07-07,Cafe Chapin,56.5,82
+203,Stress Product 0553,4000000553,Dairy,2027-07-08,"Fruits Company, Inc.",57.25,83
+204,Stress Product 0554,4000000554,Pantry,2027-07-09,"Fresh Drinks, S.A.",58.0,84
+205,Stress Product 0555,4000000555,Drinks,2027-07-10,Happy Grain,58.75,85
+201,Stress Product 0556,4000000556,Cleaning,2027-07-11,La Vaquita,59.5,86
+202,Stress Product 0557,4000000557,Bakery,2027-07-12,Clean Max,60.25,87
+203,Stress Product 0558,4000000558,Snacks,2027-07-13,Blue Sea,61.0,88
+204,Stress Product 0559,4000000559,Hygiene,2027-07-14,Cafe Chapin,61.75,89
+205,Stress Product 0560,4000000560,Fruits,2027-07-15,"Fruits Company, Inc.",62.5,90
+201,Stress Product 0561,4000000561,Dairy,2027-07-16,"Fresh Drinks, S.A.",63.25,91
+202,Stress Product 0562,4000000562,Pantry,2027-07-17,Happy Grain,64.0,92
+203,Stress Product 0563,4000000563,Drinks,2027-07-18,La Vaquita,64.75,93
+204,Stress Product 0564,4000000564,Cleaning,2027-07-19,Clean Max,65.5,94
+205,Stress Product 0565,4000000565,Bakery,2027-07-20,Blue Sea,66.25,95
+201,Stress Product 0566,4000000566,Snacks,2027-07-21,Cafe Chapin,67.0,96
+202,Stress Product 0567,4000000567,Hygiene,2027-07-22,"Fruits Company, Inc.",67.75,97
+203,Stress Product 0568,4000000568,Fruits,2027-07-23,"Fresh Drinks, S.A.",68.5,98
+204,Stress Product 0569,4000000569,Dairy,2027-07-24,Happy Grain,69.25,99
+205,Stress Product 0570,4000000570,Pantry,2027-07-25,La Vaquita,70.0,5
+201,Stress Product 0571,4000000571,Drinks,2027-07-26,Clean Max,70.75,6
+202,Stress Product 0572,4000000572,Cleaning,2027-07-27,Blue Sea,71.5,7
+203,Stress Product 0573,4000000573,Bakery,2027-07-28,Cafe Chapin,72.25,8
+204,Stress Product 0574,4000000574,Snacks,2027-07-29,"Fruits Company, Inc.",73.0,9
+205,Stress Product 0575,4000000575,Hygiene,2027-07-30,"Fresh Drinks, S.A.",73.75,10
+201,Stress Product 0576,4000000576,Fruits,2027-07-31,Happy Grain,74.5,11
+202,Stress Product 0577,4000000577,Dairy,2027-08-01,La Vaquita,75.25,12
+203,Stress Product 0578,4000000578,Pantry,2027-08-02,Clean Max,76.0,13
+204,Stress Product 0579,4000000579,Drinks,2027-08-03,Blue Sea,76.75,14
+205,Stress Product 0580,4000000580,Cleaning,2027-08-04,Cafe Chapin,77.5,15
+201,Stress Product 0581,4000000581,Bakery,2027-08-05,"Fruits Company, Inc.",78.25,16
+202,Stress Product 0582,4000000582,Snacks,2027-08-06,"Fresh Drinks, S.A.",79.0,17
+203,Stress Product 0583,4000000583,Hygiene,2027-08-07,Happy Grain,79.75,18
+204,Stress Product 0584,4000000584,Fruits,2027-08-08,La Vaquita,80.5,19
+205,Stress Product 0585,4000000585,Dairy,2027-08-09,Clean Max,81.25,20
+201,Stress Product 0586,4000000586,Pantry,2027-08-10,Blue Sea,82.0,21
+202,Stress Product 0587,4000000587,Drinks,2027-08-11,Cafe Chapin,82.75,22
+203,Stress Product 0588,4000000588,Cleaning,2027-08-12,"Fruits Company, Inc.",83.5,23
+204,Stress Product 0589,4000000589,Bakery,2027-08-13,"Fresh Drinks, S.A.",84.25,24
+205,Stress Product 0590,4000000590,Snacks,2027-08-14,Happy Grain,85.0,25
+201,Stress Product 0591,4000000591,Hygiene,2027-08-15,La Vaquita,85.75,26
+202,Stress Product 0592,4000000592,Fruits,2027-08-16,Clean Max,86.5,27
+203,Stress Product 0593,4000000593,Dairy,2027-08-17,Blue Sea,87.25,28
+204,Stress Product 0594,4000000594,Pantry,2027-08-18,Cafe Chapin,88.0,29
+205,Stress Product 0595,4000000595,Drinks,2027-08-19,"Fruits Company, Inc.",88.75,30
+201,Stress Product 0596,4000000596,Cleaning,2027-08-20,"Fresh Drinks, S.A.",89.5,31
+202,Stress Product 0597,4000000597,Bakery,2027-08-21,Happy Grain,90.25,32
+203,Stress Product 0598,4000000598,Snacks,2027-08-22,La Vaquita,91.0,33
+204,Stress Product 0599,4000000599,Hygiene,2027-08-23,Clean Max,91.75,34
+205,Stress Product 0600,4000000600,Fruits,2027-08-24,Blue Sea,2.5,35
+201,Stress Product 0601,4000000601,Dairy,2027-08-25,Cafe Chapin,3.25,36
+202,Stress Product 0602,4000000602,Pantry,2027-08-26,"Fruits Company, Inc.",4.0,37
+203,Stress Product 0603,4000000603,Drinks,2027-08-27,"Fresh Drinks, S.A.",4.75,38
+204,Stress Product 0604,4000000604,Cleaning,2027-08-28,Happy Grain,5.5,39
+205,Stress Product 0605,4000000605,Bakery,2027-08-29,La Vaquita,6.25,40
+201,Stress Product 0606,4000000606,Snacks,2027-08-30,Clean Max,7.0,41
+202,Stress Product 0607,4000000607,Hygiene,2027-08-31,Blue Sea,7.75,42
+203,Stress Product 0608,4000000608,Fruits,2027-09-01,Cafe Chapin,8.5,43
+204,Stress Product 0609,4000000609,Dairy,2027-09-02,"Fruits Company, Inc.",9.25,44
+205,Stress Product 0610,4000000610,Pantry,2027-09-03,"Fresh Drinks, S.A.",10.0,45
+201,Stress Product 0611,4000000611,Drinks,2027-09-04,Happy Grain,10.75,46
+202,Stress Product 0612,4000000612,Cleaning,2027-09-05,La Vaquita,11.5,47
+203,Stress Product 0613,4000000613,Bakery,2027-09-06,Clean Max,12.25,48
+204,Stress Product 0614,4000000614,Snacks,2027-09-07,Blue Sea,13.0,49
+205,Stress Product 0615,4000000615,Hygiene,2027-09-08,Cafe Chapin,13.75,50
+201,Stress Product 0616,4000000616,Fruits,2027-09-09,"Fruits Company, Inc.",14.5,51
+202,Stress Product 0617,4000000617,Dairy,2027-09-10,"Fresh Drinks, S.A.",15.25,52
+203,Stress Product 0618,4000000618,Pantry,2027-09-11,Happy Grain,16.0,53
+204,Stress Product 0619,4000000619,Drinks,2027-09-12,La Vaquita,16.75,54
+205,Stress Product 0620,4000000620,Cleaning,2027-09-13,Clean Max,17.5,55
+201,Stress Product 0621,4000000621,Bakery,2027-09-14,Blue Sea,18.25,56
+202,Stress Product 0622,4000000622,Snacks,2027-09-15,Cafe Chapin,19.0,57
+203,Stress Product 0623,4000000623,Hygiene,2027-09-16,"Fruits Company, Inc.",19.75,58
+204,Stress Product 0624,4000000624,Fruits,2027-09-17,"Fresh Drinks, S.A.",20.5,59
+205,Stress Product 0625,4000000625,Dairy,2027-09-18,Happy Grain,21.25,60
+201,Stress Product 0626,4000000626,Pantry,2027-09-19,La Vaquita,22.0,61
+202,Stress Product 0627,4000000627,Drinks,2027-09-20,Clean Max,22.75,62
+203,Stress Product 0628,4000000628,Cleaning,2027-09-21,Blue Sea,23.5,63
+204,Stress Product 0629,4000000629,Bakery,2027-09-22,Cafe Chapin,24.25,64
+205,Stress Product 0630,4000000630,Snacks,2027-09-23,"Fruits Company, Inc.",25.0,65
+201,Stress Product 0631,4000000631,Hygiene,2027-09-24,"Fresh Drinks, S.A.",25.75,66
+202,Stress Product 0632,4000000632,Fruits,2027-09-25,Happy Grain,26.5,67
+203,Stress Product 0633,4000000633,Dairy,2027-09-26,La Vaquita,27.25,68
+204,Stress Product 0634,4000000634,Pantry,2027-09-27,Clean Max,28.0,69
+205,Stress Product 0635,4000000635,Drinks,2027-09-28,Blue Sea,28.75,70
+201,Stress Product 0636,4000000636,Cleaning,2027-09-29,Cafe Chapin,29.5,71
+202,Stress Product 0637,4000000637,Bakery,2027-09-30,"Fruits Company, Inc.",30.25,72
+203,Stress Product 0638,4000000638,Snacks,2027-10-01,"Fresh Drinks, S.A.",31.0,73
+204,Stress Product 0639,4000000639,Hygiene,2027-10-02,Happy Grain,31.75,74
+205,Stress Product 0640,4000000640,Fruits,2027-10-03,La Vaquita,32.5,75
+201,Stress Product 0641,4000000641,Dairy,2027-10-04,Clean Max,33.25,76
+202,Stress Product 0642,4000000642,Pantry,2027-10-05,Blue Sea,34.0,77
+203,Stress Product 0643,4000000643,Drinks,2027-10-06,Cafe Chapin,34.75,78
+204,Stress Product 0644,4000000644,Cleaning,2027-10-07,"Fruits Company, Inc.",35.5,79
+205,Stress Product 0645,4000000645,Bakery,2027-10-08,"Fresh Drinks, S.A.",36.25,80
+201,Stress Product 0646,4000000646,Snacks,2027-10-09,Happy Grain,37.0,81
+202,Stress Product 0647,4000000647,Hygiene,2027-10-10,La Vaquita,37.75,82
+203,Stress Product 0648,4000000648,Fruits,2027-10-11,Clean Max,38.5,83
+204,Stress Product 0649,4000000649,Dairy,2027-10-12,Blue Sea,39.25,84
+205,Stress Product 0650,4000000650,Pantry,2027-10-13,Cafe Chapin,40.0,85
+201,Stress Product 0651,4000000651,Drinks,2027-10-14,"Fruits Company, Inc.",40.75,86
+202,Stress Product 0652,4000000652,Cleaning,2027-10-15,"Fresh Drinks, S.A.",41.5,87
+203,Stress Product 0653,4000000653,Bakery,2027-10-16,Happy Grain,42.25,88
+204,Stress Product 0654,4000000654,Snacks,2027-10-17,La Vaquita,43.0,89
+205,Stress Product 0655,4000000655,Hygiene,2027-10-18,Clean Max,43.75,90
+201,Stress Product 0656,4000000656,Fruits,2027-10-19,Blue Sea,44.5,91
+202,Stress Product 0657,4000000657,Dairy,2027-10-20,Cafe Chapin,45.25,92
+203,Stress Product 0658,4000000658,Pantry,2027-10-21,"Fruits Company, Inc.",46.0,93
+204,Stress Product 0659,4000000659,Drinks,2027-10-22,"Fresh Drinks, S.A.",46.75,94
+205,Stress Product 0660,4000000660,Cleaning,2027-10-23,Happy Grain,47.5,95
+201,Stress Product 0661,4000000661,Bakery,2027-10-24,La Vaquita,48.25,96
+202,Stress Product 0662,4000000662,Snacks,2027-10-25,Clean Max,49.0,97
+203,Stress Product 0663,4000000663,Hygiene,2027-10-26,Blue Sea,49.75,98
+204,Stress Product 0664,4000000664,Fruits,2027-10-27,Cafe Chapin,50.5,99
+205,Stress Product 0665,4000000665,Dairy,2027-10-28,"Fruits Company, Inc.",51.25,5
+201,Stress Product 0666,4000000666,Pantry,2027-10-29,"Fresh Drinks, S.A.",52.0,6
+202,Stress Product 0667,4000000667,Drinks,2027-10-30,Happy Grain,52.75,7
+203,Stress Product 0668,4000000668,Cleaning,2027-10-31,La Vaquita,53.5,8
+204,Stress Product 0669,4000000669,Bakery,2027-11-01,Clean Max,54.25,9
+205,Stress Product 0670,4000000670,Snacks,2027-11-02,Blue Sea,55.0,10
+201,Stress Product 0671,4000000671,Hygiene,2027-11-03,Cafe Chapin,55.75,11
+202,Stress Product 0672,4000000672,Fruits,2027-11-04,"Fruits Company, Inc.",56.5,12
+203,Stress Product 0673,4000000673,Dairy,2027-11-05,"Fresh Drinks, S.A.",57.25,13
+204,Stress Product 0674,4000000674,Pantry,2027-11-06,Happy Grain,58.0,14
+205,Stress Product 0675,4000000675,Drinks,2027-11-07,La Vaquita,58.75,15
+201,Stress Product 0676,4000000676,Cleaning,2027-11-08,Clean Max,59.5,16
+202,Stress Product 0677,4000000677,Bakery,2027-11-09,Blue Sea,60.25,17
+203,Stress Product 0678,4000000678,Snacks,2027-11-10,Cafe Chapin,61.0,18
+204,Stress Product 0679,4000000679,Hygiene,2027-11-11,"Fruits Company, Inc.",61.75,19
+205,Stress Product 0680,4000000680,Fruits,2027-11-12,"Fresh Drinks, S.A.",62.5,20
+201,Stress Product 0681,4000000681,Dairy,2027-11-13,Happy Grain,63.25,21
+202,Stress Product 0682,4000000682,Pantry,2027-11-14,La Vaquita,64.0,22
+203,Stress Product 0683,4000000683,Drinks,2027-11-15,Clean Max,64.75,23
+204,Stress Product 0684,4000000684,Cleaning,2027-11-16,Blue Sea,65.5,24
+205,Stress Product 0685,4000000685,Bakery,2027-11-17,Cafe Chapin,66.25,25
+201,Stress Product 0686,4000000686,Snacks,2027-11-18,"Fruits Company, Inc.",67.0,26
+202,Stress Product 0687,4000000687,Hygiene,2027-11-19,"Fresh Drinks, S.A.",67.75,27
+203,Stress Product 0688,4000000688,Fruits,2027-11-20,Happy Grain,68.5,28
+204,Stress Product 0689,4000000689,Dairy,2027-11-21,La Vaquita,69.25,29
+205,Stress Product 0690,4000000690,Pantry,2027-11-22,Clean Max,70.0,30
+201,Stress Product 0691,4000000691,Drinks,2027-11-23,Blue Sea,70.75,31
+202,Stress Product 0692,4000000692,Cleaning,2027-11-24,Cafe Chapin,71.5,32
+203,Stress Product 0693,4000000693,Bakery,2027-11-25,"Fruits Company, Inc.",72.25,33
+204,Stress Product 0694,4000000694,Snacks,2027-11-26,"Fresh Drinks, S.A.",73.0,34
+205,Stress Product 0695,4000000695,Hygiene,2027-11-27,Happy Grain,73.75,35
+201,Stress Product 0696,4000000696,Fruits,2027-11-28,La Vaquita,74.5,36
+202,Stress Product 0697,4000000697,Dairy,2027-11-29,Clean Max,75.25,37
+203,Stress Product 0698,4000000698,Pantry,2027-11-30,Blue Sea,76.0,38
+204,Stress Product 0699,4000000699,Drinks,2027-12-01,Cafe Chapin,76.75,39
+205,Stress Product 0700,4000000700,Cleaning,2027-12-02,"Fruits Company, Inc.",77.5,40
+201,Stress Product 0701,4000000701,Bakery,2027-12-03,"Fresh Drinks, S.A.",78.25,41
+202,Stress Product 0702,4000000702,Snacks,2027-12-04,Happy Grain,79.0,42
+203,Stress Product 0703,4000000703,Hygiene,2027-12-05,La Vaquita,79.75,43
+204,Stress Product 0704,4000000704,Fruits,2027-12-06,Clean Max,80.5,44
+205,Stress Product 0705,4000000705,Dairy,2027-12-07,Blue Sea,81.25,45
+201,Stress Product 0706,4000000706,Pantry,2027-12-08,Cafe Chapin,82.0,46
+202,Stress Product 0707,4000000707,Drinks,2027-12-09,"Fruits Company, Inc.",82.75,47
+203,Stress Product 0708,4000000708,Cleaning,2027-12-10,"Fresh Drinks, S.A.",83.5,48
+204,Stress Product 0709,4000000709,Bakery,2027-12-11,Happy Grain,84.25,49
+205,Stress Product 0710,4000000710,Snacks,2027-12-12,La Vaquita,85.0,50
+201,Stress Product 0711,4000000711,Hygiene,2027-12-13,Clean Max,85.75,51
+202,Stress Product 0712,4000000712,Fruits,2027-12-14,Blue Sea,86.5,52
+203,Stress Product 0713,4000000713,Dairy,2027-12-15,Cafe Chapin,87.25,53
+204,Stress Product 0714,4000000714,Pantry,2027-12-16,"Fruits Company, Inc.",88.0,54
+205,Stress Product 0715,4000000715,Drinks,2027-12-17,"Fresh Drinks, S.A.",88.75,55
+201,Stress Product 0716,4000000716,Cleaning,2027-12-18,Happy Grain,89.5,56
+202,Stress Product 0717,4000000717,Bakery,2027-12-19,La Vaquita,90.25,57
+203,Stress Product 0718,4000000718,Snacks,2027-12-20,Clean Max,91.0,58
+204,Stress Product 0719,4000000719,Hygiene,2027-12-21,Blue Sea,91.75,59
+205,Stress Product 0720,4000000720,Fruits,2027-12-22,Cafe Chapin,2.5,60
+201,Stress Product 0721,4000000721,Dairy,2027-12-23,"Fruits Company, Inc.",3.25,61
+202,Stress Product 0722,4000000722,Pantry,2027-12-24,"Fresh Drinks, S.A.",4.0,62
+203,Stress Product 0723,4000000723,Drinks,2027-12-25,Happy Grain,4.75,63
+204,Stress Product 0724,4000000724,Cleaning,2027-12-26,La Vaquita,5.5,64
+205,Stress Product 0725,4000000725,Bakery,2027-12-27,Clean Max,6.25,65
+201,Stress Product 0726,4000000726,Snacks,2027-12-28,Blue Sea,7.0,66
+202,Stress Product 0727,4000000727,Hygiene,2027-12-29,Cafe Chapin,7.75,67
+203,Stress Product 0728,4000000728,Fruits,2027-12-30,"Fruits Company, Inc.",8.5,68
+204,Stress Product 0729,4000000729,Dairy,2027-12-31,"Fresh Drinks, S.A.",9.25,69
+205,Stress Product 0730,4000000730,Pantry,2026-01-01,Happy Grain,10.0,70
+201,Stress Product 0731,4000000731,Drinks,2026-01-02,La Vaquita,10.75,71
+202,Stress Product 0732,4000000732,Cleaning,2026-01-03,Clean Max,11.5,72
+203,Stress Product 0733,4000000733,Bakery,2026-01-04,Blue Sea,12.25,73
+204,Stress Product 0734,4000000734,Snacks,2026-01-05,Cafe Chapin,13.0,74
+205,Stress Product 0735,4000000735,Hygiene,2026-01-06,"Fruits Company, Inc.",13.75,75
+201,Stress Product 0736,4000000736,Fruits,2026-01-07,"Fresh Drinks, S.A.",14.5,76
+202,Stress Product 0737,4000000737,Dairy,2026-01-08,Happy Grain,15.25,77
+203,Stress Product 0738,4000000738,Pantry,2026-01-09,La Vaquita,16.0,78
+204,Stress Product 0739,4000000739,Drinks,2026-01-10,Clean Max,16.75,79
+205,Stress Product 0740,4000000740,Cleaning,2026-01-11,Blue Sea,17.5,80
+201,Stress Product 0741,4000000741,Bakery,2026-01-12,Cafe Chapin,18.25,81
+202,Stress Product 0742,4000000742,Snacks,2026-01-13,"Fruits Company, Inc.",19.0,82
+203,Stress Product 0743,4000000743,Hygiene,2026-01-14,"Fresh Drinks, S.A.",19.75,83
+204,Stress Product 0744,4000000744,Fruits,2026-01-15,Happy Grain,20.5,84
+205,Stress Product 0745,4000000745,Dairy,2026-01-16,La Vaquita,21.25,85
+201,Stress Product 0746,4000000746,Pantry,2026-01-17,Clean Max,22.0,86
+202,Stress Product 0747,4000000747,Drinks,2026-01-18,Blue Sea,22.75,87
+203,Stress Product 0748,4000000748,Cleaning,2026-01-19,Cafe Chapin,23.5,88
+204,Stress Product 0749,4000000749,Bakery,2026-01-20,"Fruits Company, Inc.",24.25,89
+205,Stress Product 0750,4000000750,Snacks,2026-01-21,"Fresh Drinks, S.A.",25.0,90
+201,Stress Product 0751,4000000751,Hygiene,2026-01-22,Happy Grain,25.75,91
+202,Stress Product 0752,4000000752,Fruits,2026-01-23,La Vaquita,26.5,92
+203,Stress Product 0753,4000000753,Dairy,2026-01-24,Clean Max,27.25,93
+204,Stress Product 0754,4000000754,Pantry,2026-01-25,Blue Sea,28.0,94
+205,Stress Product 0755,4000000755,Drinks,2026-01-26,Cafe Chapin,28.75,95
+201,Stress Product 0756,4000000756,Cleaning,2026-01-27,"Fruits Company, Inc.",29.5,96
+202,Stress Product 0757,4000000757,Bakery,2026-01-28,"Fresh Drinks, S.A.",30.25,97
+203,Stress Product 0758,4000000758,Snacks,2026-01-29,Happy Grain,31.0,98
+204,Stress Product 0759,4000000759,Hygiene,2026-01-30,La Vaquita,31.75,99
+205,Stress Product 0760,4000000760,Fruits,2026-01-31,Clean Max,32.5,5
+201,Stress Product 0761,4000000761,Dairy,2026-02-01,Blue Sea,33.25,6
+202,Stress Product 0762,4000000762,Pantry,2026-02-02,Cafe Chapin,34.0,7
+203,Stress Product 0763,4000000763,Drinks,2026-02-03,"Fruits Company, Inc.",34.75,8
+204,Stress Product 0764,4000000764,Cleaning,2026-02-04,"Fresh Drinks, S.A.",35.5,9
+205,Stress Product 0765,4000000765,Bakery,2026-02-05,Happy Grain,36.25,10
+201,Stress Product 0766,4000000766,Snacks,2026-02-06,La Vaquita,37.0,11
+202,Stress Product 0767,4000000767,Hygiene,2026-02-07,Clean Max,37.75,12
+203,Stress Product 0768,4000000768,Fruits,2026-02-08,Blue Sea,38.5,13
+204,Stress Product 0769,4000000769,Dairy,2026-02-09,Cafe Chapin,39.25,14
+205,Stress Product 0770,4000000770,Pantry,2026-02-10,"Fruits Company, Inc.",40.0,15
+201,Stress Product 0771,4000000771,Drinks,2026-02-11,"Fresh Drinks, S.A.",40.75,16
+202,Stress Product 0772,4000000772,Cleaning,2026-02-12,Happy Grain,41.5,17
+203,Stress Product 0773,4000000773,Bakery,2026-02-13,La Vaquita,42.25,18
+204,Stress Product 0774,4000000774,Snacks,2026-02-14,Clean Max,43.0,19
+205,Stress Product 0775,4000000775,Hygiene,2026-02-15,Blue Sea,43.75,20
+201,Stress Product 0776,4000000776,Fruits,2026-02-16,Cafe Chapin,44.5,21
+202,Stress Product 0777,4000000777,Dairy,2026-02-17,"Fruits Company, Inc.",45.25,22
+203,Stress Product 0778,4000000778,Pantry,2026-02-18,"Fresh Drinks, S.A.",46.0,23
+204,Stress Product 0779,4000000779,Drinks,2026-02-19,Happy Grain,46.75,24
+205,Stress Product 0780,4000000780,Cleaning,2026-02-20,La Vaquita,47.5,25
+201,Stress Product 0781,4000000781,Bakery,2026-02-21,Clean Max,48.25,26
+202,Stress Product 0782,4000000782,Snacks,2026-02-22,Blue Sea,49.0,27
+203,Stress Product 0783,4000000783,Hygiene,2026-02-23,Cafe Chapin,49.75,28
+204,Stress Product 0784,4000000784,Fruits,2026-02-24,"Fruits Company, Inc.",50.5,29
+205,Stress Product 0785,4000000785,Dairy,2026-02-25,"Fresh Drinks, S.A.",51.25,30
+201,Stress Product 0786,4000000786,Pantry,2026-02-26,Happy Grain,52.0,31
+202,Stress Product 0787,4000000787,Drinks,2026-02-27,La Vaquita,52.75,32
+203,Stress Product 0788,4000000788,Cleaning,2026-02-28,Clean Max,53.5,33
+204,Stress Product 0789,4000000789,Bakery,2026-03-01,Blue Sea,54.25,34
+205,Stress Product 0790,4000000790,Snacks,2026-03-02,Cafe Chapin,55.0,35
+201,Stress Product 0791,4000000791,Hygiene,2026-03-03,"Fruits Company, Inc.",55.75,36
+202,Stress Product 0792,4000000792,Fruits,2026-03-04,"Fresh Drinks, S.A.",56.5,37
+203,Stress Product 0793,4000000793,Dairy,2026-03-05,Happy Grain,57.25,38
+204,Stress Product 0794,4000000794,Pantry,2026-03-06,La Vaquita,58.0,39
+205,Stress Product 0795,4000000795,Drinks,2026-03-07,Clean Max,58.75,40
+201,Stress Product 0796,4000000796,Cleaning,2026-03-08,Blue Sea,59.5,41
+202,Stress Product 0797,4000000797,Bakery,2026-03-09,Cafe Chapin,60.25,42
+203,Stress Product 0798,4000000798,Snacks,2026-03-10,"Fruits Company, Inc.",61.0,43
+204,Stress Product 0799,4000000799,Hygiene,2026-03-11,"Fresh Drinks, S.A.",61.75,44
+205,Stress Product 0800,4000000800,Fruits,2026-03-12,Happy Grain,62.5,45
+201,Stress Product 0801,4000000801,Dairy,2026-03-13,La Vaquita,63.25,46
+202,Stress Product 0802,4000000802,Pantry,2026-03-14,Clean Max,64.0,47
+203,Stress Product 0803,4000000803,Drinks,2026-03-15,Blue Sea,64.75,48
+204,Stress Product 0804,4000000804,Cleaning,2026-03-16,Cafe Chapin,65.5,49
+205,Stress Product 0805,4000000805,Bakery,2026-03-17,"Fruits Company, Inc.",66.25,50
+201,Stress Product 0806,4000000806,Snacks,2026-03-18,"Fresh Drinks, S.A.",67.0,51
+202,Stress Product 0807,4000000807,Hygiene,2026-03-19,Happy Grain,67.75,52
+203,Stress Product 0808,4000000808,Fruits,2026-03-20,La Vaquita,68.5,53
+204,Stress Product 0809,4000000809,Dairy,2026-03-21,Clean Max,69.25,54
+205,Stress Product 0810,4000000810,Pantry,2026-03-22,Blue Sea,70.0,55
+201,Stress Product 0811,4000000811,Drinks,2026-03-23,Cafe Chapin,70.75,56
+202,Stress Product 0812,4000000812,Cleaning,2026-03-24,"Fruits Company, Inc.",71.5,57
+203,Stress Product 0813,4000000813,Bakery,2026-03-25,"Fresh Drinks, S.A.",72.25,58
+204,Stress Product 0814,4000000814,Snacks,2026-03-26,Happy Grain,73.0,59
+205,Stress Product 0815,4000000815,Hygiene,2026-03-27,La Vaquita,73.75,60
+201,Stress Product 0816,4000000816,Fruits,2026-03-28,Clean Max,74.5,61
+202,Stress Product 0817,4000000817,Dairy,2026-03-29,Blue Sea,75.25,62
+203,Stress Product 0818,4000000818,Pantry,2026-03-30,Cafe Chapin,76.0,63
+204,Stress Product 0819,4000000819,Drinks,2026-03-31,"Fruits Company, Inc.",76.75,64
+205,Stress Product 0820,4000000820,Cleaning,2026-04-01,"Fresh Drinks, S.A.",77.5,65
+201,Stress Product 0821,4000000821,Bakery,2026-04-02,Happy Grain,78.25,66
+202,Stress Product 0822,4000000822,Snacks,2026-04-03,La Vaquita,79.0,67
+203,Stress Product 0823,4000000823,Hygiene,2026-04-04,Clean Max,79.75,68
+204,Stress Product 0824,4000000824,Fruits,2026-04-05,Blue Sea,80.5,69
+205,Stress Product 0825,4000000825,Dairy,2026-04-06,Cafe Chapin,81.25,70
+201,Stress Product 0826,4000000826,Pantry,2026-04-07,"Fruits Company, Inc.",82.0,71
+202,Stress Product 0827,4000000827,Drinks,2026-04-08,"Fresh Drinks, S.A.",82.75,72
+203,Stress Product 0828,4000000828,Cleaning,2026-04-09,Happy Grain,83.5,73
+204,Stress Product 0829,4000000829,Bakery,2026-04-10,La Vaquita,84.25,74
+205,Stress Product 0830,4000000830,Snacks,2026-04-11,Clean Max,85.0,75
+201,Stress Product 0831,4000000831,Hygiene,2026-04-12,Blue Sea,85.75,76
+202,Stress Product 0832,4000000832,Fruits,2026-04-13,Cafe Chapin,86.5,77
+203,Stress Product 0833,4000000833,Dairy,2026-04-14,"Fruits Company, Inc.",87.25,78
+204,Stress Product 0834,4000000834,Pantry,2026-04-15,"Fresh Drinks, S.A.",88.0,79
+205,Stress Product 0835,4000000835,Drinks,2026-04-16,Happy Grain,88.75,80
+201,Stress Product 0836,4000000836,Cleaning,2026-04-17,La Vaquita,89.5,81
+202,Stress Product 0837,4000000837,Bakery,2026-04-18,Clean Max,90.25,82
+203,Stress Product 0838,4000000838,Snacks,2026-04-19,Blue Sea,91.0,83
+204,Stress Product 0839,4000000839,Hygiene,2026-04-20,Cafe Chapin,91.75,84
+205,Stress Product 0840,4000000840,Fruits,2026-04-21,"Fruits Company, Inc.",2.5,85
+201,Stress Product 0841,4000000841,Dairy,2026-04-22,"Fresh Drinks, S.A.",3.25,86
+202,Stress Product 0842,4000000842,Pantry,2026-04-23,Happy Grain,4.0,87
+203,Stress Product 0843,4000000843,Drinks,2026-04-24,La Vaquita,4.75,88
+204,Stress Product 0844,4000000844,Cleaning,2026-04-25,Clean Max,5.5,89
+205,Stress Product 0845,4000000845,Bakery,2026-04-26,Blue Sea,6.25,90
+201,Stress Product 0846,4000000846,Snacks,2026-04-27,Cafe Chapin,7.0,91
+202,Stress Product 0847,4000000847,Hygiene,2026-04-28,"Fruits Company, Inc.",7.75,92
+203,Stress Product 0848,4000000848,Fruits,2026-04-29,"Fresh Drinks, S.A.",8.5,93
+204,Stress Product 0849,4000000849,Dairy,2026-04-30,Happy Grain,9.25,94
+205,Stress Product 0850,4000000850,Pantry,2026-05-01,La Vaquita,10.0,95
+201,Stress Product 0851,4000000851,Drinks,2026-05-02,Clean Max,10.75,96
+202,Stress Product 0852,4000000852,Cleaning,2026-05-03,Blue Sea,11.5,97
+203,Stress Product 0853,4000000853,Bakery,2026-05-04,Cafe Chapin,12.25,98
+204,Stress Product 0854,4000000854,Snacks,2026-05-05,"Fruits Company, Inc.",13.0,99
+205,Stress Product 0855,4000000855,Hygiene,2026-05-06,"Fresh Drinks, S.A.",13.75,5
+201,Stress Product 0856,4000000856,Fruits,2026-05-07,Happy Grain,14.5,6
+202,Stress Product 0857,4000000857,Dairy,2026-05-08,La Vaquita,15.25,7
+203,Stress Product 0858,4000000858,Pantry,2026-05-09,Clean Max,16.0,8
+204,Stress Product 0859,4000000859,Drinks,2026-05-10,Blue Sea,16.75,9
+205,Stress Product 0860,4000000860,Cleaning,2026-05-11,Cafe Chapin,17.5,10
+201,Stress Product 0861,4000000861,Bakery,2026-05-12,"Fruits Company, Inc.",18.25,11
+202,Stress Product 0862,4000000862,Snacks,2026-05-13,"Fresh Drinks, S.A.",19.0,12
+203,Stress Product 0863,4000000863,Hygiene,2026-05-14,Happy Grain,19.75,13
+204,Stress Product 0864,4000000864,Fruits,2026-05-15,La Vaquita,20.5,14
+205,Stress Product 0865,4000000865,Dairy,2026-05-16,Clean Max,21.25,15
+201,Stress Product 0866,4000000866,Pantry,2026-05-17,Blue Sea,22.0,16
+202,Stress Product 0867,4000000867,Drinks,2026-05-18,Cafe Chapin,22.75,17
+203,Stress Product 0868,4000000868,Cleaning,2026-05-19,"Fruits Company, Inc.",23.5,18
+204,Stress Product 0869,4000000869,Bakery,2026-05-20,"Fresh Drinks, S.A.",24.25,19
+205,Stress Product 0870,4000000870,Snacks,2026-05-21,Happy Grain,25.0,20
+201,Stress Product 0871,4000000871,Hygiene,2026-05-22,La Vaquita,25.75,21
+202,Stress Product 0872,4000000872,Fruits,2026-05-23,Clean Max,26.5,22
+203,Stress Product 0873,4000000873,Dairy,2026-05-24,Blue Sea,27.25,23
+204,Stress Product 0874,4000000874,Pantry,2026-05-25,Cafe Chapin,28.0,24
+205,Stress Product 0875,4000000875,Drinks,2026-05-26,"Fruits Company, Inc.",28.75,25
+201,Stress Product 0876,4000000876,Cleaning,2026-05-27,"Fresh Drinks, S.A.",29.5,26
+202,Stress Product 0877,4000000877,Bakery,2026-05-28,Happy Grain,30.25,27
+203,Stress Product 0878,4000000878,Snacks,2026-05-29,La Vaquita,31.0,28
+204,Stress Product 0879,4000000879,Hygiene,2026-05-30,Clean Max,31.75,29
+205,Stress Product 0880,4000000880,Fruits,2026-05-31,Blue Sea,32.5,30
+201,Stress Product 0881,4000000881,Dairy,2026-06-01,Cafe Chapin,33.25,31
+202,Stress Product 0882,4000000882,Pantry,2026-06-02,"Fruits Company, Inc.",34.0,32
+203,Stress Product 0883,4000000883,Drinks,2026-06-03,"Fresh Drinks, S.A.",34.75,33
+204,Stress Product 0884,4000000884,Cleaning,2026-06-04,Happy Grain,35.5,34
+205,Stress Product 0885,4000000885,Bakery,2026-06-05,La Vaquita,36.25,35
+201,Stress Product 0886,4000000886,Snacks,2026-06-06,Clean Max,37.0,36
+202,Stress Product 0887,4000000887,Hygiene,2026-06-07,Blue Sea,37.75,37
+203,Stress Product 0888,4000000888,Fruits,2026-06-08,Cafe Chapin,38.5,38
+204,Stress Product 0889,4000000889,Dairy,2026-06-09,"Fruits Company, Inc.",39.25,39
+205,Stress Product 0890,4000000890,Pantry,2026-06-10,"Fresh Drinks, S.A.",40.0,40
+201,Stress Product 0891,4000000891,Drinks,2026-06-11,Happy Grain,40.75,41
+202,Stress Product 0892,4000000892,Cleaning,2026-06-12,La Vaquita,41.5,42
+203,Stress Product 0893,4000000893,Bakery,2026-06-13,Clean Max,42.25,43
+204,Stress Product 0894,4000000894,Snacks,2026-06-14,Blue Sea,43.0,44
+205,Stress Product 0895,4000000895,Hygiene,2026-06-15,Cafe Chapin,43.75,45
+201,Stress Product 0896,4000000896,Fruits,2026-06-16,"Fruits Company, Inc.",44.5,46
+202,Stress Product 0897,4000000897,Dairy,2026-06-17,"Fresh Drinks, S.A.",45.25,47
+203,Stress Product 0898,4000000898,Pantry,2026-06-18,Happy Grain,46.0,48
+204,Stress Product 0899,4000000899,Drinks,2026-06-19,La Vaquita,46.75,49
+205,Stress Product 0900,4000000900,Cleaning,2026-06-20,Clean Max,47.5,50
+201,Stress Product 0901,4000000901,Bakery,2026-06-21,Blue Sea,48.25,51
+202,Stress Product 0902,4000000902,Snacks,2026-06-22,Cafe Chapin,49.0,52
+203,Stress Product 0903,4000000903,Hygiene,2026-06-23,"Fruits Company, Inc.",49.75,53
+204,Stress Product 0904,4000000904,Fruits,2026-06-24,"Fresh Drinks, S.A.",50.5,54
+205,Stress Product 0905,4000000905,Dairy,2026-06-25,Happy Grain,51.25,55
+201,Stress Product 0906,4000000906,Pantry,2026-06-26,La Vaquita,52.0,56
+202,Stress Product 0907,4000000907,Drinks,2026-06-27,Clean Max,52.75,57
+203,Stress Product 0908,4000000908,Cleaning,2026-06-28,Blue Sea,53.5,58
+204,Stress Product 0909,4000000909,Bakery,2026-06-29,Cafe Chapin,54.25,59
+205,Stress Product 0910,4000000910,Snacks,2026-06-30,"Fruits Company, Inc.",55.0,60
+201,Stress Product 0911,4000000911,Hygiene,2026-07-01,"Fresh Drinks, S.A.",55.75,61
+202,Stress Product 0912,4000000912,Fruits,2026-07-02,Happy Grain,56.5,62
+203,Stress Product 0913,4000000913,Dairy,2026-07-03,La Vaquita,57.25,63
+204,Stress Product 0914,4000000914,Pantry,2026-07-04,Clean Max,58.0,64
+205,Stress Product 0915,4000000915,Drinks,2026-07-05,Blue Sea,58.75,65
+201,Stress Product 0916,4000000916,Cleaning,2026-07-06,Cafe Chapin,59.5,66
+202,Stress Product 0917,4000000917,Bakery,2026-07-07,"Fruits Company, Inc.",60.25,67
+203,Stress Product 0918,4000000918,Snacks,2026-07-08,"Fresh Drinks, S.A.",61.0,68
+204,Stress Product 0919,4000000919,Hygiene,2026-07-09,Happy Grain,61.75,69
+205,Stress Product 0920,4000000920,Fruits,2026-07-10,La Vaquita,62.5,70
+201,Stress Product 0921,4000000921,Dairy,2026-07-11,Clean Max,63.25,71
+202,Stress Product 0922,4000000922,Pantry,2026-07-12,Blue Sea,64.0,72
+203,Stress Product 0923,4000000923,Drinks,2026-07-13,Cafe Chapin,64.75,73
+204,Stress Product 0924,4000000924,Cleaning,2026-07-14,"Fruits Company, Inc.",65.5,74
+205,Stress Product 0925,4000000925,Bakery,2026-07-15,"Fresh Drinks, S.A.",66.25,75
+201,Stress Product 0926,4000000926,Snacks,2026-07-16,Happy Grain,67.0,76
+202,Stress Product 0927,4000000927,Hygiene,2026-07-17,La Vaquita,67.75,77
+203,Stress Product 0928,4000000928,Fruits,2026-07-18,Clean Max,68.5,78
+204,Stress Product 0929,4000000929,Dairy,2026-07-19,Blue Sea,69.25,79
+205,Stress Product 0930,4000000930,Pantry,2026-07-20,Cafe Chapin,70.0,80
+201,Stress Product 0931,4000000931,Drinks,2026-07-21,"Fruits Company, Inc.",70.75,81
+202,Stress Product 0932,4000000932,Cleaning,2026-07-22,"Fresh Drinks, S.A.",71.5,82
+203,Stress Product 0933,4000000933,Bakery,2026-07-23,Happy Grain,72.25,83
+204,Stress Product 0934,4000000934,Snacks,2026-07-24,La Vaquita,73.0,84
+205,Stress Product 0935,4000000935,Hygiene,2026-07-25,Clean Max,73.75,85
+201,Stress Product 0936,4000000936,Fruits,2026-07-26,Blue Sea,74.5,86
+202,Stress Product 0937,4000000937,Dairy,2026-07-27,Cafe Chapin,75.25,87
+203,Stress Product 0938,4000000938,Pantry,2026-07-28,"Fruits Company, Inc.",76.0,88
+204,Stress Product 0939,4000000939,Drinks,2026-07-29,"Fresh Drinks, S.A.",76.75,89
+205,Stress Product 0940,4000000940,Cleaning,2026-07-30,Happy Grain,77.5,90
+201,Stress Product 0941,4000000941,Bakery,2026-07-31,La Vaquita,78.25,91
+202,Stress Product 0942,4000000942,Snacks,2026-08-01,Clean Max,79.0,92
+203,Stress Product 0943,4000000943,Hygiene,2026-08-02,Blue Sea,79.75,93
+204,Stress Product 0944,4000000944,Fruits,2026-08-03,Cafe Chapin,80.5,94
+205,Stress Product 0945,4000000945,Dairy,2026-08-04,"Fruits Company, Inc.",81.25,95
+201,Stress Product 0946,4000000946,Pantry,2026-08-05,"Fresh Drinks, S.A.",82.0,96
+202,Stress Product 0947,4000000947,Drinks,2026-08-06,Happy Grain,82.75,97
+203,Stress Product 0948,4000000948,Cleaning,2026-08-07,La Vaquita,83.5,98
+204,Stress Product 0949,4000000949,Bakery,2026-08-08,Clean Max,84.25,99
+205,Stress Product 0950,4000000950,Snacks,2026-08-09,Blue Sea,85.0,5
+201,Stress Product 0951,4000000951,Hygiene,2026-08-10,Cafe Chapin,85.75,6
+202,Stress Product 0952,4000000952,Fruits,2026-08-11,"Fruits Company, Inc.",86.5,7
+203,Stress Product 0953,4000000953,Dairy,2026-08-12,"Fresh Drinks, S.A.",87.25,8
+204,Stress Product 0954,4000000954,Pantry,2026-08-13,Happy Grain,88.0,9
+205,Stress Product 0955,4000000955,Drinks,2026-08-14,La Vaquita,88.75,10
+201,Stress Product 0956,4000000956,Cleaning,2026-08-15,Clean Max,89.5,11
+202,Stress Product 0957,4000000957,Bakery,2026-08-16,Blue Sea,90.25,12
+203,Stress Product 0958,4000000958,Snacks,2026-08-17,Cafe Chapin,91.0,13
+204,Stress Product 0959,4000000959,Hygiene,2026-08-18,"Fruits Company, Inc.",91.75,14
+205,Stress Product 0960,4000000960,Fruits,2026-08-19,"Fresh Drinks, S.A.",2.5,15
+201,Stress Product 0961,4000000961,Dairy,2026-08-20,Happy Grain,3.25,16
+202,Stress Product 0962,4000000962,Pantry,2026-08-21,La Vaquita,4.0,17
+203,Stress Product 0963,4000000963,Drinks,2026-08-22,Clean Max,4.75,18
+204,Stress Product 0964,4000000964,Cleaning,2026-08-23,Blue Sea,5.5,19
+205,Stress Product 0965,4000000965,Bakery,2026-08-24,Cafe Chapin,6.25,20
+201,Stress Product 0966,4000000966,Snacks,2026-08-25,"Fruits Company, Inc.",7.0,21
+202,Stress Product 0967,4000000967,Hygiene,2026-08-26,"Fresh Drinks, S.A.",7.75,22
+203,Stress Product 0968,4000000968,Fruits,2026-08-27,Happy Grain,8.5,23
+204,Stress Product 0969,4000000969,Dairy,2026-08-28,La Vaquita,9.25,24
+205,Stress Product 0970,4000000970,Pantry,2026-08-29,Clean Max,10.0,25
+201,Stress Product 0971,4000000971,Drinks,2026-08-30,Blue Sea,10.75,26
+202,Stress Product 0972,4000000972,Cleaning,2026-08-31,Cafe Chapin,11.5,27
+203,Stress Product 0973,4000000973,Bakery,2026-09-01,"Fruits Company, Inc.",12.25,28
+204,Stress Product 0974,4000000974,Snacks,2026-09-02,"Fresh Drinks, S.A.",13.0,29
+205,Stress Product 0975,4000000975,Hygiene,2026-09-03,Happy Grain,13.75,30
+201,Stress Product 0976,4000000976,Fruits,2026-09-04,La Vaquita,14.5,31
+202,Stress Product 0977,4000000977,Dairy,2026-09-05,Clean Max,15.25,32
+203,Stress Product 0978,4000000978,Pantry,2026-09-06,Blue Sea,16.0,33
+204,Stress Product 0979,4000000979,Drinks,2026-09-07,Cafe Chapin,16.75,34
+205,Stress Product 0980,4000000980,Cleaning,2026-09-08,"Fruits Company, Inc.",17.5,35
+201,Stress Product 0981,4000000981,Bakery,2026-09-09,"Fresh Drinks, S.A.",18.25,36
+202,Stress Product 0982,4000000982,Snacks,2026-09-10,Happy Grain,19.0,37
+203,Stress Product 0983,4000000983,Hygiene,2026-09-11,La Vaquita,19.75,38
+204,Stress Product 0984,4000000984,Fruits,2026-09-12,Clean Max,20.5,39
+205,Stress Product 0985,4000000985,Dairy,2026-09-13,Blue Sea,21.25,40
+201,Stress Product 0986,4000000986,Pantry,2026-09-14,Cafe Chapin,22.0,41
+202,Stress Product 0987,4000000987,Drinks,2026-09-15,"Fruits Company, Inc.",22.75,42
+203,Stress Product 0988,4000000988,Cleaning,2026-09-16,"Fresh Drinks, S.A.",23.5,43
+204,Stress Product 0989,4000000989,Bakery,2026-09-17,Happy Grain,24.25,44
+205,Stress Product 0990,4000000990,Snacks,2026-09-18,La Vaquita,25.0,45
+201,Stress Product 0991,4000000991,Hygiene,2026-09-19,Clean Max,25.75,46
+202,Stress Product 0992,4000000992,Fruits,2026-09-20,Blue Sea,26.5,47
+203,Stress Product 0993,4000000993,Dairy,2026-09-21,Cafe Chapin,27.25,48
+204,Stress Product 0994,4000000994,Pantry,2026-09-22,"Fruits Company, Inc.",28.0,49
+205,Stress Product 0995,4000000995,Drinks,2026-09-23,"Fresh Drinks, S.A.",28.75,50
+201,Stress Product 0996,4000000996,Cleaning,2026-09-24,Happy Grain,29.5,51
+202,Stress Product 0997,4000000997,Bakery,2026-09-25,La Vaquita,30.25,52
+203,Stress Product 0998,4000000998,Snacks,2026-09-26,Clean Max,31.0,53
+204,Stress Product 0999,4000000999,Hygiene,2026-09-27,Blue Sea,31.75,54
+205,Stress Product 1000,4000001000,Fruits,2026-09-28,Cafe Chapin,32.5,55
