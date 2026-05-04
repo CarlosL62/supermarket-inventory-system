@@ -1,11 +1,12 @@
 class TransferRequest:
-    def __init__(self, source_id, destination_id, barcode, quantity, path, total_weight):
+    def __init__(self, source_id, destination_id, barcode, quantity, path, total_weight, criterion="time"):
         self.source_id = source_id
         self.destination_id = destination_id
         self.barcode = barcode
         self.quantity = quantity
         self.path = path
         self.total_weight = total_weight
+        self.criterion = criterion
         self.status = "Pendiente"
         self.current_stage = "Pendiente"
 

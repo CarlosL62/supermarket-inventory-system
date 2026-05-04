@@ -338,6 +338,13 @@
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="btnExportBranchGraph">
+              <property name="text">
+               <string>Exportar grafo</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="labelShortestPathResult">
               <property name="text">
                <string>Ruta: seleccione origen y destino</string>
@@ -456,6 +463,9 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QGraphicsView" name="transferRouteGraphicsView"/>
+          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="queuesPage">
@@ -480,6 +490,9 @@
           </item>
           <item>
            <widget class="QTableWidget" name="transferQueueTable"/>
+          </item>
+          <item>
+           <widget class="QGraphicsView" name="queueRouteGraphicsView"/>
           </item>
          </layout>
         </widget>

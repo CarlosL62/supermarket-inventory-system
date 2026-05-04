@@ -52,7 +52,7 @@ def format_tree_value(value, value_fields=None):
     return str(value)
 
 
-def build_branch_graph_svg(branches, connections, highlighted_time_path=None, highlighted_cost_path=None):
+def build_branch_graph_svg(branches, connections, highlighted_time_path=None, highlighted_cost_path=None, current_branch_id=None):
     time_edges = get_path_edges(highlighted_time_path)
     cost_edges = get_path_edges(highlighted_cost_path)
 
@@ -96,7 +96,17 @@ def build_branch_graph_svg(branches, connections, highlighted_time_path=None, hi
 
     for branch in branches:
         label = f"{branch.id}\n{branch.name}"
-        dot.node(str(branch.id), label)
+
+        if current_branch_id is not None and branch.id == current_branch_id:
+            dot.node(
+                str(branch.id),
+                label,
+                fillcolor="#fde68a",
+                color="#d97706",
+                penwidth="4"
+            )
+        else:
+            dot.node(str(branch.id), label)
 
     for source_id, destination_id, time_weight, cost_weight, is_bidirectional in connections:
         label = f"T:{time_weight} | C:{cost_weight}"

@@ -61,6 +61,7 @@ class MainWindow(QMainWindow):
             self.input_transfer_quantity,
             self.combo_transfer_criterion,
             self.label_transfer_result,
+            self.transfer_route_graphics_view,
             parent=self
         )
 
@@ -68,6 +69,7 @@ class MainWindow(QMainWindow):
             self.branch_manager,
             self.transfer_queue_table,
             self.label_queue_result,
+            self.queue_route_graphics_view,
             parent=self
         )
 
@@ -120,7 +122,7 @@ class MainWindow(QMainWindow):
         setup_transfer_queue_table(self.transfer_queue_table)
 
         # Demo data for testing only
-        #load_demo_branches(self.branch_manager)
+        load_demo_branches(self.branch_manager)
 
         self.inventory_view.refresh_branches_table()
         self.graph_view.load_branch_options()
@@ -195,6 +197,7 @@ class MainWindow(QMainWindow):
         self.connections_table = self.findChild(object, "connectionsTable")
         self.graph_graphics_view = self.findChild(object, "graphGraphicsView")
         self.btn_calculate_shortest_path = self.findChild(object, "btnCalculateShortestPath")
+        self.btn_export_branch_graph = self.findChild(object, "btnExportBranchGraph")
         self.label_shortest_path_result = self.findChild(object, "labelShortestPathResult")
 
         # Transfer and dispatch queue widgets
@@ -205,8 +208,10 @@ class MainWindow(QMainWindow):
         self.combo_transfer_criterion = self.findChild(object, "comboTransferCriterion")
         self.btn_execute_transfer = self.findChild(object, "btnExecuteTransfer")
         self.label_transfer_result = self.findChild(object, "labelTransferResult")
+        self.transfer_route_graphics_view = self.findChild(object, "transferRouteGraphicsView")
         self.label_queue_result = self.findChild(object, "labelQueueResult")
         self.transfer_queue_table = self.findChild(object, "transferQueueTable")
+        self.queue_route_graphics_view = self.findChild(object, "queueRouteGraphicsView")
 
         # Structure visualization widgets
         self.combo_visualization_branch = self.findChild(object, "comboVisualizationBranch")
@@ -300,7 +305,6 @@ class MainWindow(QMainWindow):
     def search_inventory_products_by_category(self):
         self.inventory_view.search_products_by_category()
 
-
     def update_simulation(self):
         # Legacy timer fallback. Threaded transfers are advanced by TransferWorker.
         transfers = self.branch_manager.get_pending_transfers()
@@ -362,6 +366,8 @@ class MainWindow(QMainWindow):
         self.btn_add_connection.clicked.connect(self.graph_view.add_connection)
         if self.btn_calculate_shortest_path is not None:
             self.btn_calculate_shortest_path.clicked.connect(self.graph_view.calculate_shortest_path)
+        if self.btn_export_branch_graph is not None:
+            self.btn_export_branch_graph.clicked.connect(self.graph_view.export_graph)
         self.combo_transfer_source_branch.currentIndexChanged.connect(self.transfer_view.load_product_options)
         self.btn_execute_transfer.clicked.connect(self.transfer_view.execute_transfer)
         self.btn_refresh_visualization.clicked.connect(self.visualization_view.render_tree)

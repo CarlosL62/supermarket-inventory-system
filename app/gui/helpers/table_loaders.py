@@ -1,3 +1,4 @@
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QTableWidgetItem
 
 
@@ -70,6 +71,7 @@ def load_transfer_queue_table(table, transfer_requests, branch_manager):
         for col, text in enumerate(items):
             item = QTableWidgetItem(str(text))
             item.setToolTip(str(text))
+            item.setData(Qt.ItemDataRole.UserRole, transfer_request)
             table.setItem(i, col, item)
 
         table.resizeRowToContents(i)

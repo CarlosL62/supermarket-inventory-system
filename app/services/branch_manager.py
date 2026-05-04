@@ -27,6 +27,32 @@ class BranchManager:
     def get_branches(self):
         return self.branches
 
+    def get_connections(self):
+        connections = []
+        seen_edges = set()
+
+        for branch in self.branches:
+            for neighbor_id, time_weight, cost_weight in self.graph.get_neighbors(branch.id):
+                reverse_exists = any(
+                    reverse_neighbor_id == branch.id
+                    for reverse_neighbor_id, _, _ in self.graph.get_neighbors(neighbor_id)
+                )
+
+                if reverse_exists:
+                    edge_key = tuple(sorted((branch.id, neighbor_id)))
+                    if edge_key in seen_edges:
+                        continue
+                    seen_edges.add(edge_key)
+                    connections.append((branch.id, neighbor_id, time_weight, cost_weight, True))
+                else:
+                    edge_key = (branch.id, neighbor_id)
+                    if edge_key in seen_edges:
+                        continue
+                    seen_edges.add(edge_key)
+                    connections.append((branch.id, neighbor_id, time_weight, cost_weight, False))
+
+        return connections
+
     def find_by_id(self, branch_id):
         for branch in self.branches:
             if branch.id == branch_id:
@@ -159,7 +185,6 @@ class BranchManager:
 
     def get_pending_transfers(self):
         return self.transfer_queue.get_all()
-
 
     def apply_completed_transfers(self):
         for transfer in self.transfer_queue.get_all():
