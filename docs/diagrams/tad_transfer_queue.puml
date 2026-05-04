@@ -1,0 +1,49 @@
+@startuml
+title TAD Cola FIFO de Transferencias
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class "TAD Cola FIFO" as QueueADT <<TAD>> {
+  +enqueue(transferencia)
+  +dequeue()
+  +peek()
+  +is_empty()
+  +size()
+  +get_all()
+}
+
+class TransferRequest <<model>> {
+  +source_id: int
+  +destination_id: int
+  +barcode: str
+  +quantity: int
+  +status: str
+}
+
+class TransferQueue {
+  +items: list
+  +enqueue(transfer_request)
+  +dequeue()
+  +peek()
+  +is_empty()
+  +size()
+  +get_all()
+}
+
+QueueADT ..> TransferQueue : implementación real
+TransferQueue --> TransferRequest
+
+note right of QueueADT
+Uso real en el proyecto:
+- cola general de transferencias pendientes
+- apoyo al flujo FIFO del sistema
+end note
+
+note right of TransferQueue
+Implementación simple sobre lista Python:
+- enqueue al final
+- dequeue desde la posición 0
+end note
+
+@enduml

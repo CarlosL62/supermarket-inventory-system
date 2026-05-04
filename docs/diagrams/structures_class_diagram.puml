@@ -1,0 +1,175 @@
+@startuml
+title Supermarket Inventory System - Diagrama de Clases de Estructuras
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+package "models (referencias)" {
+  class Product <<model>> {
+    +name: str
+    +barcode: str
+    +category: str
+    +expiry_date: str
+    +brand: str
+    +price: float
+    +stock: int
+  }
+
+  class TransferRequest <<model>> {
+    +source_id: int
+    +destination_id: int
+    +barcode: str
+    +quantity: int
+    +path: list
+    +criterion: str
+  }
+}
+
+package "structures" {
+  class Node {
+    +data: Product
+    +next: Node
+  }
+
+  abstract class BaseLinkedList {
+    +head: Node
+    +search_by_name(name: str)
+    +search_by_barcode(barcode: str)
+    +remove_by_barcode(barcode: str): bool
+    +get_all_products()
+  }
+
+  class UnorderedLinkedList {
+    +insert(product: Product)
+  }
+
+  class OrderedLinkedList {
+    +insert(product: Product)
+  }
+
+  class AVLNode {
+    +product: Product
+    +left: AVLNode
+    +right: AVLNode
+    +height: int
+  }
+
+  class AVLTree {
+    +root: AVLNode
+    +insert(product: Product)
+    +search(name: str)
+    +remove(name: str)
+    +in_order_traversal()
+    +get_all_products()
+  }
+
+  class HashTable {
+    +capacity: int
+    +table: list
+    +insert(product: Product): bool
+    +search(barcode: str)
+    +remove(barcode: str): bool
+    +get_all_products()
+  }
+
+  class BTreeNode {
+    +keys: list
+    +children: list
+    +is_leaf: bool
+  }
+
+  class BTree {
+    +root: BTreeNode
+    +min_degree: int
+    +search(expiry_date: str)
+    +insert(product: Product)
+    +search_by_range(start_date: str, end_date: str)
+    +remove(expiry_date: str)
+    +get_all_products()
+  }
+
+  class BPlusTreeNode {
+    +keys: list
+    +values: list
+    +children: list
+    +is_leaf: bool
+    +next: BPlusTreeNode
+  }
+
+  class BPlusTree {
+    +root: BPlusTreeNode
+    +min_degree: int
+    +find_leaf(category: str)
+    +search(category: str)
+    +insert(product: Product)
+    +remove(product: Product)
+    +get_all_products()
+  }
+
+  class TransferQueue {
+    +items: list
+    +enqueue(transfer_request: TransferRequest)
+    +dequeue()
+    +peek()
+    +is_empty()
+    +size()
+    +get_all()
+  }
+}
+
+BaseLinkedList *-- Node
+Node --> Product
+
+UnorderedLinkedList --|> BaseLinkedList
+OrderedLinkedList --|> BaseLinkedList
+
+AVLTree *-- AVLNode
+AVLNode --> Product
+
+HashTable ..> Product
+
+BTree *-- BTreeNode
+BTreeNode --> Product : keys
+
+BPlusTree *-- BPlusTreeNode
+BPlusTreeNode --> Product : values
+BPlusTreeNode --> BPlusTreeNode : next
+
+TransferQueue --> TransferRequest
+
+note right of UnorderedLinkedList
+Inserción al frente.
+Se usa como base para:
+- recorrido secuencial
+- benchmark de lista enlazada
+end note
+
+note right of AVLTree
+Índice por nombre.
+Uso principal:
+- búsqueda por nombre
+end note
+
+note right of HashTable
+Índice por código de barras.
+Uso principal:
+- búsqueda exacta por barcode
+end note
+
+note right of BPlusTree
+Agrupa productos por categoría
+en hojas enlazadas.
+end note
+
+note right of BTree
+Mantiene productos ordenados
+por fecha de expiración.
+end note
+
+note right of TransferQueue
+Cola FIFO simple para
+solicitudes de transferencia.
+end note
+
+@enduml

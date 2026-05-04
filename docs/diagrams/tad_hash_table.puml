@@ -1,0 +1,45 @@
+@startuml
+title TAD Hash Table
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class "TAD Hash Table" as HashADT <<TAD>> {
+  +insert(producto)
+  +search(codigo)
+  +remove(codigo)
+  +get_all_products()
+}
+
+class Product <<model>> {
+  +barcode: str
+  +name: str
+}
+
+class HashTable {
+  +capacity: int
+  +table: list
+  +insert(product: Product): bool
+  +search(barcode: str)
+  +remove(barcode: str): bool
+  +get_all_products()
+}
+
+HashADT ..> HashTable : implementación real
+HashTable ..> Product
+
+note right of HashADT
+Uso real en el proyecto:
+- búsqueda exacta por código de barras
+- validación de duplicados en inserción
+end note
+
+note right of HashTable
+Clave principal:
+product.barcode
+
+Complejidad promedio esperada:
+acceso O(1)
+end note
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+title TAD B+ Tree
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class "TAD B+ Tree" as BPlusADT <<TAD>> {
+  +find_leaf(categoria)
+  +search(categoria)
+  +insert(producto)
+  +remove(producto)
+  +get_all_products()
+}
+
+class Product <<model>> {
+  +category: str
+  +barcode: str
+  +name: str
+}
+
+class BPlusTreeNode {
+  +keys: list
+  +values: list
+  +children: list
+  +is_leaf: bool
+  +next: BPlusTreeNode
+}
+
+class BPlusTree {
+  +root: BPlusTreeNode
+  +min_degree: int
+  +find_leaf(category: str)
+  +search(category: str)
+  +insert(product: Product)
+  +remove(product: Product)
+  +get_all_products()
+}
+
+BPlusADT ..> BPlusTree : implementación real
+BPlusTree *-- BPlusTreeNode
+BPlusTreeNode --> Product : values
+BPlusTreeNode --> BPlusTreeNode : next
+
+note right of BPlusADT
+Uso real en el proyecto:
+- búsqueda por categoría
+- recorrido secuencial de hojas enlazadas
+end note
+
+note right of BPlusTree
+Clave de orden:
+product.category
+
+En hojas:
+- keys guarda categorías
+- values guarda listas de productos
+end note
+
+@enduml

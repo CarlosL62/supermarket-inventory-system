@@ -1,0 +1,291 @@
+@startuml
+title Supermarket Inventory System - Diagrama General de Clases
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+hide empty members
+
+package "models" {
+  class Product {
+    +name: str
+    +barcode: str
+    +category: str
+    +expiry_date: str
+    +brand: str
+    +price: float
+    +stock: int
+  }
+
+  class TransferRequest {
+    +source_id: int
+    +destination_id: int
+    +barcode: str
+    +quantity: int
+    +path: list
+    +total_weight
+    +criterion: str
+    +status: str
+    +current_stage: str
+    +simulation_steps: list
+    +mark_completed()
+    +start()
+    +tick()
+    +get_current_branch_id()
+  }
+
+  class Branch {
+    +id: int
+    +name: str
+    +location: str
+    +entry_time: int
+    +transfer_time: int
+    +dispatch_interval: int
+    +inventory: CatalogService
+    +incoming_queue: TransferQueue
+    +transfer_preparation_queue: TransferQueue
+    +outgoing_queue: TransferQueue
+  }
+
+  class BranchGraph {
+    +graph: dict
+    +add_branch(branch_id)
+    +add_connection(source_id, destination_id, time_weight, cost_weight, bidirectional)
+    +get_neighbors(branch_id)
+    +get_all_connections()
+    +remove_branch(branch_id)
+    +shortest_path(start_id, end_id, criterion)
+  }
+}
+
+package "services" {
+  class CatalogService {
+    +unordered_list: UnorderedLinkedList
+    +ordered_list: OrderedLinkedList
+    +hash_table: HashTable
+    +avl_tree: AVLTree
+    +b_tree: BTree
+    +b_plus_tree: BPlusTree
+    +add_product(product: Product): bool
+    +delete_product_by_barcode(barcode: str): bool
+    +search_by_name(name: str)
+    +search_by_barcode(barcode: str)
+    +search_by_category(category: str)
+    +search_by_expiry_date_range(start_date: str, end_date: str)
+    +get_all_products()
+  }
+
+  class BranchManager {
+    +branches: list
+    +next_branch_id: int
+    +graph: BranchGraph
+    +transfer_queue: TransferQueue
+    +add_branch(branch: Branch)
+    +find_by_id(branch_id)
+    +delete_branch(branch_id)
+    +connect_branches(source_id, destination_id, time_weight, cost_weight, bidirectional)
+    +create_transfer_request(source_id, destination_id, barcode, quantity, criterion)
+    +transfer_product(source_id, destination_id, barcode, quantity)
+    +get_pending_transfers()
+    +apply_completed_transfers()
+  }
+
+  class InventoryProcessingService {
+    +search_products(products, query, method, inventory=None)
+    +benchmark_search_methods(inventory, n, m)
+    +format_benchmark_results(results)
+  }
+}
+
+package "structures" {
+  class Node
+  abstract class BaseLinkedList
+  class UnorderedLinkedList
+  class OrderedLinkedList
+  class AVLNode
+  class AVLTree
+  class HashTable
+  class BTreeNode
+  class BTree
+  class BPlusTreeNode
+  class BPlusTree
+  class TransferQueue
+}
+
+package "gui.dialogs" {
+  class AddBranchDialog {
+    +get_branch()
+  }
+
+  class AddProductDialog {
+    +get_product()
+  }
+}
+
+package "gui.views" {
+  class MainWindow {
+    +branch_manager: BranchManager
+    +inventory_view: InventoryView
+    +graph_view: GraphView
+    +transfer_view: TransferView
+    +queue_view: QueueView
+    +visualization_view: VisualizationView
+    +benchmark_view: BenchmarkView
+    +csv_view: CSVView
+    +load_initial_data()
+    +update_simulation()
+  }
+
+  class InventoryView {
+    +search_products_by_name()
+    +search_products_by_barcode()
+    +search_products_by_category()
+    +search_products_by_date_range()
+    +add_branch()
+    +add_product_to_selected_branch()
+  }
+
+  class GraphView {
+    +load_branch_options()
+    +refresh_connections_table()
+    +draw_graph()
+    +render_transfer_route(path, criterion, current_branch_id, result_prefix)
+    +export_graph()
+  }
+
+  class TransferView {
+    +load_branch_options()
+    +preview_transfer()
+    +execute_transfer()
+    +build_simulation_steps(path)
+    +handle_transfer_worker_update(_transfer_request)
+  }
+
+  class QueueView {
+    +refresh_queue_table()
+    +handle_transfer_selection()
+  }
+
+  class VisualizationView {
+    +load_branch_options()
+    +render_tree()
+    +export_visualization()
+  }
+
+  class BenchmarkView {
+    +measure_searches()
+    +measure_insertions()
+    +measure_deletions()
+    +measure_transfers()
+  }
+
+  class CSVView {
+    +load_csv_files()
+    +load_error_log()
+  }
+}
+
+package "gui.helpers" {
+  class TransferWorker {
+    +transfer_request: TransferRequest
+    +branch_manager: BranchManager
+    +queue_next_ticket: dict
+    +queue_serving_ticket: dict
+    +queue_busy: dict
+    +try_acquire_queue_lock()
+    +release_queue_lock()
+    +run()
+    +stop()
+  }
+
+  class "svg_exporter" as SvgExporter <<module>> {
+    +export_svg(svg_data, parent, default_name)
+  }
+}
+
+package "utils" {
+  class CSVLoader {
+    +error_log_path: str
+    +load_all(branches_file, connections_file, products_file, branch_manager)
+    +load_branches(file_path, branch_manager)
+    +load_connections(file_path, branch_manager)
+    +load_products(file_path, branch_manager)
+  }
+}
+
+BaseLinkedList *-- Node
+Node --> Product
+UnorderedLinkedList --|> BaseLinkedList
+OrderedLinkedList --|> BaseLinkedList
+AVLTree *-- AVLNode
+AVLNode --> Product
+HashTable ..> Product
+BTree *-- BTreeNode
+BTreeNode --> Product
+BPlusTree *-- BPlusTreeNode
+BPlusTreeNode --> Product
+BPlusTreeNode --> BPlusTreeNode : next
+TransferQueue --> TransferRequest
+
+Branch *-- CatalogService
+Branch *-- TransferQueue : incoming_queue
+Branch *-- TransferQueue : transfer_preparation_queue
+Branch *-- TransferQueue : outgoing_queue
+
+CatalogService *-- UnorderedLinkedList
+CatalogService *-- OrderedLinkedList
+CatalogService *-- HashTable
+CatalogService *-- AVLTree
+CatalogService *-- BTree
+CatalogService *-- BPlusTree
+
+BranchManager *-- BranchGraph
+BranchManager *-- TransferQueue
+BranchManager o-- Branch
+BranchManager ..> TransferRequest
+
+InventoryProcessingService ..> CatalogService
+InventoryProcessingService ..> Product
+
+AddBranchDialog ..> Branch
+AddProductDialog ..> Product
+InventoryView ..> AddBranchDialog
+InventoryView ..> AddProductDialog
+InventoryView ..> InventoryProcessingService
+InventoryView ..> BranchManager
+GraphView ..> BranchManager
+TransferView ..> BranchManager
+TransferView o-- TransferWorker
+QueueView ..> BranchManager
+VisualizationView ..> BranchManager
+BenchmarkView ..> BranchManager
+BenchmarkView ..> InventoryProcessingService
+CSVView ..> BranchManager
+CSVView *-- CSVLoader
+TransferWorker ..> TransferRequest
+TransferWorker ..> BranchManager
+GraphView ..> SvgExporter
+VisualizationView ..> SvgExporter
+
+MainWindow *-- InventoryView
+MainWindow *-- GraphView
+MainWindow *-- TransferView
+MainWindow *-- QueueView
+MainWindow *-- VisualizationView
+MainWindow o-- BenchmarkView
+MainWindow o-- CSVView
+MainWindow *-- BranchManager
+
+note bottom of InventoryProcessingService
+La aplicación usa estructuras reales del inventario
+para nombre, código y categoría.
+El benchmark de búsqueda compara solo:
+lista enlazada, AVL y Hash.
+end note
+
+note bottom of SvgExporter
+Módulo funcional reutilizable para exportación
+de SVG y PNG.
+end note
+
+@enduml

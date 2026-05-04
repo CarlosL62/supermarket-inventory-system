@@ -1,0 +1,53 @@
+@startuml
+title TAD B-Tree
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class "TAD B-Tree" as BTreeADT <<TAD>> {
+  +insert(producto)
+  +search(fecha)
+  +search_by_range(fecha_inicio, fecha_fin)
+  +remove(fecha)
+  +get_all_products()
+}
+
+class Product <<model>> {
+  +expiry_date: str
+  +name: str
+}
+
+class BTreeNode {
+  +keys: list
+  +children: list
+  +is_leaf: bool
+}
+
+class BTree {
+  +root: BTreeNode
+  +min_degree: int
+  +search(expiry_date: str)
+  +insert(product: Product)
+  +search_by_range(start_date: str, end_date: str)
+  +remove(expiry_date: str)
+  +get_all_products()
+}
+
+BTreeADT ..> BTree : implementación real
+BTree *-- BTreeNode
+BTreeNode --> Product : keys
+
+note right of BTreeADT
+Uso real en el proyecto:
+- búsqueda por rango de fechas de expiración
+end note
+
+note right of BTree
+Clave de orden:
+product.expiry_date
+
+La operación principal usada por la aplicación
+es search_by_range(...).
+end note
+
+@enduml

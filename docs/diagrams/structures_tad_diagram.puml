@@ -1,0 +1,112 @@
+@startuml
+title Supermarket Inventory System - Diagrama TAD de Estructuras
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+class "TAD Lista Enlazada" as LinkedListADT <<TAD>> {
+  +insert(producto)
+  +search_by_name(nombre)
+  +search_by_barcode(codigo)
+  +remove_by_barcode(codigo)
+  +get_all_products()
+}
+
+class "TAD AVL" as AVLADT <<TAD>> {
+  +insert(producto)
+  +search(nombre)
+  +remove(nombre)
+  +in_order_traversal()
+}
+
+class "TAD Hash Table" as HashADT <<TAD>> {
+  +insert(producto)
+  +search(codigo)
+  +remove(codigo)
+  +get_all_products()
+}
+
+class "TAD B-Tree" as BTreeADT <<TAD>> {
+  +insert(producto)
+  +search(fecha)
+  +search_by_range(fecha_inicio, fecha_fin)
+  +remove(fecha)
+  +get_all_products()
+}
+
+class "TAD B+ Tree" as BPlusADT <<TAD>> {
+  +insert(producto)
+  +find_leaf(categoria)
+  +search(categoria)
+  +remove(producto)
+  +get_all_products()
+}
+
+class "TAD Cola FIFO" as QueueADT <<TAD>> {
+  +enqueue(transferencia)
+  +dequeue()
+  +peek()
+  +is_empty()
+  +size()
+  +get_all()
+}
+
+note right of LinkedListADT
+Representación real:
+- BaseLinkedList
+- UnorderedLinkedList
+- OrderedLinkedList
+
+Uso en el sistema:
+- búsqueda secuencial
+- colección base de productos
+- benchmark de lista enlazada
+end note
+
+note right of AVLADT
+Clave principal: nombre del producto
+
+Uso en el sistema:
+- búsqueda por nombre en la aplicación
+end note
+
+note right of HashADT
+Clave principal: código de barras
+
+Uso en el sistema:
+- validación de duplicados
+- búsqueda exacta por barcode
+end note
+
+note right of BTreeADT
+Clave principal: fecha de expiración
+
+Uso en el sistema:
+- búsqueda por rango de fechas
+end note
+
+note right of BPlusADT
+Clave principal: categoría
+
+Propiedad relevante:
+- hojas enlazadas con next
+
+Uso en el sistema:
+- búsqueda por categoría
+- recorrido secuencial de hojas
+end note
+
+note right of QueueADT
+Uso en el sistema:
+- cola general de transferencias pendientes
+- apoyo conceptual al procesamiento FIFO
+end note
+
+LinkedListADT -[hidden]- AVLADT
+AVLADT -[hidden]- HashADT
+HashADT -[hidden]- BTreeADT
+BTreeADT -[hidden]- BPlusADT
+BPlusADT -[hidden]- QueueADT
+
+@enduml

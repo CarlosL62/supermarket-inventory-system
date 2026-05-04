@@ -1,0 +1,65 @@
+@startuml
+title TAD Lista Enlazada
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class "TAD Lista Enlazada" as LinkedListADT <<TAD>> {
+  +insert(producto)
+  +search_by_name(nombre)
+  +search_by_barcode(codigo)
+  +remove_by_barcode(codigo)
+  +get_all_products()
+}
+
+class Product <<model>> {
+  +name: str
+  +barcode: str
+  +category: str
+  +expiry_date: str
+}
+
+class Node {
+  +data: Product
+  +next: Node
+}
+
+abstract class BaseLinkedList {
+  +head: Node
+  +search_by_name(name: str)
+  +search_by_barcode(barcode: str)
+  +remove_by_barcode(barcode: str): bool
+  +get_all_products()
+}
+
+class UnorderedLinkedList {
+  +insert(product: Product)
+}
+
+class OrderedLinkedList {
+  +insert(product: Product)
+}
+
+LinkedListADT ..> BaseLinkedList : implementación real
+BaseLinkedList *-- Node
+Node --> Product
+UnorderedLinkedList --|> BaseLinkedList
+OrderedLinkedList --|> BaseLinkedList
+
+note right of LinkedListADT
+Uso real en el proyecto:
+- colección base del inventario
+- recorrido secuencial
+- benchmark de búsqueda secuencial
+end note
+
+note bottom of UnorderedLinkedList
+Inserta al frente.
+Es la lista base usada por CatalogService.get_all_products().
+end note
+
+note bottom of OrderedLinkedList
+Inserta ordenando por product.name.lower().
+end note
+
+@enduml

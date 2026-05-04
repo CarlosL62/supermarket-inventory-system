@@ -1,0 +1,51 @@
+@startuml
+title TAD AVL Tree
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class "TAD AVL" as AVLADT <<TAD>> {
+  +insert(producto)
+  +search(nombre)
+  +remove(nombre)
+  +in_order_traversal()
+  +get_all_products()
+}
+
+class Product <<model>> {
+  +name: str
+  +barcode: str
+}
+
+class AVLNode {
+  +product: Product
+  +left: AVLNode
+  +right: AVLNode
+  +height: int
+}
+
+class AVLTree {
+  +root: AVLNode
+  +insert(product: Product)
+  +search(name: str)
+  +remove(name: str)
+  +in_order_traversal()
+  +get_all_products()
+}
+
+AVLADT ..> AVLTree : implementación real
+AVLTree *-- AVLNode
+AVLNode --> Product
+
+note right of AVLADT
+Uso real en el proyecto:
+- índice por nombre del producto
+- búsqueda por nombre desde la UI
+end note
+
+note right of AVLTree
+Clave de orden:
+product.name.lower()
+end note
+
+@enduml

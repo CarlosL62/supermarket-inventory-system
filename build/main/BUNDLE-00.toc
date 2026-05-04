@@ -1,0 +1,4 @@
+([('main',
+   '/Users/carloslopez/Proyectos/EDD '
+   'PS2026/supermarket_inventory_system/dist/main',
+   'EXECUTABLE')],)
